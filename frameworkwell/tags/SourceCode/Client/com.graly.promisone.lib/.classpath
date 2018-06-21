@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="lib" path="basemodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="tcard-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="bom-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="bommodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="tcardmodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="activeentitymodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="securitymodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="prdmodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="rasmodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="wipmodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="ras-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="workflow.jar"/>
+	<classpathentry exported="true" kind="lib" path="wip-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="prd-client.jar" sourcepath="/prd"/>
+	<classpathentry exported="true" kind="lib" path="jakarta-oro-2.0.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="core.jar"/>
+	<classpathentry exported="true" kind="lib" path="activeentity-client.jar" sourcepath="/base"/>
+	<classpathentry exported="true" kind="lib" path="security-client.jar" sourcepath="E:/192.168.1.212/simat/trunk/SourceCode/Server/base"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="commons-logging.jar"/>
+	<classpathentry kind="lib" path="log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="base-client.jar" sourcepath="/base"/>
+	<classpathentry kind="lib" path="commons-beanutils-1.8.0.jar"/>
+	<classpathentry kind="lib" path="ejb3-persistence.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

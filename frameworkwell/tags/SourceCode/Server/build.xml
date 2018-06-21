@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<project basedir=".">
+	<tstamp />
+	
+	<property name="jboss.home" value="..\..\..\jboss-4.2.2.GA" />
+	<property name="jboss.server" value="..\..\..\jboss-4.2.2.GA\server\default" />
+	
+	<property name="promisone.server.dir" value=".." />
+	<property name="promisone.base.dir" value="../../base" />
+	<property name="build.dir" value="${promisone.server.dir}/build" />
+	<property name="lib.dir" value="${promisone.base.dir}/lib" />
+	<property name="dist.dir" value="dist" />
+	
+	<path id="master-classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<path id="ref-classpath">
+		<fileset dir="../${dist.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<target name="install">
+		<copy todir="${jboss.server}/lib" overwrite="true">
+			<fileset dir="${lib.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${jboss.server}/deploy" overwrite="true">
+			<fileset dir="${build.dir}">
+				<include name="**/oracle-ds.xml" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="clean" description="clear dist dir">
+		<delete dir="${dist.dir}" />
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${dist.dir}" />
+	</target>
+	
+	<target name="ear" depends="init,jarall">
+		<ear destfile="${dist.dir}/promisone.ear" appxml="resources/META-INF/application.xml">
+    	<metainf dir="resources/META-INF" includes="persistence.xml,MANIFEST.MF" />
+    	<fileset dir="${dist.dir}">
+    	  <include name="*.jar" />
+    	  <include name="*.war" />
+				<include name="lib/*.jar" />
+			</fileset>	
+  	</ear>
+	</target>
+	
+	<target name="earbase" depends="jarbase,copybase">
+		<ear destfile="${dist.dir}/promisone.ear" appxml="resources/META-INF/application.xml">
+    	<metainf dir="resources/META-INF" includes="persistence.xml,MANIFEST.MF" />
+    	<fileset dir="${dist.dir}" includes="*.jar,*.war,**/*.jar"/>    	
+  	</ear>
+	</target>
+	
+	<target name="earprd" depends="jarprd,copyprd">
+		<ear destfile="${dist.dir}/promisone.ear" appxml="resources/META-INF/application.xml">
+    	<metainf dir="resources/META-INF" includes="persistence.xml,MANIFEST.MF" />
+    	<fileset dir="${dist.dir}" includes="*.jar,*.war,**/*.jar"/>    	
+  	</ear>
+	</target>
+	
+	<target name="earras" depends="jarras,copyras">
+		<ear destfile="${dist.dir}/promisone.ear" appxml="resources/META-INF/application.xml">
+    	<metainf dir="resources/META-INF" includes="persistence.xml,MANIFEST.MF" />
+    	<fileset dir="${dist.dir}" includes="*.jar,*.war,**/*.jar"/>    	
+  	</ear>
+	</target>
+	
+	<target name="jarbasemodel">
+			<ant dir="basemodel" target="jar" inheritall="false" />
+			<antcall target="copybasemodel"></antcall>
+	</target>
+	
+	<target name="jarprdmodel">
+			<ant dir="prdmodel" target="jar" inheritall="false" />
+			<antcall target="copyprdmodel"></antcall>
+	</target>
+	
+	<target name="jarrasmodel">
+			<ant dir="rasmodel" target="jar" inheritall="false" />
+			<antcall target="copyrasmodel"></antcall>
+	</target>
+	
+	<target name="jarwipmodel">
+			<ant dir="wipmodel" target="jar" inheritall="false" />
+			<antcall target="copywipmodel"></antcall>
+	</target>
+	
+	<target name="jarbommodel">
+			<ant dir="bommodel" target="jar" inheritall="false" />
+			<antcall target="copybommodel"></antcall>
+	</target>
+	
+	<target name="jartcardmodel">
+			<ant dir="tcardmodel" target="jar" inheritall="false" />
+			<antcall target="copytcardmodel"></antcall>
+	</target>
+	
+	<target name="jarbase">
+			<ant dir="base" target="jar" inheritall="false" />
+			<antcall target="copybase"></antcall>
+	</target>
+	
+	<target name="jarprd">
+			<ant dir="prd" target="jar" inheritall="false" />
+			<antcall target="copyprd"></antcall>
+	</target>
+	
+	<target name="jarras">
+			<ant dir="ras" target="jar" inheritall="false" />
+			<antcall target="copyras"></antcall>
+	</target>
+	
+	<target name="jarwip">
+			<ant dir="wip" target="jar" inheritall="false" />
+			<antcall target="copywip"></antcall>
+	</target>
+	
+	<target name="jarbom">
+			<ant dir="bom" target="jar" inheritall="false" />
+			<antcall target="copybom"></antcall>
+	</target>
+	
+	<target name="jartcard">
+			<ant dir="tcard" target="jar" inheritall="false" />
+			<antcall target="copytcard"></antcall>
+	</target>
+	
+	<target name="jarall">
+			<antcall target="jarbasemodel"></antcall>
+			<antcall target="jartcardmodel"></antcall>
+			<antcall target="jarbommodel"></antcall>
+			<antcall target="jarprdmodel"></antcall>
+			<antcall target="jarrasmodel"></antcall>
+			<antcall target="jarwipmodel"></antcall>
+			<antcall target="jarbase"></antcall>
+			<antcall target="jarprd"></antcall>
+			<antcall target="jarras"></antcall>
+			<antcall target="jarwip"></antcall>
+			<antcall target="jarbom"></antcall>
+			<antcall target="jartcard"></antcall>
+	</target>
+	
+	<target name="copybasemodel">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="basemodel/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copyprdmodel">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="prdmodel/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copyrasmodel">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="rasmodel/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copywipmodel">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="wipmodel/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copybommodel">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="bommodel/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copytcardmodel">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="tcardmodel/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copybase">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="base/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copyprd">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="prd/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copyras">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="ras/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copywip">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="wip/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copybom">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="bom/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copytcard">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="tcard/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copyall">
+			<antcall target="copybase"></antcall>
+			<antcall target="copyprd"></antcall>
+			<antcall target="copyras"></antcall>
+			<antcall target="copywip"></antcall>
+			<antcall target="copybom"></antcall>
+			<antcall target="copytcard"></antcall>
+	</target>
+	
+</project>

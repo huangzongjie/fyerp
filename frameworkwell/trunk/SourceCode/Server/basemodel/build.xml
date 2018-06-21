@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<project name="basemodel" default="jar" basedir=".">
+	
+	<import file="../build.xml" />
+	
+	<property name="classes.dir" value="bin" />
+	<property name="dist.dir" value="dist" />
+	
+	<path id="current-classpath">
+		<fileset dir="dist">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<target name="clean">
+		<delete dir="${classes.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${dist.dir}" />
+	</target>
+	
+	<target name="jar" depends="init">
+		<antcall target="jarcore"></antcall>
+		<antcall target="jaractiveentitymodel"></antcall>
+		<antcall target="jarsecuritymodel"></antcall>
+	</target>
+	
+	<target name="compilecore" description="compile core source files">
+		<property name="src.java.dir" value="src/core/main" />
+		<property name="src.resource.dir" value="src/core/resources" />
+		<delete dir="${classes.dir}" />
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.java.dir}" destdir="${classes.dir}" debug="true" encoding="UTF-8"
+			fork="true"
+			memoryInitialSize="64m"
+			memoryMaximumSize="128m">
+			<classpath refid="master-classpath" />
+		</javac>
+		<copy todir="${classes.dir}/META-INF" overwrite="true">
+			<fileset dir="${src.resource.dir}/META-INF">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${classes.dir}" overwrite="true">
+			<fileset dir="${src.java.dir}">
+				<include name="**/*.xml" />
+			</fileset>
+		</copy>
+	</target>
+		
+	<target name="jarcore" depends="compilecore" description="make core.jar file">
+		<property name="jar.name" value="core.jar" />
+		<mkdir dir="${dist.dir}/lib" />
+		<jar destfile="${dist.dir}/lib/${jar.name}" basedir="${classes.dir}" manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+	</target>
+	
+	<target name="compileactiveentitymodel" description="compile activeentitymodel source files">
+		<property name="src.java.dir" value="src/activeentity/main" />
+		<property name="src.resource.dir" value="src/activeentity/resources" />
+		<delete dir="${classes.dir}" />
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.java.dir}" destdir="${classes.dir}" debug="true" encoding="UTF-8"
+			fork="true"
+			memoryInitialSize="64m"
+			memoryMaximumSize="128m">
+			<classpath refid="master-classpath" />
+			<classpath refid="ref-classpath"/>
+			<classpath refid="current-classpath"/>
+		</javac>
+		<copy todir="${classes.dir}/META-INF" overwrite="true">
+			<fileset dir="${src.resource.dir}/META-INF">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="jaractiveentitymodel" depends="compileactiveentitymodel" description="make activeentitymodel.jar file">
+		<property name="jar.name" value="activeentitymodel.jar" /> 
+		<jar destfile="${dist.dir}/${jar.name}" basedir="${classes.dir}" manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+		<mkdir dir="${dist.dir}/client" />
+		<copy todir="${dist.dir}/client" overwrite="true">
+			<fileset dir="${dist.dir}">
+				<include name="${jar.name}" />
+			</fileset>
+		</copy>
+	</target>
+	
+		<target name="compilesecuritymodel" description="compile securitymodel source files">
+		<property name="src.java.dir" value="src/security/main" />
+		<property name="src.resource.dir" value="src/security/resources" />
+		<delete dir="${classes.dir}" />
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.java.dir}" destdir="${classes.dir}" debug="true" encoding="UTF-8"
+			fork="true"
+			memoryInitialSize="64m"
+			memoryMaximumSize="128m">
+			<classpath refid="master-classpath" />
+			<classpath refid="ref-classpath"/>
+			<classpath refid="current-classpath"/>
+		</javac>
+		<copy todir="${classes.dir}/META-INF" overwrite="true">
+			<fileset dir="${src.resource.dir}/META-INF">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="jarsecuritymodel" depends="compilesecuritymodel" description="make securitymodel.jar file">
+		<property name="jar.name" value="securitymodel.jar" /> 
+		<jar destfile="${dist.dir}/${jar.name}" basedir="${classes.dir}" manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+		<mkdir dir="${dist.dir}/client" />
+		<copy todir="${dist.dir}/client" overwrite="true">
+			<fileset dir="${dist.dir}">
+				<include name="${jar.name}" />
+			</fileset>
+		</copy>
+	</target>
+
+</project>

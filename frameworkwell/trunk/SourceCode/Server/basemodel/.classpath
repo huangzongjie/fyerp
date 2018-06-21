@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/activeentity/main"/>
+	<classpathentry kind="src" path="src/core/main"/>
+	<classpathentry kind="src" path="src/security/main"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/ejb3-persistence.jar"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/ejb3x.jar"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/log4j-1.2.15.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

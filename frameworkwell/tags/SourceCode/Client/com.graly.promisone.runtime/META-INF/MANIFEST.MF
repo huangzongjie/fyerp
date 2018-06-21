@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Runtime Plug-in
+Bundle-SymbolicName: com.graly.promisone.runtime;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Vendor: GRALY
+Bundle-Activator: com.graly.promisone.runtime.osgi.OSGiRuntimeActivator
+Require-Bundle: org.eclipse.core.runtime,
+ com.graly.promisone.lib,
+ org.eclipse.jface
+Export-Package: com.graly.promisone.runtime,
+ com.graly.promisone.runtime.exceptionhandler,
+ com.graly.promisone.runtime.service
+Eclipse-LazyStart: true
+Bundle-ClassPath: .,
+ lib/jbossall-client.jar,
+ lib/jboss-ejb3-client.jar
+

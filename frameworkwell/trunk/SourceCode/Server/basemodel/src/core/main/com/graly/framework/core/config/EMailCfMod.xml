@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.4.2_02" class="java.beans.XMLDecoder">
+    <object class="com.graly.framework.core.config.EMailCfMod">
+        <void property="mailFrom">
+            <string>from</string>
+        </void>
+         <void property="smtpHost">
+            <string>host</string>
+        </void>
+         <void property="smtpLocalhost">
+            <string>localhost</string>
+        </void>
+         <void property="smtpUsername">
+            <string>username</string>
+        </void>
+         <void property="smtpPassword">
+            <string>password</string>
+        </void>
+        <void property="smtpPort">
+            <int>25</int>
+        </void>
+        <void property="enableTLS">
+            <boolean>false</boolean>
+        </void>
+        <void property="authenticate">
+            <boolean>false</boolean>
+        </void>
+        <void property="mailTo">
+            <array class="java.lang.String" length="0">
+            </array>
+        </void>
+    </object>
+</java>

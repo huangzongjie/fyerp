@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="http://192.168.1.2:8080/MESwell" href="start.jnlp">
+	<information>
+		<title>MESwell</title>
+		<vendor>GralySoft Corporation</vendor>
+		<description>The MESwell for SIAMT.</description>
+		<icon href=""/>
+		<offline-allowed/>
+	</information>
+	<security>
+		<all-permissions/>
+	</security>
+	<application-desc main-class="org.eclipse.equinox.launcher.WebStartMain"> 
+		<argument>-nosplash</argument>
+	</application-desc>
+	<resources>
+		<j2se version="1.5+" />
+	</resources>
+	<resources>
+		<extension href="features/com.graly.promisone.base.jnlp_1.0.0.jnlp" />
+		<jar href="plugins/org.eclipse.equinox.launcher_1.0.1.R33x_v20080118.jar"/>
+		<property name="osgi.instance.area.default" value="@user.home/workspace"/>
+		<property name="osgi.splashPath" value="platform:/base/plugins/com.graly.promisone.base"/>
+		<property name="eclipse.product" value="com.graly.promisone.base.product"/>
+		<property name="osgi.bundles" value="org.eclipse.equinox.common@2:start,org.eclipse.update.configurator@3:start,org.eclipse.core.runtime@start"/>
+		<property name="osgi.bundles.defaultStartLevel" value="4"/>
+	</resources>
+	<resources>
+		<property name="hostname" value="PRD"/>
+		<property name="java.naming.provider.url" value="jnp://localhost:1099"/>
+	</resources>
+</jnlp>

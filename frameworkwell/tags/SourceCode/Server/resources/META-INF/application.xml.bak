@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_5.xsd"
+	version="5">
+	<display-name>Base</display-name>
+	<module id="activeentity-EJB">
+		<ejb>activeentity.jar</ejb>
+	</module>
+	<module id="security-EJB">
+		<ejb>security.jar</ejb>
+	</module>
+	<module id="prd-EJB">
+		<ejb>prd.jar</ejb>
+	</module>
+	<module id="activeentity-model">
+		<ejb>activeentitymodel.jar</ejb>
+	</module>
+	<module id="security-model">
+		<ejb>securitymodel.jar</ejb>
+	</module>
+	<module id="prd-model">
+		<ejb>prdmodel.jar</ejb>
+	</module>
+	<module id="ras-EJB">
+		<ejb>ras.jar</ejb>
+	</module>
+	<module id="ras-model">
+		<ejb>rasmodel.jar</ejb>
+	</module>
+	<module id="wip-EJB">
+		<ejb>wip.jar</ejb>
+	</module>
+	<module id="wip-model">
+		<ejb>wipmodel.jar</ejb>
+	</module>
+	<module id="bom-EJB">
+		<ejb>bom.jar</ejb>
+	</module>
+	<module id="bom-model">
+		<ejb>bommodel.jar</ejb>
+	</module>
+	<module id="tcard-EJB">
+		<ejb>tcard.jar</ejb>
+	</module>
+	<module id="tcard-model">
+		<ejb>tcardmodel.jar</ejb>
+	</module>
+	<module>
+	  <web>
+	    <web-uri>wfstartup.war</web-uri>
+      <context-root>/wfstartup</context-root>
+    </web>
+  </module>
+	<library-directory>lib</library-directory>  
+</application>

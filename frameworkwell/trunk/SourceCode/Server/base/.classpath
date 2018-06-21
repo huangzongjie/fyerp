@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/security/main"/>
+	<classpathentry kind="src" path="src/activeentity/main"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/basemodel"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/commons-beanutils-1.8.0-BETA.jar"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/ejb3-persistence.jar"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/ejb3x.jar"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/hibernate3.jar"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/jboss-j2ee.jar"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/log4j-1.2.15.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

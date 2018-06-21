@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/ui"/>
+	<classpathentry kind="src" path="src/application"/>
+	<classpathentry kind="src" path="src/security"/>
+	<classpathentry kind="src" path="src/entitymanager"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.nebula.widgets.calendarcombo-1.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="/com.graly.promisone.lib/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="/com.graly.promisone.lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="/com.graly.promisone.lib/commons-beanutils-1.8.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

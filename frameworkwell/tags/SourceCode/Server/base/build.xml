@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<project name="Base" default="ear" basedir=".">
+	
+	<import file="../build.xml" />
+	
+	<property name="classes.dir" value="bin" />
+	<property name="dist.dir" value="dist" />
+	
+	<path id="base-classpath">
+		<fileset dir="${dist.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<path id="current-classpath">
+		<fileset dir="dist">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<target name="clean">
+		<delete dir="${classes.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${dist.dir}" />
+	</target>
+	
+	<target name="jar" depends="init">
+		<antcall target="jaractiveentity"></antcall>
+		<antcall target="jarsecurity"></antcall>
+	</target>
+	
+	<target name="compileactiveentity" description="compile activeentity source files">
+		<property name="src.java.dir" value="src/activeentity/main" />
+		<property name="src.resource.dir" value="src/activeentity/resources" />
+		<delete dir="${classes.dir}" />
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.java.dir}" destdir="${classes.dir}" debug="true" encoding="UTF-8"
+			fork="true"
+			memoryInitialSize="64m"
+			memoryMaximumSize="128m">
+			<classpath refid="master-classpath" />
+			<classpath refid="ref-classpath"/>
+			<classpath refid="current-classpath"/>
+		</javac>
+		<copy todir="${classes.dir}/META-INF" overwrite="true">
+			<fileset dir="${src.resource.dir}/META-INF">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+		
+	<target name="jaractiveentity" depends="compileactiveentity" description="make activeentity.jar file">
+		<property name="jar.name" value="activeentity.jar" />
+		<property name="jarclient.name" value="activeentity-client.jar" />
+		<jar destfile="${dist.dir}/${jar.name}" basedir="${classes.dir}" manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+		<mkdir dir="${dist.dir}/client" />
+		<jar destfile="${dist.dir}/client/${jarclient.name}" basedir="${classes.dir}" 
+				excludes="**/ejb/**"
+				manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+	</target>
+	
+	<target name="compilesecurity" description="compile security source files">
+		<property name="src.java.dir" value="src/security/main" />
+		<property name="src.resource.dir" value="src/security/resources" />
+		<delete dir="${classes.dir}" />
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.java.dir}" destdir="${classes.dir}" debug="true" encoding="UTF-8"
+			fork="true"
+			memoryInitialSize="64m"
+			memoryMaximumSize="128m">
+			<classpath refid="master-classpath" />
+			<classpath refid="ref-classpath"/>
+			<classpath refid="current-classpath"/>
+		</javac>
+		<copy todir="${classes.dir}/META-INF" overwrite="true">
+			<fileset dir="${src.resource.dir}/META-INF">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="jarsecurity" depends="compilesecurity" description="make security.jar file">
+		<property name="jar.name" value="security.jar" /> 
+		<property name="jarclient.name" value="security-client.jar" /> 
+		<jar destfile="${dist.dir}/${jar.name}" basedir="${classes.dir}" manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+		<mkdir dir="${dist.dir}/client" />
+		<jar destfile="${dist.dir}/client/${jarclient.name}" basedir="${classes.dir}" 
+				excludes="**/ejb/**"
+				manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+	</target>
+
+</project>

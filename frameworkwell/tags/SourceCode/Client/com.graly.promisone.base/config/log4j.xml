@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  Log4j Configuration                                                  -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<!--
+   | For more configuration infromation and examples see the Jakarta Log4j
+   | owebsite: http://jakarta.apache.org/log4j
+ -->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+   <!-- ================================= -->
+   <!-- Preserve messages in a local file -->
+   <!-- ================================= -->
+
+   <!-- A time/date based rolling appender -->
+   <appender name="FILEERROR" class="org.apache.log4j.RollingFileAppender">
+      <param name="File" value="${osgi.instance.area.default}/data/log/error.log"/>
+      <param name="Append" value="false"/>
+	  <param name="Threshold" value="ERROR"/>
+      <layout class="org.apache.log4j.PatternLayout">
+         <!-- The default pattern: Date Priority [Category] Message\n -->
+         <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+
+         <!-- The full pattern: Date MS Priority [Category] (Thread:NDC) Message\n
+         <param name="ConversionPattern" value="%d %-5r %-5p [%c] (%t:%x) %m%n"/>
+          -->
+      </layout>
+   </appender>
+
+   <appender name="FILEINFO" class="org.apache.log4j.RollingFileAppender">
+      <param name="File" value="${osgi.instance.area.default}/data/log/info.log"/>
+      <param name="Append" value="false"/>
+      <param name="Threshold" value="INFO"/>
+      <layout class="org.apache.log4j.PatternLayout">
+         <!-- The default pattern: Date Priority [Category] Message\n -->
+         <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+
+         <!-- The full pattern: Date MS Priority [Category] (Thread:NDC) Message\n
+         <param name="ConversionPattern" value="%d %-5r %-5p [%c] (%t:%x) %m%n"/>
+          -->
+      </layout>
+   </appender>
+   <!-- ============================== -->
+   <!-- Append messages to the console -->
+   <!-- ============================== -->
+
+   <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+      <param name="Target" value="System.out"/>
+      <param name="Threshold" value="INFO"/>
+
+      <layout class="org.apache.log4j.PatternLayout">
+         <!-- The default pattern: Date Priority [Category] Message\n -->
+         <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] %m%n"/>
+      </layout>
+   </appender>
+   
+   <!-- ================ -->
+   <!-- Limit categories -->
+   <!-- ================ -->
+
+   <!-- ======================= -->
+   <!-- Setup the Root category -->
+   <!-- ======================= -->
+	
+   
+   <root>
+   	  <appender-ref ref="FILEINFO"/>
+   	  <appender-ref ref="FILEERROR"/>
+      <appender-ref ref="CONSOLE"/>
+   </root>
+	
+</log4j:configuration>
