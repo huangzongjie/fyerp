@@ -1,0 +1,1920 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.17" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 2.3.2.r232_20090202 Build &lt;2.3.2.v20090218-0730></property>
+    <property name="units">in</property>
+    <text-property name="title">开能报表系统</text-property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">birtlibrary/ERPWELL.rptlibrary</property>
+            <property name="namespace">ERPWELL</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="PR_OBJECT_RRN" id="483">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <property name="distinct">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="ERPWELL" id="539"
+ extends="ERPWELL.ERPWELL"/>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="PUR" id="454">
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">JXQS</property>
+                    <expression name="expression">var n1 = BirtMath.add(row["PRL_QTY_ALLOCATION"],row["PRL_QTY_MIN"]);
+var n2 = BirtMath.add(row["PRL_QTY_HANDON"],row["PRL_QTY_TRANSIT"]);
+this.value = BirtMath.subtract(n1,n2);</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">PR_USER_CREATED</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">PR_CREATED</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">PR_DOC_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">PRL_LINE_NO</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">PRL_UOM_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">PRL_QTY</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">PRL_UNIT_PRICE</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">PRL_LINE_TOTAL</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">PRL_QTY_ORDERED</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">PRL_LINE_STATUS</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">PRL_DATE_END</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">PRL_QTY_HANDON</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">PRL_QTY_TRANSIT</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">PRL_QTY_ALLOCATION</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">PRL_QTY_MIN</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">PRL_ADVANCE_PAYMENT</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">PRL_PURCHASER</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">PRL_QTY_ECONOMIC_SIZE</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">PRL_PACKAGE_SPEC</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">20</property>
+                        <property name="name">PR_USER_APPROVED</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">21</property>
+                        <property name="name">MATERIAL_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">22</property>
+                        <property name="name">LOT_TYPE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">23</property>
+                        <property name="name">NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">24</property>
+                        <property name="name">COMPANY_NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">25</property>
+                        <property name="name">VENDOR_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">26</property>
+                        <property name="name">VM_IS_PRIMARY</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">27</property>
+                        <property name="name">JXQS</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">ERPWELL</property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">PR_OBJECT_RRN</property>
+                    <property name="paramName">PR_OBJECT_RRN</property>
+                    <property name="dataType">string</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">PR_USER_CREATED</property>
+                    <property name="nativeName">PR_USER_CREATED</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">PR_CREATED</property>
+                    <property name="nativeName">PR_CREATED</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">PR_DOC_ID</property>
+                    <property name="nativeName">PR_DOC_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">PRL_LINE_NO</property>
+                    <property name="nativeName">PRL_LINE_NO</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">PRL_UOM_ID</property>
+                    <property name="nativeName">PRL_UOM_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">PRL_QTY</property>
+                    <property name="nativeName">PRL_QTY</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">PRL_UNIT_PRICE</property>
+                    <property name="nativeName">PRL_UNIT_PRICE</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">PRL_LINE_TOTAL</property>
+                    <property name="nativeName">PRL_LINE_TOTAL</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">PRL_QTY_ORDERED</property>
+                    <property name="nativeName">PRL_QTY_ORDERED</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">PRL_LINE_STATUS</property>
+                    <property name="nativeName">PRL_LINE_STATUS</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">PRL_DATE_END</property>
+                    <property name="nativeName">PRL_DATE_END</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">PRL_QTY_HANDON</property>
+                    <property name="nativeName">PRL_QTY_HANDON</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">PRL_QTY_TRANSIT</property>
+                    <property name="nativeName">PRL_QTY_TRANSIT</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">PRL_QTY_ALLOCATION</property>
+                    <property name="nativeName">PRL_QTY_ALLOCATION</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">PRL_QTY_MIN</property>
+                    <property name="nativeName">PRL_QTY_MIN</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">PRL_ADVANCE_PAYMENT</property>
+                    <property name="nativeName">PRL_ADVANCE_PAYMENT</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
+                    <property name="name">PRL_PURCHASER</property>
+                    <property name="nativeName">PRL_PURCHASER</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">18</property>
+                    <property name="name">PRL_QTY_ECONOMIC_SIZE</property>
+                    <property name="nativeName">PRL_QTY_ECONOMIC_SIZE</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">19</property>
+                    <property name="name">PRL_PACKAGE_SPEC</property>
+                    <property name="nativeName">PRL_PACKAGE_SPEC</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">20</property>
+                    <property name="name">PR_USER_APPROVED</property>
+                    <property name="nativeName">PR_USER_APPROVED</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">21</property>
+                    <property name="name">MATERIAL_ID</property>
+                    <property name="nativeName">MATERIAL_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">22</property>
+                    <property name="name">LOT_TYPE</property>
+                    <property name="nativeName">LOT_TYPE</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">23</property>
+                    <property name="name">NAME</property>
+                    <property name="nativeName">NAME</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">24</property>
+                    <property name="name">COMPANY_NAME</property>
+                    <property name="nativeName">COMPANY_NAME</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">25</property>
+                    <property name="name">VENDOR_ID</property>
+                    <property name="nativeName">VENDOR_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">26</property>
+                    <property name="name">VM_IS_PRIMARY</property>
+                    <property name="nativeName">VM_IS_PRIMARY</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="queryText">select  
+    PR.USER_CREATED      PR_USER_CREATED,
+    PR.CREATED        PR_CREATED,
+    PR.DOC_ID        PR_DOC_ID,
+    PRL.LINE_NO        PRL_LINE_NO,
+    PRL.UOM_ID        PRL_UOM_ID,
+    PRL.QTY          PRL_QTY,
+    PRL.UNIT_PRICE      PRL_UNIT_PRICE,
+    PRL.LINE_TOTAL      PRL_LINE_TOTAL,
+    PRL.QTY_ORDERED      PRL_QTY_ORDERED,
+    PRL.LINE_STATUS      PRL_LINE_STATUS,
+    PRL.DATE_END      PRL_DATE_END,
+    INS.QTY_ONHAND_SUM    PRL_QTY_HANDON,
+    PRL.QTY_TRANSIT      PRL_QTY_TRANSIT,
+    PRL.QTY_ALLOCATION    PRL_QTY_ALLOCATION,
+    PRL.QTY_MIN        PRL_QTY_MIN,
+    PRL.ADVANCE_PAYMENT    PRL_ADVANCE_PAYMENT,
+    PRL.PURCHASER      PRL_PURCHASER,
+    PRL.QTY_ECONOMIC_SIZE  PRL_QTY_ECONOMIC_SIZE,
+    PRL.PACKAGE_SPEC		PRL_PACKAGE_SPEC,
+    
+    PR.USER_APPROVED    PR_USER_APPROVED,  
+    
+    M.MATERIAL_ID      MATERIAL_ID,
+    M.LOT_TYPE        LOT_TYPE,
+    M.NAME          NAME,
+    
+    NVL(V.SHORT_NAME,V.COMPANY_NAME)    COMPANY_NAME,
+    V.VENDOR_ID        VENDOR_ID,
+    VM.IS_PRIMARY      VM_IS_PRIMARY
+    
+from  PUR_REQUISITION      PR
+inner join PUR_REQUISITION_LINE   PRL on PRL.REQUISITION_RRN = PR.OBJECT_RRN and PRL.LINE_STATUS &lt;> 'CLOSED'
+inner join VDM_VENDOR V  on V.OBJECT_RRN=PRL.VENDOR_RRN
+inner join PDM_MATERIAL M on M.OBJECT_RRN = PRL.MATERIAL_RRN
+inner join vdm_vendor_material VM on VM.MATERIAL_RRN = PRL.MATERIAL_RRN and VM.VENDOR_RRN = PRL.VENDOR_RRN
+left join (select t.material_rrn,sum(t.QTY_ONHAND+t.QTY_DIFF) QTY_ONHAND_SUM from INV_STORAGE t where t.warehouse_rrn in (151043,151046) group by t.material_rrn) INS 
+on PRL.MATERIAL_RRN=INS.MATERIAL_RRN 
+where PR.OBJECT_RRN = ? order by M.MATERIAL_ID</property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">"Verdana"</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="type">a4</property>
+            <property name="topMargin">0.25in</property>
+            <property name="leftMargin">0.25in</property>
+            <property name="bottomMargin">0.25in</property>
+            <property name="rightMargin">0.25in</property>
+            <property name="showFooterOnLast">true</property>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="484">
+            <property name="textAlign">center</property>
+            <property name="pageBreakAfter">always</property>
+            <column id="485"/>
+            <row id="486">
+                <cell id="487">
+                    <property name="fontFamily">"楷体_GB2312"</property>
+                    <property name="verticalAlign">middle</property>
+                    <grid name="表头Grid" id="180">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="dataSet">PUR</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">PR_USER_CREATED</property>
+                                <expression name="expression">dataSetRow["PR_USER_CREATED"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PR_CREATED</property>
+                                <expression name="expression">dataSetRow["PR_CREATED"]</expression>
+                                <property name="dataType">date-time</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PR_DOC_ID</property>
+                                <expression name="expression">dataSetRow["PR_DOC_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <column id="181"/>
+                        <column id="182"/>
+                        <column id="184"/>
+                        <column id="185"/>
+                        <column id="189"/>
+                        <column id="190"/>
+                        <row id="359">
+                            <cell id="360">
+                                <property name="colSpan">6</property>
+                                <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="verticalAlign">middle</property>
+                                <text id="370">
+                                    <property name="fontSize">18pt</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="contentType">html</property>
+                                    <text-property name="content"><![CDATA[<STRONG>采购申请单</STRONG>
+]]></text-property>
+                                </text>
+                            </cell>
+                        </row>
+                        <row id="191">
+                            <cell id="192">
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">2pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">right</property>
+                                <property name="verticalAlign">middle</property>
+                                <text id="203">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="contentType">auto</property>
+                                    <text-property name="content"><![CDATA[创建：]]></text-property>
+                                </text>
+                            </cell>
+                            <cell id="193">
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">2pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">left</property>
+                                <property name="verticalAlign">middle</property>
+                                <data id="468">
+                                    <property name="resultSetColumn">PR_USER_CREATED</property>
+                                </data>
+                            </cell>
+                            <cell id="195">
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">2pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <property name="verticalAlign">middle</property>
+                                <text id="205">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="marginTop">0pt</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="textAlign">right</property>
+                                    <property name="contentType">auto</property>
+                                    <text-property name="content"><![CDATA[日期：]]></text-property>
+                                </text>
+                            </cell>
+                            <cell id="196">
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">2pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">left</property>
+                                <property name="verticalAlign">middle</property>
+                                <data id="467">
+                                    <structure name="dateTimeFormat">
+                                        <property name="category">Medium Date</property>
+                                        <property name="pattern">Medium Date</property>
+                                    </structure>
+                                    <property name="resultSetColumn">PR_CREATED</property>
+                                </data>
+                            </cell>
+                            <cell id="200">
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">2pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">right</property>
+                                <property name="verticalAlign">middle</property>
+                                <text id="206">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="contentType">auto</property>
+                                    <text-property name="content"><![CDATA[单据编号：]]></text-property>
+                                </text>
+                            </cell>
+                            <cell id="201">
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">2pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">left</property>
+                                <property name="verticalAlign">middle</property>
+                                <data id="466">
+                                    <property name="marginTop">0pt</property>
+                                    <property name="marginBottom">1pt</property>
+                                    <property name="resultSetColumn">PR_DOC_ID</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                    <table name="表体Table" id="14">
+                        <property name="marginTop">5pt</property>
+                        <property name="pageBreakAfter">auto</property>
+                        <property name="pageBreakBefore">auto</property>
+                        <property name="canShrink">false</property>
+                        <property name="dataSet">PUR</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">PR_USER_CREATED</property>
+                                <expression name="expression">dataSetRow["PR_USER_CREATED"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PR_CREATED</property>
+                                <expression name="expression">dataSetRow["PR_CREATED"]</expression>
+                                <property name="dataType">date-time</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PR_DOC_ID</property>
+                                <expression name="expression">dataSetRow["PR_DOC_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_LINE_NO</property>
+                                <expression name="expression">dataSetRow["PRL_LINE_NO"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_UOM_ID</property>
+                                <expression name="expression">dataSetRow["PRL_UOM_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_QTY</property>
+                                <expression name="expression">dataSetRow["PRL_QTY"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_UNIT_PRICE</property>
+                                <expression name="expression">dataSetRow["PRL_UNIT_PRICE"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_LINE_TOTAL</property>
+                                <expression name="expression">dataSetRow["PRL_LINE_TOTAL"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_QTY_ORDERED</property>
+                                <expression name="expression">dataSetRow["PRL_QTY_ORDERED"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_LINE_STATUS</property>
+                                <expression name="expression">dataSetRow["PRL_LINE_STATUS"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_DATE_END</property>
+                                <expression name="expression">dataSetRow["PRL_DATE_END"]</expression>
+                                <property name="dataType">date-time</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_QTY_HANDON</property>
+                                <expression name="expression">dataSetRow["PRL_QTY_HANDON"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_QTY_TRANSIT</property>
+                                <expression name="expression">dataSetRow["PRL_QTY_TRANSIT"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_QTY_ALLOCATION</property>
+                                <expression name="expression">dataSetRow["PRL_QTY_ALLOCATION"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_QTY_MIN</property>
+                                <expression name="expression">dataSetRow["PRL_QTY_MIN"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_ADVANCE_PAYMENT</property>
+                                <expression name="expression">dataSetRow["PRL_ADVANCE_PAYMENT"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_PURCHASER</property>
+                                <expression name="expression">dataSetRow["PRL_PURCHASER"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_QTY_ECONOMIC_SIZE</property>
+                                <expression name="expression">dataSetRow["PRL_QTY_ECONOMIC_SIZE"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PR_USER_APPROVED</property>
+                                <expression name="expression">dataSetRow["PR_USER_APPROVED"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">MATERIAL_ID</property>
+                                <expression name="expression">dataSetRow["MATERIAL_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">NAME</property>
+                                <expression name="expression">dataSetRow["NAME"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">COMPANY_NAME</property>
+                                <expression name="expression">dataSetRow["COMPANY_NAME"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">VENDOR_ID</property>
+                                <expression name="expression">dataSetRow["VENDOR_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">JXQS</property>
+                                <expression name="expression">dataSetRow["JXQS"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LOT_TYPE</property>
+                                <property name="displayName">LOT_TYPE</property>
+                                <expression name="expression">dataSetRow["LOT_TYPE"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">VM_IS_PRIMARY</property>
+                                <property name="displayName">VM_IS_PRIMARY</property>
+                                <expression name="expression">dataSetRow["VM_IS_PRIMARY"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PRL_PACKAGE_SPEC</property>
+                                <property name="displayName">PRL_PACKAGE_SPEC</property>
+                                <expression name="expression">dataSetRow["PRL_PACKAGE_SPEC"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="pageBreakInterval">0</property>
+                        <column id="48"/>
+                        <column id="49"/>
+                        <column id="599"/>
+                        <column id="543"/>
+                        <column id="555"/>
+                        <column id="559"/>
+                        <column id="566"/>
+                        <column id="50"/>
+                        <column id="593"/>
+                        <column id="51"/>
+                        <column id="612"/>
+                        <column id="519"/>
+                        <column id="525"/>
+                        <column id="571"/>
+                        <column id="576"/>
+                        <column id="52"/>
+                        <column id="53"/>
+                        <column id="54"/>
+                        <column id="605"/>
+                        <column id="581"/>
+                        <column id="55"/>
+                        <column id="56"/>
+                        <header>
+                            <row id="15">
+                                <property name="fontWeight">bold</property>
+                                <property name="textAlign">center</property>
+                                <list-property name="highlightRules">
+                                    <structure>
+                                        <property name="operator">eq</property>
+                                        <property name="backgroundColor">#C6E6F4</property>
+                                        <expression name="testExpr">row[0]%2</expression>
+                                        <simple-property-list name="value1">
+                                            <value>0</value>
+                                        </simple-property-list>
+                                    </structure>
+                                </list-property>
+                                <cell id="16">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="68">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[物料编号]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="17">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="59">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[物料名称]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="596">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="600">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[批次类型]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="540">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="560">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[库存数]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="552">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="561">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[在途数]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="556">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="562">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[工作令需求]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="563">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="567">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[安全库存]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="18">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="60">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[单位]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="590">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="594">
+                                        <property name="contentType">html</property>
+                                        <text-property name="content"><![CDATA[净需求数]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="19">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="61">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[实际采购量]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="609">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="613">
+                                        <text-property name="text">包装规格</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="516">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="520">
+                                        <text-property name="text">单价</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="522">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="526">
+                                        <text-property name="text">行总价</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="568">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="572">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[预付款]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="573">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="577">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[经济批量]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="20">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="63">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[已采购量]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="21">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="527">
+                                        <text-property name="text">供应商编号</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="22">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="528">
+                                        <text-property name="text">供应商名称</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="602">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="606">
+                                        <text-property name="text">是否主供应商</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="578">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="582">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[采购人员]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="23">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="529">
+                                        <text-property name="text">状态</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="24">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="62">
+                                        <property name="contentType">auto</property>
+                                        <text-property name="content"><![CDATA[到货日期]]></text-property>
+                                    </text>
+                                </cell>
+                            </row>
+                        </header>
+                        <detail>
+                            <row id="26">
+                                <list-property name="highlightRules">
+                                    <structure>
+                                        <property name="operator">eq</property>
+                                        <property name="backgroundColor">#EBF1FD</property>
+                                        <expression name="testExpr">row[0]%2</expression>
+                                        <simple-property-list name="value1">
+                                            <value>0</value>
+                                        </simple-property-list>
+                                    </structure>
+                                    <structure>
+                                        <property name="operator">eq</property>
+                                        <property name="backgroundColor">#FF0000</property>
+                                        <expression name="testExpr">if(row["RefUnitPrice"] != null){
+	if(row["UnitPrice"] > row["RefUnitPrice"]){
+		"Y"
+	}else{
+		"N"
+	}
+}</expression>
+                                        <simple-property-list name="value1">
+                                            <value>"Y"</value>
+                                        </simple-property-list>
+                                    </structure>
+                                    <structure>
+                                        <property name="operator">eq</property>
+                                        <property name="backgroundColor">#FFFF00</property>
+                                        <expression name="testExpr">if(row["RefVendorRRn"] != null){
+	if(row["VendorRRn"] != row["RefVendorRRn"]){
+		"Y"
+	}else{
+		"N"
+	}
+}</expression>
+                                        <simple-property-list name="value1">
+                                            <value>"Y"</value>
+                                        </simple-property-list>
+                                    </structure>
+                                </list-property>
+                                <cell id="27">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="488">
+                                        <property name="resultSetColumn">MATERIAL_ID</property>
+                                    </data>
+                                </cell>
+                                <cell id="28">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="489">
+                                        <property name="resultSetColumn">NAME</property>
+                                    </data>
+                                </cell>
+                                <cell id="597">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="601">
+                                        <list-property name="mapRules">
+                                            <structure>
+                                                <expression name="testExpr">row["LOT_TYPE"]</expression>
+                                                <property name="operator">eq</property>
+                                                <simple-property-list name="value1">
+                                                    <value>"MATERIAL"</value>
+                                                </simple-property-list>
+                                                <text-property name="display">M</text-property>
+                                            </structure>
+                                            <structure>
+                                                <expression name="testExpr">row["LOT_TYPE"]</expression>
+                                                <property name="operator">eq</property>
+                                                <simple-property-list name="value1">
+                                                    <value>"BATCH"</value>
+                                                </simple-property-list>
+                                                <text-property name="display">B</text-property>
+                                            </structure>
+                                            <structure>
+                                                <expression name="testExpr">row["LOT_TYPE"]</expression>
+                                                <property name="operator">eq</property>
+                                                <simple-property-list name="value1">
+                                                    <value>"SERIAL"</value>
+                                                </simple-property-list>
+                                                <text-property name="display">S</text-property>
+                                            </structure>
+                                        </list-property>
+                                        <property name="resultSetColumn">LOT_TYPE</property>
+                                    </data>
+                                </cell>
+                                <cell id="541">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="583">
+                                        <property name="resultSetColumn">PRL_QTY_HANDON</property>
+                                    </data>
+                                </cell>
+                                <cell id="553">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="584">
+                                        <property name="resultSetColumn">PRL_QTY_TRANSIT</property>
+                                    </data>
+                                </cell>
+                                <cell id="557">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="585">
+                                        <property name="resultSetColumn">PRL_QTY_ALLOCATION</property>
+                                    </data>
+                                </cell>
+                                <cell id="564">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="586">
+                                        <property name="resultSetColumn">PRL_QTY_MIN</property>
+                                    </data>
+                                </cell>
+                                <cell id="29">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="490">
+                                        <property name="resultSetColumn">PRL_UOM_ID</property>
+                                    </data>
+                                </cell>
+                                <cell id="591">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="595">
+                                        <property name="resultSetColumn">JXQS</property>
+                                    </data>
+                                </cell>
+                                <cell id="30">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="536">
+                                        <property name="resultSetColumn">PRL_QTY</property>
+                                    </data>
+                                </cell>
+                                <cell id="610">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="614">
+                                        <property name="resultSetColumn">PRL_PACKAGE_SPEC</property>
+                                    </data>
+                                </cell>
+                                <cell id="517">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="521">
+                                        <property name="resultSetColumn">PRL_UNIT_PRICE</property>
+                                    </data>
+                                </cell>
+                                <cell id="523">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="538">
+                                        <property name="resultSetColumn">PRL_LINE_TOTAL</property>
+                                    </data>
+                                </cell>
+                                <cell id="569">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="587">
+                                        <property name="resultSetColumn">PRL_ADVANCE_PAYMENT</property>
+                                    </data>
+                                </cell>
+                                <cell id="574">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="588">
+                                        <property name="resultSetColumn">PRL_QTY_ECONOMIC_SIZE</property>
+                                    </data>
+                                </cell>
+                                <cell id="31">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="537">
+                                        <property name="resultSetColumn">PRL_QTY_ORDERED</property>
+                                    </data>
+                                </cell>
+                                <cell id="32">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="535">
+                                        <property name="resultSetColumn">VENDOR_ID</property>
+                                    </data>
+                                </cell>
+                                <cell id="33">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="534">
+                                        <property name="resultSetColumn">COMPANY_NAME</property>
+                                    </data>
+                                </cell>
+                                <cell id="603">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="607">
+                                        <property name="resultSetColumn">VM_IS_PRIMARY</property>
+                                    </data>
+                                </cell>
+                                <cell id="579">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="589">
+                                        <property name="resultSetColumn">PRL_PURCHASER</property>
+                                    </data>
+                                </cell>
+                                <cell id="34">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="530">
+                                        <property name="resultSetColumn">PRL_LINE_STATUS</property>
+                                    </data>
+                                </cell>
+                                <cell id="35">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="paddingLeft">0pt</property>
+                                    <property name="paddingBottom">0pt</property>
+                                    <property name="paddingRight">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="492">
+                                        <structure name="dateTimeFormat">
+                                            <property name="category">Medium Date</property>
+                                            <property name="pattern">Medium Date</property>
+                                        </structure>
+                                        <property name="pageBreakBefore">auto</property>
+                                        <property name="resultSetColumn">PRL_DATE_END</property>
+                                    </data>
+                                </cell>
+                            </row>
+                        </detail>
+                        <footer>
+                            <row id="37">
+                                <cell id="38">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="39">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="598">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="542">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="554">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="558">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="565">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="40">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="592">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="41">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="611">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="518">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="524">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="570">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="575">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="42">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="43">
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                </cell>
+                                <cell id="44">
+                                    <property name="colSpan">5</property>
+                                    <property name="rowSpan">1</property>
+                                    <property name="paddingTop">0pt</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <grid id="503">
+                                        <column id="504"/>
+                                        <column id="505"/>
+                                        <row id="506">
+                                            <cell id="507">
+                                                <property name="verticalAlign">middle</property>
+                                            </cell>
+                                            <cell id="508">
+                                                <property name="verticalAlign">middle</property>
+                                                <text id="608">
+                                                    <property name="textAlign">left</property>
+                                                    <property name="contentType">html</property>
+                                                    <text-property name="content"><![CDATA[<B>审核:</B><VALUE-OF>row["PR_USER_APPROVED"]</VALUE-OF>]]></text-property>
+                                                </text>
+                                            </cell>
+                                        </row>
+                                    </grid>
+                                </cell>
+                            </row>
+                        </footer>
+                    </table>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>

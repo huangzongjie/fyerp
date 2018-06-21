@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<project name="invmodel" basedir=".">
+	
+	<import file="../build.xml" />
+	
+	<property name="classes.dir" value="bin" />
+	<property name="dist.dir" value="dist" />
+	
+	<path id="current-classpath">
+		<fileset dir="dist">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<target name="clean">
+		<delete dir="${classes.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${dist.dir}" />
+	</target>
+	
+	<target name="jar" depends="init" >
+		<antcall target="jarinvmodel"></antcall>
+		<antcall target="jarsalmodel"></antcall>
+		<antcall target="jarspreadmodel"></antcall>
+		<antcall target="jarjsmodel"></antcall>
+	</target>
+	
+	<target name="compileinvmodel" description="compile invmodel source files">
+		<property name="src.java.dir" value="src/inv/main" />
+		<property name="src.resource.dir" value="src/inv/resources" />
+		<delete dir="${classes.dir}" />
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.java.dir}" destdir="${classes.dir}" debug="true" encoding="GBK"
+			fork="true"
+			memoryInitialSize="64m"
+			memoryMaximumSize="128m">
+			<classpath refid="master-classpath" />
+			<classpath refid="ref-classpath"/>
+			<classpath refid="current-classpath"/>
+		</javac>
+		<copy todir="${classes.dir}/META-INF" overwrite="true">
+			<fileset dir="${src.resource.dir}/META-INF">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="compilesalmodel" description="compile salmodel source files">
+		<property name="src.java.dir" value="src/sal/main" />
+		<property name="src.resource.dir" value="src/sal/resources" />
+		<delete dir="${classes.dir}" />
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.java.dir}" destdir="${classes.dir}" debug="true" encoding="GBK"
+			fork="true"
+			memoryInitialSize="64m"
+			memoryMaximumSize="128m">
+			<classpath refid="master-classpath" />
+			<classpath refid="ref-classpath"/>
+			<classpath refid="current-classpath"/>
+		</javac>
+		<copy todir="${classes.dir}/META-INF" overwrite="true">
+			<fileset dir="${src.resource.dir}/META-INF">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="compilespreadmodel" description="compile spreadmodel source files">
+			<property name="src.java.dir" value="src/spread/main" />
+			<property name="src.resource.dir" value="src/spread/resources" />
+			<delete dir="${classes.dir}" />
+			<mkdir dir="${classes.dir}" />
+			<javac srcdir="${src.java.dir}" destdir="${classes.dir}" debug="true" encoding="GBK"
+				fork="true"
+				memoryInitialSize="64m"
+				memoryMaximumSize="128m">
+				<classpath refid="master-classpath" />
+				<classpath refid="ref-classpath"/>
+				<classpath refid="current-classpath"/>
+			</javac>
+			<copy todir="${classes.dir}/META-INF" overwrite="true">
+				<fileset dir="${src.resource.dir}/META-INF">
+					<include name="**/*.*" />
+				</fileset>
+			</copy>
+		</target>
+	
+	<target name="compilejsmodel" description="compile jsmodel source files">
+		<property name="src.java.dir" value="src/js/main" />
+		<property name="src.resource.dir" value="src/js/resources" />
+		<delete dir="${classes.dir}" />
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.java.dir}" destdir="${classes.dir}" debug="true" encoding="GBK"
+			fork="true"
+			memoryInitialSize="64m"
+			memoryMaximumSize="128m">
+			<classpath refid="master-classpath" />
+			<classpath refid="ref-classpath"/>
+			<classpath refid="current-classpath"/>
+		</javac>
+		<copy todir="${classes.dir}/META-INF" overwrite="true">
+			<fileset dir="${src.resource.dir}/META-INF">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="jarinvmodel" depends="compileinvmodel" description="make invmodel.jar file">
+		<property name="jar.name" value="invmodel.jar" /> 
+		<jar destfile="${dist.dir}/${jar.name}" basedir="${classes.dir}" manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+		<mkdir dir="${dist.dir}/client" />
+		<copy todir="${dist.dir}/client" overwrite="true">
+			<fileset dir="${dist.dir}">
+				<include name="${jar.name}" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="jarsalmodel" depends="compilesalmodel" description="make salmodel.jar file">
+		<property name="jar.name" value="salmodel.jar" /> 
+		<jar destfile="${dist.dir}/${jar.name}" basedir="${classes.dir}" manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+		<mkdir dir="${dist.dir}/client" />
+		<copy todir="${dist.dir}/client" overwrite="true">
+			<fileset dir="${dist.dir}">
+				<include name="${jar.name}" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="jarspreadmodel" depends="compilespreadmodel" description="make spreadmodel.jar file">
+		<property name="jar.name" value="spreadmodel.jar" /> 
+		<jar destfile="${dist.dir}/${jar.name}" basedir="${classes.dir}" manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+		<mkdir dir="${dist.dir}/client" />
+		<copy todir="${dist.dir}/client" overwrite="true">
+			<fileset dir="${dist.dir}">
+				<include name="${jar.name}" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="jarjsmodel" depends="compilejsmodel" description="make jsmodel.jar file">
+		<property name="jar.name" value="jsmodel.jar" /> 
+		<jar destfile="${dist.dir}/${jar.name}" basedir="${classes.dir}" manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+		<mkdir dir="${dist.dir}/client" />
+		<copy todir="${dist.dir}/client" overwrite="true">
+			<fileset dir="${dist.dir}">
+				<include name="${jar.name}" />
+			</fileset>
+		</copy>
+	</target>
+</project>

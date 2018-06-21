@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension-point 
+         id="dsl" 
+         name="Domain Specific Language Extensions" 
+         schema="schema/dsl.exsd"/>
+
+   <extension-point 
+         id="semanticElements" 
+         name="jBPM Semantic Element Extensions" 
+         schema="schema/semanticElements.exsd"/>
+
+   <extension-point 
+	     id="notationElements" 
+	     name="jBPM Notational Extensions" 
+	     schema="schema/notationElements.exsd"/>
+
+   <extension-point 
+         id="notationMappings" 
+         name="jBPM Semantic Element to Notation Mappings" 
+         schema="schema/notationMappings.exsd"/>
+	
+   <extension-point 
+         id="xmlMappings" 
+         name="jBPM Semantic Element to XML Mapping" 
+         schema="schema/xmlMappings.exsd"/>
+
+   <extension-point 
+         id="palette" 
+         name="jBPM Graphical Designer Palette Extensions" 
+         schema="schema/palette.exsd"/>
+
+   <extension 
+         point="com.graly.mes.prd.designer.common.notationElements">
+      <notationElement 
+	        id="root" 
+	        class="com.graly.mes.prd.designer.common.notation.RootContainer"/>
+      <notationElement 
+	        id="container" 
+	        class="com.graly.mes.prd.designer.common.notation.NodeContainer"/>
+      <notationElement 
+	        id="node" 
+	        class="com.graly.mes.prd.designer.common.notation.Node"/>
+      <notationElement 
+	        id="edge" 
+	        class="com.graly.mes.prd.designer.common.notation.Edge"/>
+      <notationElement 
+	        id="label" 
+	        class="com.graly.mes.prd.designer.common.notation.Label"/>
+      <notationElement 
+	        id="bendpoint" 
+	        class="com.graly.mes.prd.designer.common.notation.BendPoint"/>
+   </extension> 
+    
+</plugin>

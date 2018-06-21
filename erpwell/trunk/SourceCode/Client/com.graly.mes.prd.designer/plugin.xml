@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension point="org.eclipse.core.runtime.contentTypes">
+  	  <content-type id="semantic" name="process semantic info"
+  	        base-type="org.eclipse.core.runtime.xml"
+		    default-charset="UTF-8">
+		 <describer class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber">
+            <parameter name="element" value="process-definition"/>
+         </describer>
+      </content-type>
+   </extension>
+   
+   <extension 
+         point="com.graly.mes.prd.designer.common.notationElements">
+      <notationElement 
+            id="root" 
+            class="com.graly.mes.prd.designer.notation.JpdlRootContainer"/>
+	  <notationElement 
+	        id="container" 
+	        class="com.graly.mes.prd.designer.notation.JpdlNodeContainer"/>
+	  <notationElement 
+	        id="node" 
+	        class="com.graly.mes.prd.designer.notation.JpdlNode"/>
+	  <notationElement 
+	        id="edge" 
+	        class="com.graly.mes.prd.designer.notation.JpdlEdge"/>
+   </extension>
+   
+</plugin>

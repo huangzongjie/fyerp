@@ -1,0 +1,2129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.17" id="1">
+    <property name="author">Denny Sun</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 2.3.2.r232_20090202 Build &lt;2.3.2.v20090218-0730></property>
+    <property name="units">in</property>
+    <text-property name="title">开能报表系统</text-property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">birtlibrary/ERPWELL.rptlibrary</property>
+            <property name="namespace">ERPWELL</property>
+        </structure>
+        <structure>
+            <property name="fileName">birtlibrary/CRM_DB.rptlibrary</property>
+            <property name="namespace">CRM_DB</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="MATERIAL_RRN" id="9">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="paramType">simple</property>
+            <property name="isRequired">false</property>
+            <property name="controlType">text-box</property>
+            <property name="distinct">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="ERPWELL" id="7"
+ extends="ERPWELL.ERPWELL"/>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="CRM_DB" id="289"
+ extends="CRM_DB.CRM_DB"/>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="BOM_MATERIAL" id="8">
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">1</property>
+                    <expression name="expression">if(row["LEVEL"] == 1) this.value = row["LEVEL"];</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">2</property>
+                    <expression name="expression">if(row["LEVEL"] == 2) this.value = row["LEVEL"];</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">3</property>
+                    <expression name="expression">if(row["LEVEL"] == 3) this.value = row["LEVEL"];</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">4</property>
+                    <expression name="expression">if(row["LEVEL"] == 4) this.value = row["LEVEL"];</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">5</property>
+                    <expression name="expression">if(row["LEVEL"] == 5) this.value = row["LEVEL"];</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">6</property>
+                    <expression name="expression">if(row["LEVEL"] == 6) this.value = row["LEVEL"];</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">7</property>
+                    <expression name="expression">if(row["LEVEL"] == 7) this.value = row["LEVEL"];</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">8</property>
+                    <expression name="expression">if(row["LEVEL"] == 8) this.value = row["LEVEL"];</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">9</property>
+                    <expression name="expression">if(row["LEVEL"] == 9) this.value = row["LEVEL"];</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">10</property>
+                    <expression name="expression">if(row["LEVEL"] == 10) this.value = row["LEVEL"];</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">SEQ_NO</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">LEVEL</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">MATERIAL_PARENT_RRN</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">MATERIAL_CHILD_RRN</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">MATERIAL_CHILD_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">MATERIAL_CHILD_NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">SEQ_NO_7</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">UOM_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">QTY_UNIT</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">1</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">2</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">3</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">4</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">5</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">6</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">7</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">8</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">9</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">10</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">ERPWELL</property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">MATERIAL_PARENT_RRN</property>
+                    <property name="paramName">MATERIAL_RRN</property>
+                    <property name="dataType">string</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">SEQ_NO</property>
+                    <property name="nativeName">SEQ_NO</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">LEVEL</property>
+                    <property name="nativeName">LEVEL</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">MATERIAL_PARENT_RRN</property>
+                    <property name="nativeName">MATERIAL_PARENT_RRN</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">MATERIAL_CHILD_RRN</property>
+                    <property name="nativeName">MATERIAL_CHILD_RRN</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">MATERIAL_CHILD_ID</property>
+                    <property name="nativeName">MATERIAL_CHILD_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">MATERIAL_CHILD_NAME</property>
+                    <property name="nativeName">MATERIAL_CHILD_NAME</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">SEQ_NO_7</property>
+                    <property name="nativeName">SEQ_NO</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">UOM_ID</property>
+                    <property name="nativeName">UOM_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">QTY_UNIT</property>
+                    <property name="nativeName">QTY_UNIT</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+            </list-property>
+            <property name="queryText">SELECT 
+	   rownum SEQ_NO,
+	   LEVEL,
+       T.MATERIAL_PARENT_RRN,
+       T.MATERIAL_CHILD_RRN,
+       M.MATERIAL_ID MATERIAL_CHILD_ID,
+       M.NAME MATERIAL_CHILD_NAME,
+       T.SEQ_NO,
+       T.UOM_ID,
+       T.QTY_UNIT
+FROM   V_PDM_BOM T, PDM_MATERIAL M
+WHERE  T.MATERIAL_CHILD_RRN = M.OBJECT_RRN
+START  WITH T.MATERIAL_PARENT_RRN = ?
+CONNECT BY PRIOR T.MATERIAL_CHILD_RRN = T.MATERIAL_PARENT_RRN
+ORDER  SIBLINGS BY T.SEQ_NO</property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="PDM_MATERIAL" id="205">
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">MATERIAL_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">ERPWELL</property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">objectRrn</property>
+                    <property name="paramName">MATERIAL_RRN</property>
+                    <property name="dataType">integer</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">NAME</property>
+                    <property name="nativeName">NAME</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">MATERIAL_ID</property>
+                    <property name="nativeName">MATERIAL_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="queryText">select M.name,M.MATERIAL_ID
+from PDM_MATERIAL M
+where M.OBJECT_RRN = ?</property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>1.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:name>NAME</design:name>
+            <design:position>1</design:position>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>128</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NAME</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NAME</design:label>
+            <design:formattingHints>
+              <design:displaySize>128</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:name>MATERIAL_ID</design:name>
+            <design:position>2</design:position>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>MATERIAL_ID</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>MATERIAL_ID</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="MATERIAL_PRICE2_LOW" id="285">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">serial_number</property>
+                    <property name="displayName">serial_number</property>
+                </structure>
+                <structure>
+                    <property name="columnName">price2_low</property>
+                    <property name="displayName">price2_low</property>
+                </structure>
+                <structure>
+                    <property name="columnName">standard_price</property>
+                    <property name="displayName">standard_price</property>
+                </structure>
+                <structure>
+                    <property name="columnName">standard_price2</property>
+                    <property name="displayName">standard_price2</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">serial_number</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">price2_low</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">standard_price</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">standard_price2</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">CRM_DB</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">serial_number</property>
+                    <property name="nativeName">serial_number</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">price2_low</property>
+                    <property name="nativeName">price2_low</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">standard_price</property>
+                    <property name="nativeName">standard_price</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">3</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">standard_price2</property>
+                    <property name="nativeName">standard_price2</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">3</property>
+                </structure>
+            </list-property>
+            <property name="queryText">select serial_number,price2_low,standard_price,standard_price2
+from cana_products</property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>1.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:name>serial_number</design:name>
+            <design:position>1</design:position>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>50</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>serial_number</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>serial_number</design:label>
+            <design:formattingHints>
+              <design:displaySize>50</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:name>price4</design:name>
+            <design:position>2</design:position>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>price4</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>price4</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <joint-data-set name="BOM_MATERIAL_WITH_PRICE" id="286">
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">标准价格</property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value">row["STANDARD_PRICE"]</expression>
+                        </structure>
+                    </list-property>
+                    <expression name="filterExpr">row["LEVEL"]==1</expression>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::SEQ_NO</property>
+                    <property name="alias">SEQ_NO</property>
+                    <property name="displayName">序号</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::LEVEL</property>
+                    <property name="alias">LEVEL</property>
+                    <property name="displayName">LEVEL</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::MATERIAL_PARENT_RRN</property>
+                    <property name="alias">MATERIAL_PARENT_RRN</property>
+                    <property name="displayName">MATERIAL_PARENT_RRN</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::MATERIAL_CHILD_RRN</property>
+                    <property name="alias">MATERIAL_CHILD_RRN</property>
+                    <property name="displayName">MATERIAL_CHILD_RRN</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::MATERIAL_CHILD_ID</property>
+                    <property name="alias">MATERIAL_CHILD_ID</property>
+                    <property name="displayName">MATERIAL_CHILD_ID</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::MATERIAL_CHILD_NAME</property>
+                    <property name="alias">MATERIAL_CHILD_NAME</property>
+                    <property name="displayName">MATERIAL_CHILD_NAME</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::UOM_ID</property>
+                    <property name="alias">UOM_ID</property>
+                    <property name="displayName">UOM_ID</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::QTY_UNIT</property>
+                    <property name="alias">QTY_UNIT</property>
+                    <property name="displayName">QTY_UNIT</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::1</property>
+                    <property name="alias">1</property>
+                    <property name="displayName">1</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::2</property>
+                    <property name="alias">2</property>
+                    <property name="displayName">2</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::3</property>
+                    <property name="alias">3</property>
+                    <property name="displayName">3</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::4</property>
+                    <property name="alias">4</property>
+                    <property name="displayName">4</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::5</property>
+                    <property name="alias">5</property>
+                    <property name="displayName">5</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::6</property>
+                    <property name="alias">6</property>
+                    <property name="displayName">6</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::7</property>
+                    <property name="alias">7</property>
+                    <property name="displayName">7</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::8</property>
+                    <property name="alias">8</property>
+                    <property name="displayName">8</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::9</property>
+                    <property name="alias">9</property>
+                    <property name="displayName">9</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BOM_MATERIAL::10</property>
+                    <property name="alias">10</property>
+                    <property name="displayName">10</property>
+                </structure>
+                <structure>
+                    <property name="columnName">MATERIAL_PRICE2_LOW::price2_low</property>
+                    <property name="alias">UNIT_PRICE</property>
+                    <property name="displayName">UNIT_PRICE</property>
+                </structure>
+                <structure>
+                    <property name="columnName">MATERIAL_PRICE2_LOW::standard_price</property>
+                    <property name="alias">STANDARD_PRICE</property>
+                    <property name="displayName">STANDARD_PRICE</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">SEQ_NO</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">LEVEL</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">MATERIAL_PARENT_RRN</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">MATERIAL_CHILD_RRN</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">MATERIAL_CHILD_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">MATERIAL_CHILD_NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">BOM_MATERIAL::SEQ_NO_7</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">UOM_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">QTY_UNIT</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">1</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">2</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">3</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">4</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">5</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">6</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">7</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">8</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">9</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">10</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">20</property>
+                        <property name="name">MATERIAL_PRICE2_LOW::serial_number</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">21</property>
+                        <property name="name">UNIT_PRICE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">22</property>
+                        <property name="name">STANDARD_PRICE</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">23</property>
+                        <property name="name">MATERIAL_PRICE2_LOW::standard_price2</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">24</property>
+                        <property name="name">标准价格</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="needsCache">false</property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">BOM_MATERIAL::MATERIAL_PARENT_RRN</property>
+                    <property name="dataType">string</property>
+                    <property name="position">1</property>
+                    <property name="isOptional">false</property>
+                    <property name="allowNull">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <simple-property-list name="dataSets">
+                <value>BOM_MATERIAL</value>
+                <value>MATERIAL_PRICE2_LOW</value>
+            </simple-property-list>
+            <list-property name="joinConditions">
+                <structure>
+                    <property name="joinType">left-out</property>
+                    <property name="joinOperator">eq</property>
+                    <property name="leftDataSet">BOM_MATERIAL</property>
+                    <property name="rightDataSet">MATERIAL_PRICE2_LOW</property>
+                    <expression name="leftExpression">dataSetRow["MATERIAL_CHILD_ID"]</expression>
+                    <expression name="rightExpression">dataSetRow["serial_number"]</expression>
+                </structure>
+            </list-property>
+        </joint-data-set>
+        <joint-data-set name="PDM_MATERIAL_WITH_PRICE" id="346">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">MATERIAL_PRICE2_LOW::price2_low</property>
+                    <property name="alias">unit_price</property>
+                    <property name="displayName">unit_price</property>
+                </structure>
+                <structure>
+                    <property name="columnName">MATERIAL_PRICE2_LOW::standard_price</property>
+                    <property name="alias">standard_price</property>
+                    <property name="displayName">standard_price</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">PDM_MATERIAL::NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">PDM_MATERIAL::MATERIAL_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">MATERIAL_PRICE2_LOW::serial_number</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">unit_price</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">standard_price</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">MATERIAL_PRICE2_LOW::standard_price2</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">PDM_MATERIAL::objectRrn</property>
+                    <property name="dataType">integer</property>
+                    <property name="position">1</property>
+                    <property name="isOptional">false</property>
+                    <property name="allowNull">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <simple-property-list name="dataSets">
+                <value>PDM_MATERIAL</value>
+                <value>MATERIAL_PRICE2_LOW</value>
+            </simple-property-list>
+            <list-property name="joinConditions">
+                <structure>
+                    <property name="joinType">left-out</property>
+                    <property name="joinOperator">eq</property>
+                    <property name="leftDataSet">PDM_MATERIAL</property>
+                    <property name="rightDataSet">MATERIAL_PRICE2_LOW</property>
+                    <expression name="leftExpression">dataSetRow["MATERIAL_ID"]</expression>
+                    <expression name="rightExpression">dataSetRow["serial_number"]</expression>
+                </structure>
+            </list-property>
+        </joint-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">"Verdana"</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="A4 Page" id="2">
+            <property name="type">a4</property>
+            <property name="topMargin">0.25in</property>
+            <property name="leftMargin">0.25in</property>
+            <property name="bottomMargin">0.25in</property>
+            <property name="rightMargin">0.25in</property>
+            <property name="showHeaderOnFirst">false</property>
+            <property name="showFooterOnLast">false</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid name="grid0" id="10">
+            <property name="fontFamily">"宋体"</property>
+            <property name="fontSize">12pt</property>
+            <property name="paddingTop">0pt</property>
+            <property name="paddingLeft">0pt</property>
+            <property name="paddingBottom">0pt</property>
+            <property name="paddingRight">0pt</property>
+            <property name="textAlign">left</property>
+            <property name="masterPage">A4 Page</property>
+            <property name="width">19cm</property>
+            <column id="11"/>
+            <row id="214">
+                <property name="height">0.28125in</property>
+                <cell id="215">
+                    <label id="190">
+                        <property name="fontSize">14pt</property>
+                        <property name="fontWeight">bold</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text">物料清单</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="212">
+                <property name="height">0in</property>
+                <property name="borderBottomStyle">none</property>
+                <property name="borderRightStyle">none</property>
+                <property name="paddingTop">0pt</property>
+                <property name="paddingLeft">0pt</property>
+                <property name="paddingBottom">0pt</property>
+                <property name="paddingRight">0pt</property>
+                <cell id="213">
+                    <property name="textAlign">left</property>
+                    <grid id="217">
+                        <property name="marginTop">0pt</property>
+                        <property name="marginRight">0pt</property>
+                        <property name="paddingTop">0pt</property>
+                        <property name="paddingLeft">0pt</property>
+                        <property name="paddingBottom">0pt</property>
+                        <property name="paddingRight">0pt</property>
+                        <property name="textAlign">left</property>
+                        <property name="masterPage">A4 Page</property>
+                        <property name="height">0.28125in</property>
+                        <column id="218">
+                            <property name="width">2.1770833333333335in</property>
+                        </column>
+                        <column id="219">
+                            <property name="width">5.197916666666667in</property>
+                        </column>
+                        <column id="344">
+                            <property name="width">5.197916666666667in</property>
+                        </column>
+                        <row id="220">
+                            <property name="height">0.28125in</property>
+                            <cell id="221">
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <text id="216">
+                                    <property name="dataSet">PDM_MATERIAL</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">NAME</property>
+                                            <expression name="expression">dataSetRow["NAME"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">MATERIAL_ID</property>
+                                            <expression name="expression">dataSetRow["MATERIAL_ID"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="contentType">html</property>
+                                    <text-property name="content"><![CDATA[<B>物料编号：</B><VALUE-OF>row["MATERIAL_ID"]</VALUE-OF>]]></text-property>
+                                </text>
+                            </cell>
+                            <cell id="222">
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <text id="223">
+                                    <property name="dataSet">PDM_MATERIAL</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">NAME</property>
+                                            <expression name="expression">dataSetRow["NAME"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">MATERIAL_ID</property>
+                                            <expression name="expression">dataSetRow["MATERIAL_ID"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="contentType">html</property>
+                                    <text-property name="content"><![CDATA[<B>物料名称：</B><VALUE-OF>row["NAME"]</VALUE-OF>]]></text-property>
+                                </text>
+                            </cell>
+                            <cell id="343">
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <text id="345">
+                                    <property name="dataSet">PDM_MATERIAL_WITH_PRICE</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">PDM_MATERIAL::NAME</property>
+                                            <expression name="expression">dataSetRow["PDM_MATERIAL::NAME"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">PDM_MATERIAL::MATERIAL_ID</property>
+                                            <expression name="expression">dataSetRow["PDM_MATERIAL::MATERIAL_ID"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">MATERIAL_PRICE2_LOW::serial_number</property>
+                                            <expression name="expression">dataSetRow["MATERIAL_PRICE2_LOW::serial_number"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">unit_price</property>
+                                            <expression name="expression">dataSetRow["unit_price"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">standard_price</property>
+                                            <expression name="expression">dataSetRow["standard_price"]</expression>
+                                            <property name="dataType">decimal</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">MATERIAL_PRICE2_LOW::standard_price2</property>
+                                            <expression name="expression">dataSetRow["MATERIAL_PRICE2_LOW::standard_price2"]</expression>
+                                            <property name="dataType">decimal</property>
+                                        </structure>
+                                    </list-property>
+                                    <method name="onPrepare"><![CDATA[
+]]></method>
+                                    <property name="contentType">html</property>
+                                    <text-property name="content"><![CDATA[<B>标准价格:</B><VALUE-OF>var price = row["standard_price"];
+var price2 = row["MATERIAL_PRICE2_LOW::standard_price2"];
+if(price != null){
+	price;
+}else{price2}</VALUE-OF>]]></text-property>
+                                </text>
+                            </cell>
+                        </row>
+                        <row id="347">
+                            <property name="height">0.28125in</property>
+                            <cell id="348">
+                                <property name="colSpan">3</property>
+                                <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <table id="351">
+                                    <property name="width">100%</property>
+                                    <property name="dataSet">BOM_MATERIAL_WITH_PRICE</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">SEQ_NO</property>
+                                            <expression name="expression">dataSetRow["SEQ_NO"]</expression>
+                                            <property name="dataType">decimal</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">LEVEL</property>
+                                            <expression name="expression">dataSetRow["LEVEL"]</expression>
+                                            <property name="dataType">decimal</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">MATERIAL_PARENT_RRN</property>
+                                            <expression name="expression">dataSetRow["MATERIAL_PARENT_RRN"]</expression>
+                                            <property name="dataType">decimal</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">MATERIAL_CHILD_RRN</property>
+                                            <expression name="expression">dataSetRow["MATERIAL_CHILD_RRN"]</expression>
+                                            <property name="dataType">decimal</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">MATERIAL_CHILD_ID</property>
+                                            <expression name="expression">dataSetRow["MATERIAL_CHILD_ID"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">MATERIAL_CHILD_NAME</property>
+                                            <expression name="expression">dataSetRow["MATERIAL_CHILD_NAME"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">BOM_MATERIAL::SEQ_NO_7</property>
+                                            <expression name="expression">dataSetRow["BOM_MATERIAL::SEQ_NO_7"]</expression>
+                                            <property name="dataType">decimal</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">UOM_ID</property>
+                                            <expression name="expression">dataSetRow["UOM_ID"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">QTY_UNIT</property>
+                                            <expression name="expression">dataSetRow["QTY_UNIT"]</expression>
+                                            <property name="dataType">decimal</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">1</property>
+                                            <expression name="expression">dataSetRow["1"]</expression>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">2</property>
+                                            <expression name="expression">dataSetRow["2"]</expression>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">3</property>
+                                            <expression name="expression">dataSetRow["3"]</expression>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">4</property>
+                                            <expression name="expression">dataSetRow["4"]</expression>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">5</property>
+                                            <expression name="expression">dataSetRow["5"]</expression>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">6</property>
+                                            <expression name="expression">dataSetRow["6"]</expression>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">7</property>
+                                            <expression name="expression">dataSetRow["7"]</expression>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">8</property>
+                                            <expression name="expression">dataSetRow["8"]</expression>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">9</property>
+                                            <expression name="expression">dataSetRow["9"]</expression>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">10</property>
+                                            <expression name="expression">dataSetRow["10"]</expression>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">MATERIAL_PRICE2_LOW::serial_number</property>
+                                            <expression name="expression">dataSetRow["MATERIAL_PRICE2_LOW::serial_number"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">UNIT_PRICE</property>
+                                            <expression name="expression">dataSetRow["UNIT_PRICE"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">STANDARD_PRICE</property>
+                                            <expression name="expression">dataSetRow["STANDARD_PRICE"]</expression>
+                                            <property name="dataType">decimal</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">MATERIAL_PRICE2_LOW::standard_price2</property>
+                                            <expression name="expression">dataSetRow["MATERIAL_PRICE2_LOW::standard_price2"]</expression>
+                                            <property name="dataType">decimal</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">标准价格</property>
+                                            <expression name="expression">dataSetRow["标准价格"]</expression>
+                                            <property name="dataType">float</property>
+                                        </structure>
+                                    </list-property>
+                                    <list-property name="filter">
+                                        <structure>
+                                            <property name="operator">is-null</property>
+                                            <expression name="expr">row["MATERIAL_PRICE2_LOW::standard_price2"]</expression>
+                                        </structure>
+                                    </list-property>
+                                    <column id="358">
+                                        <property name="width">2.3541666666666665in</property>
+                                    </column>
+                                    <header>
+                                        <row id="368">
+                                            <cell id="369">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">1px</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">1px</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">1px</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">1px</property>
+                                                <label id="371">
+                                                    <text-property name="text">以下物料标准价为空</text-property>
+                                                </label>
+                                            </cell>
+                                        </row>
+                                        <row id="352">
+                                            <cell id="353">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">1px</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">1px</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">1px</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">1px</property>
+                                                <label id="364">
+                                                    <text-property name="text">物料编号</text-property>
+                                                </label>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                    <detail>
+                                        <row id="354">
+                                            <cell id="355">
+                                                <property name="borderBottomColor">#000000</property>
+                                                <property name="borderBottomStyle">solid</property>
+                                                <property name="borderBottomWidth">1px</property>
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">1px</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">1px</property>
+                                                <property name="borderTopColor">#000000</property>
+                                                <property name="borderTopStyle">solid</property>
+                                                <property name="borderTopWidth">1px</property>
+                                                <data id="365">
+                                                    <property name="resultSetColumn">MATERIAL_CHILD_ID</property>
+                                                </data>
+                                            </cell>
+                                        </row>
+                                    </detail>
+                                </table>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+            <row id="14">
+                <property name="paddingTop">0pt</property>
+                <property name="paddingLeft">0pt</property>
+                <property name="paddingBottom">0pt</property>
+                <property name="paddingRight">0pt</property>
+                <cell id="15">
+                    <table id="68">
+                        <property name="masterPage">A4 Page</property>
+                        <property name="dataSet">BOM_MATERIAL_WITH_PRICE</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">SEQ_NO</property>
+                                <expression name="expression">dataSetRow["SEQ_NO"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LEVEL</property>
+                                <expression name="expression">dataSetRow["LEVEL"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">MATERIAL_PARENT_RRN</property>
+                                <expression name="expression">dataSetRow["MATERIAL_PARENT_RRN"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">MATERIAL_CHILD_RRN</property>
+                                <expression name="expression">dataSetRow["MATERIAL_CHILD_RRN"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">MATERIAL_CHILD_ID</property>
+                                <expression name="expression">dataSetRow["MATERIAL_CHILD_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">MATERIAL_CHILD_NAME</property>
+                                <expression name="expression">dataSetRow["MATERIAL_CHILD_NAME"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">BOM_MATERIAL::SEQ_NO_7</property>
+                                <expression name="expression">dataSetRow["BOM_MATERIAL::SEQ_NO_7"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">UOM_ID</property>
+                                <expression name="expression">dataSetRow["UOM_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">QTY_UNIT</property>
+                                <expression name="expression">dataSetRow["QTY_UNIT"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">1</property>
+                                <expression name="expression">dataSetRow["1"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">2</property>
+                                <expression name="expression">dataSetRow["2"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">3</property>
+                                <expression name="expression">dataSetRow["3"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">4</property>
+                                <expression name="expression">dataSetRow["4"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">5</property>
+                                <expression name="expression">dataSetRow["5"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">6</property>
+                                <expression name="expression">dataSetRow["6"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">7</property>
+                                <expression name="expression">dataSetRow["7"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">8</property>
+                                <expression name="expression">dataSetRow["8"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">9</property>
+                                <expression name="expression">dataSetRow["9"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">10</property>
+                                <expression name="expression">dataSetRow["10"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">MATERIAL_PRICE2_LOW::serial_number</property>
+                                <expression name="expression">dataSetRow["MATERIAL_PRICE2_LOW::serial_number"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">UNIT_PRICE</property>
+                                <expression name="expression">dataSetRow["UNIT_PRICE"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">STANDARD_PRICE</property>
+                                <expression name="expression">dataSetRow["STANDARD_PRICE"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">总价</property>
+                                <property name="displayName">总价</property>
+                                <expression name="expression">dataSetRow["QTY_UNIT"]*dataSetRow["UNIT_PRICE"]</expression>
+                                <property name="dataType">float</property>
+                            </structure>
+                            <structure>
+                                <property name="name">标准总价</property>
+                                <property name="displayName">标准总价</property>
+                                <expression name="expression">dataSetRow["QTY_UNIT"]*dataSetRow["STANDARD_PRICE"]</expression>
+                                <property name="dataType">float</property>
+                            </structure>
+                        </list-property>
+                        <property name="pageBreakInterval">35</property>
+                        <list-property name="sort">
+                            <structure>
+                                <expression name="key">row["SEQ_NO"]</expression>
+                                <property name="direction">asc</property>
+                            </structure>
+                        </list-property>
+                        <column id="226">
+                            <property name="width">5mm</property>
+                        </column>
+                        <column id="229">
+                            <property name="width">5mm</property>
+                        </column>
+                        <column id="232">
+                            <property name="width">5mm</property>
+                        </column>
+                        <column id="235">
+                            <property name="width">5mm</property>
+                        </column>
+                        <column id="241">
+                            <property name="width">5mm</property>
+                        </column>
+                        <column id="244">
+                            <property name="width">5mm</property>
+                        </column>
+                        <column id="247">
+                            <property name="width">5mm</property>
+                        </column>
+                        <column id="250">
+                            <property name="width">5mm</property>
+                        </column>
+                        <column id="262">
+                            <property name="width">5mm</property>
+                        </column>
+                        <column id="238">
+                            <property name="width">7mm</property>
+                        </column>
+                        <column id="99">
+                            <property name="width">2cm</property>
+                        </column>
+                        <column id="100">
+                            <property name="width">88mm</property>
+                        </column>
+                        <column id="101">
+                            <property name="width">1cm</property>
+                        </column>
+                        <column id="102">
+                            <property name="width">2cm</property>
+                        </column>
+                        <column id="324">
+                            <property name="width">2cm</property>
+                        </column>
+                        <column id="335">
+                            <property name="width">2cm</property>
+                        </column>
+                        <column id="329">
+                            <property name="width">2cm</property>
+                        </column>
+                        <column id="338">
+                            <property name="width">2cm</property>
+                        </column>
+                        <header>
+                            <row id="117">
+                                <property name="textAlign">center</property>
+                                <property name="verticalAlign">middle</property>
+                                <cell id="224">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="251">
+                                        <text-property name="text">1</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="227">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="252">
+                                        <text-property name="text">2</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="230">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="253">
+                                        <text-property name="text">3</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="233">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="254">
+                                        <text-property name="text">4</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="239">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="255">
+                                        <text-property name="text">5</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="242">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="256">
+                                        <text-property name="text">6</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="245">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="257">
+                                        <text-property name="text">7</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="248">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="258">
+                                        <text-property name="text">8</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="260">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="263">
+                                        <text-property name="text">9</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="236">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="259">
+                                        <text-property name="text">10</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="118">
+                                    <property name="colSpan">1</property>
+                                    <property name="rowSpan">1</property>
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="108">
+                                        <text-property name="text">物料编号</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="119">
+                                    <property name="colSpan">1</property>
+                                    <property name="rowSpan">1</property>
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="109">
+                                        <text-property name="text">名称</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="120">
+                                    <property name="colSpan">1</property>
+                                    <property name="rowSpan">1</property>
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="110">
+                                        <text-property name="text">单位</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="121">
+                                    <property name="colSpan">1</property>
+                                    <property name="rowSpan">1</property>
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="111">
+                                        <text-property name="text">单位用量</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="322">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="325">
+                                        <text-property name="text">单价</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="333">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="339">
+                                        <text-property name="text">总价</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="327">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="330">
+                                        <text-property name="text">标准价</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="336">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="341">
+                                        <text-property name="text">标准总价</text-property>
+                                    </label>
+                                </cell>
+                            </row>
+                        </header>
+                        <detail>
+                            <row id="79">
+                                <list-property name="highlightRules">
+                                    <structure>
+                                        <property name="operator">eq</property>
+                                        <property name="backgroundColor">#EBF1FD</property>
+                                        <expression name="testExpr">(row[0]+1)%2</expression>
+                                        <simple-property-list name="value1">
+                                            <value>0</value>
+                                        </simple-property-list>
+                                    </structure>
+                                </list-property>
+                                <cell id="225">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="274">
+                                        <property name="resultSetColumn">1</property>
+                                    </data>
+                                </cell>
+                                <cell id="228">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="275">
+                                        <property name="resultSetColumn">2</property>
+                                    </data>
+                                </cell>
+                                <cell id="231">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="276">
+                                        <property name="resultSetColumn">3</property>
+                                    </data>
+                                </cell>
+                                <cell id="234">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="277">
+                                        <property name="resultSetColumn">4</property>
+                                    </data>
+                                </cell>
+                                <cell id="240">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="278">
+                                        <property name="resultSetColumn">5</property>
+                                    </data>
+                                </cell>
+                                <cell id="243">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="279">
+                                        <property name="resultSetColumn">6</property>
+                                    </data>
+                                </cell>
+                                <cell id="246">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="280">
+                                        <property name="resultSetColumn">7</property>
+                                    </data>
+                                </cell>
+                                <cell id="249">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="281">
+                                        <property name="resultSetColumn">8</property>
+                                    </data>
+                                </cell>
+                                <cell id="261">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="282">
+                                        <property name="resultSetColumn">9</property>
+                                    </data>
+                                </cell>
+                                <cell id="237">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="283">
+                                        <property name="resultSetColumn">10</property>
+                                    </data>
+                                </cell>
+                                <cell id="80">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="179">
+                                        <property name="resultSetColumn">MATERIAL_CHILD_ID</property>
+                                    </data>
+                                </cell>
+                                <cell id="81">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="180">
+                                        <property name="textAlign">left</property>
+                                        <property name="resultSetColumn">MATERIAL_CHILD_NAME</property>
+                                    </data>
+                                </cell>
+                                <cell id="82">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="181">
+                                        <property name="resultSetColumn">UOM_ID</property>
+                                    </data>
+                                </cell>
+                                <cell id="83">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="182">
+                                        <property name="resultSetColumn">QTY_UNIT</property>
+                                    </data>
+                                </cell>
+                                <cell id="323">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="326">
+                                        <property name="resultSetColumn">UNIT_PRICE</property>
+                                    </data>
+                                </cell>
+                                <cell id="334">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="340">
+                                        <structure name="numberFormat">
+                                            <property name="category">Fixed</property>
+                                            <property name="pattern">Fixed</property>
+                                        </structure>
+                                        <property name="resultSetColumn">总价</property>
+                                    </data>
+                                </cell>
+                                <cell id="328">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="332">
+                                        <property name="resultSetColumn">STANDARD_PRICE</property>
+                                    </data>
+                                </cell>
+                                <cell id="337">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="342">
+                                        <structure name="numberFormat">
+                                            <property name="category">Fixed</property>
+                                            <property name="pattern">Fixed</property>
+                                        </structure>
+                                        <property name="resultSetColumn">标准总价</property>
+                                    </data>
+                                </cell>
+                            </row>
+                        </detail>
+                    </table>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>

@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.17" id="1">
+    <property name="author">Denny</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 2.3.2.r232_20090202 Build &lt;2.3.2.v20090218-0730></property>
+    <property name="units">in</property>
+    <text-property name="title">开能报表系统</text-property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">birtlibrary/ERPWELL.rptlibrary</property>
+            <property name="namespace">ERPWELL</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="OBJECT_RRN" id="70">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="paramType">simple</property>
+            <text-property name="promptText">入库单ID</text-property>
+            <property name="controlType">text-box</property>
+            <property name="distinct">true</property>
+            <expression name="sortByColumn">dataSetRow["DOC_ID"]</expression>
+            <property name="sortDirection">asc</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="ERPWELL" id="113"
+ extends="ERPWELL.ERPWELL"/>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Movement" id="68">
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">USER_CREATED</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">CREATED</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">DOC_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">PO_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">MATERIAL_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">UOM_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">QTY_IN</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">WAREHOUSE_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">LINE_STATUS</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">USER_APPROVED</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">M_VENDOR_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">LINE_NO</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">COMPANY_NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">M_COMMENTS</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">M_PRINT_TIME</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">ERPWELL</property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">OBJECT_RRN</property>
+                    <property name="paramName">OBJECT_RRN</property>
+                    <property name="dataType">string</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">USER_CREATED</property>
+                    <property name="nativeName">USER_CREATED</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">CREATED</property>
+                    <property name="nativeName">CREATED</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">DOC_ID</property>
+                    <property name="nativeName">DOC_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">PO_ID</property>
+                    <property name="nativeName">PO_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">MATERIAL_ID</property>
+                    <property name="nativeName">MATERIAL_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">NAME</property>
+                    <property name="nativeName">NAME</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">UOM_ID</property>
+                    <property name="nativeName">UOM_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">QTY_IN</property>
+                    <property name="nativeName">QTY_IN</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">WAREHOUSE_ID</property>
+                    <property name="nativeName">WAREHOUSE_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">LINE_STATUS</property>
+                    <property name="nativeName">LINE_STATUS</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">USER_APPROVED</property>
+                    <property name="nativeName">USER_APPROVED</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">M_VENDOR_ID</property>
+                    <property name="nativeName">M_VENDOR_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">LINE_NO</property>
+                    <property name="nativeName">LINE_NO</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">COMPANY_NAME</property>
+                    <property name="nativeName">COMPANY_NAME</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">M_COMMENTS</property>
+                    <property name="nativeName">M_COMMENTS</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">M_PRINT_TIME</property>
+                    <property name="nativeName">M_PRINT_TIME</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+            </list-property>
+            <property name="queryText">SELECT 
+	M.USER_CREATED		USER_CREATED,
+	
+	L.CREATED			CREATED,
+	M.DOC_ID			DOC_ID,
+	M.PO_ID				PO_ID,
+	P.MATERIAL_ID		MATERIAL_ID,
+	P.NAME				NAME,
+	L.UOM_ID			UOM_ID,
+	L.QTY_MOVEMENT		QTY_IN,
+	W.WAREHOUSE_ID		WAREHOUSE_ID,
+	L.LINE_STATUS		LINE_STATUS,
+	M.USER_APPROVED		USER_APPROVED,
+	M.VENDOR_ID			M_VENDOR_ID,
+	L.LINE_NO			LINE_NO,
+	V.COMPANY_NAME		COMPANY_NAME,
+	M.DESCRIPTION		M_COMMENTS,
+	M.print_time		M_print_time
+FROM 
+	INV_MOVEMENT M,
+	INV_MOVEMENT_LINE L,
+	INV_WAREHOUSE W,
+	PDM_MATERIAL P,
+	VDM_VENDOR V
+WHERE 	M.OBJECT_RRN =? 
+	AND L.MOVEMENT_RRN=M.OBJECT_RRN
+	AND P.OBJECT_RRN = L.MATERIAL_RRN
+	AND W.OBJECT_RRN(+) = M.WAREHOUSE_RRN
+	AND V.OBJECT_RRN=M.VENDOR_RRN
+ORDER BY L.LINE_NO</property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">"Verdana"</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="type">custom</property>
+            <property name="height">14cm</property>
+            <property name="width">24cm</property>
+            <property name="orientation">landscape</property>
+            <property name="topMargin">0.25in</property>
+            <property name="leftMargin">0in</property>
+            <property name="bottomMargin">0.25in</property>
+            <property name="rightMargin">0in</property>
+            <property name="showHeaderOnFirst">true</property>
+            <property name="showFooterOnLast">false</property>
+            <page-header>
+                <text id="216">
+                    <property name="dataSet">Movement</property>
+                    <list-property name="boundDataColumns">
+                        <structure>
+                            <property name="name">USER_CREATED</property>
+                            <expression name="expression">dataSetRow["USER_CREATED"]</expression>
+                            <property name="dataType">string</property>
+                        </structure>
+                        <structure>
+                            <property name="name">CREATED</property>
+                            <expression name="expression">dataSetRow["CREATED"]</expression>
+                            <property name="dataType">date-time</property>
+                        </structure>
+                        <structure>
+                            <property name="name">DOC_ID</property>
+                            <expression name="expression">dataSetRow["DOC_ID"]</expression>
+                            <property name="dataType">string</property>
+                        </structure>
+                        <structure>
+                            <property name="name">PO_ID</property>
+                            <expression name="expression">dataSetRow["PO_ID"]</expression>
+                            <property name="dataType">string</property>
+                        </structure>
+                        <structure>
+                            <property name="name">MATERIAL_ID</property>
+                            <expression name="expression">dataSetRow["MATERIAL_ID"]</expression>
+                            <property name="dataType">string</property>
+                        </structure>
+                        <structure>
+                            <property name="name">NAME</property>
+                            <expression name="expression">dataSetRow["NAME"]</expression>
+                            <property name="dataType">string</property>
+                        </structure>
+                        <structure>
+                            <property name="name">UOM_ID</property>
+                            <expression name="expression">dataSetRow["UOM_ID"]</expression>
+                            <property name="dataType">string</property>
+                        </structure>
+                        <structure>
+                            <property name="name">QTY_IN</property>
+                            <expression name="expression">dataSetRow["QTY_IN"]</expression>
+                            <property name="dataType">decimal</property>
+                        </structure>
+                        <structure>
+                            <property name="name">WAREHOUSE_ID</property>
+                            <expression name="expression">dataSetRow["WAREHOUSE_ID"]</expression>
+                            <property name="dataType">string</property>
+                        </structure>
+                        <structure>
+                            <property name="name">LINE_STATUS</property>
+                            <expression name="expression">dataSetRow["LINE_STATUS"]</expression>
+                            <property name="dataType">string</property>
+                        </structure>
+                        <structure>
+                            <property name="name">USER_APPROVED</property>
+                            <expression name="expression">dataSetRow["USER_APPROVED"]</expression>
+                            <property name="dataType">string</property>
+                        </structure>
+                        <structure>
+                            <property name="name">M_VENDOR_ID</property>
+                            <expression name="expression">dataSetRow["M_VENDOR_ID"]</expression>
+                            <property name="dataType">string</property>
+                        </structure>
+                        <structure>
+                            <property name="name">LINE_NO</property>
+                            <expression name="expression">dataSetRow["LINE_NO"]</expression>
+                            <property name="dataType">decimal</property>
+                        </structure>
+                        <structure>
+                            <property name="name">COMPANY_NAME</property>
+                            <expression name="expression">dataSetRow["COMPANY_NAME"]</expression>
+                            <property name="dataType">string</property>
+                        </structure>
+                        <structure>
+                            <property name="name">M_COMMENTS</property>
+                            <expression name="expression">dataSetRow["M_COMMENTS"]</expression>
+                            <property name="dataType">string</property>
+                        </structure>
+                        <structure>
+                            <property name="name">M_PRINT_TIME</property>
+                            <expression name="expression">dataSetRow["M_PRINT_TIME"]</expression>
+                            <property name="dataType">decimal</property>
+                        </structure>
+                    </list-property>
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[打印次数：<VALUE-OF>row["M_PRINT_TIME"]</VALUE-OF>]]></text-property>
+                </text>
+            </page-header>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="84">
+            <property name="fontFamily">"宋体"</property>
+            <property name="fontSize">12pt</property>
+            <property name="textAlign">left</property>
+            <property name="masterPage">Simple MasterPage</property>
+            <property name="width">17cm</property>
+            <column id="85"/>
+            <row id="86">
+                <cell id="87">
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="verticalAlign">middle</property>
+                    <grid id="7">
+                        <property name="fontFamily">"宋体"</property>
+                        <property name="fontSize">12pt</property>
+                        <property name="textAlign">center</property>
+                        <property name="dataSet">Movement</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">USER_CREATED</property>
+                                <expression name="expression">dataSetRow["USER_CREATED"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">CREATED</property>
+                                <expression name="expression">dataSetRow["CREATED"]</expression>
+                                <property name="dataType">date-time</property>
+                            </structure>
+                            <structure>
+                                <property name="name">DOC_ID</property>
+                                <expression name="expression">dataSetRow["DOC_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PO_ID</property>
+                                <expression name="expression">dataSetRow["PO_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">MATERIAL_ID</property>
+                                <expression name="expression">dataSetRow["MATERIAL_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">NAME</property>
+                                <expression name="expression">dataSetRow["NAME"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">UOM_ID</property>
+                                <expression name="expression">dataSetRow["UOM_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">QTY_IN</property>
+                                <expression name="expression">dataSetRow["QTY_IN"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">WAREHOUSE_ID</property>
+                                <expression name="expression">dataSetRow["WAREHOUSE_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LINE_STATUS</property>
+                                <expression name="expression">dataSetRow["LINE_STATUS"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">USER_APPROVED</property>
+                                <expression name="expression">dataSetRow["USER_APPROVED"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LINE_NO</property>
+                                <expression name="expression">dataSetRow["LINE_NO"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">COMPANY_NAME</property>
+                                <expression name="expression">dataSetRow["COMPANY_NAME"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <column id="9">
+                            <property name="width">6cm</property>
+                        </column>
+                        <column id="11">
+                            <property name="width">5cm</property>
+                        </column>
+                        <column id="13">
+                            <property name="width">6cm</property>
+                        </column>
+                        <row id="122">
+                            <property name="fontWeight">bold</property>
+                            <cell id="124">
+                                <property name="fontWeight">normal</property>
+                                <property name="textAlign">left</property>
+                                <property name="verticalAlign">middle</property>
+                                <text id="121">
+                                    <property name="marginTop">0pt</property>
+                                    <property name="textAlign">left</property>
+                                    <property name="contentType">html</property>
+                                    <text-property name="content"><![CDATA[<B>仓库:</B><VALUE-OF>row["WAREHOUSE_ID"]</VALUE-OF>]]></text-property>
+                                </text>
+                            </cell>
+                            <cell id="133">
+                                <property name="colSpan">1</property>
+                                <property name="rowSpan">1</property>
+                                <property name="verticalAlign">middle</property>
+                                <text id="132">
+                                    <property name="fontSize">14pt</property>
+                                    <property name="fontWeight">normal</property>
+                                    <property name="marginTop">0pt</property>
+                                    <property name="contentType">html</property>
+                                    <text-property name="content"><![CDATA[<STRONG><U>采购入库单</U></STRONG>]]></text-property>
+                                </text>
+                            </cell>
+                            <cell id="128">
+                                <property name="fontWeight">normal</property>
+                                <property name="textAlign">left</property>
+                                <property name="verticalAlign">middle</property>
+                                <text id="131">
+                                    <property name="textAlign">right</property>
+                                    <property name="contentType">html</property>
+                                    <text-property name="content"><![CDATA[<B>采购单:</B><VALUE-OF>row["PO_ID"]</VALUE-OF>]]></text-property>
+                                </text>
+                            </cell>
+                        </row>
+                        <row id="21">
+                            <property name="fontWeight">bold</property>
+                            <cell id="23">
+                                <property name="colSpan">1</property>
+                                <property name="rowSpan">1</property>
+                                <property name="fontWeight">normal</property>
+                                <property name="textAlign">left</property>
+                                <property name="verticalAlign">middle</property>
+                                <text id="114">
+                                    <property name="textAlign">left</property>
+                                    <property name="contentType">html</property>
+                                    <text-property name="content"><![CDATA[<B>相关单位:</B><VALUE-OF>row["COMPANY_NAME"]</VALUE-OF>]]></text-property>
+                                </text>
+                            </cell>
+                            <cell id="25">
+                                <property name="colSpan">1</property>
+                                <property name="rowSpan">1</property>
+                                <property name="fontWeight">normal</property>
+                                <property name="textAlign">left</property>
+                                <property name="verticalAlign">middle</property>
+                                <text id="129">
+                                    <property name="textAlign">left</property>
+                                    <property name="contentType">html</property>
+                                    <text-property name="content"><![CDATA[<B>日期:</B><VALUE-OF format="Long Date">row["CREATED"]</VALUE-OF>]]></text-property>
+                                </text>
+                            </cell>
+                            <cell id="27">
+                                <property name="fontWeight">normal</property>
+                                <property name="textAlign">left</property>
+                                <property name="verticalAlign">middle</property>
+                                <text id="130">
+                                    <property name="textAlign">right</property>
+                                    <property name="contentType">html</property>
+                                    <text-property name="content"><![CDATA[<B>单据编号:</B><VALUE-OF>row["DOC_ID"]</VALUE-OF>]]></text-property>
+                                </text>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+            <row id="200">
+                <cell id="201">
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="verticalAlign">middle</property>
+                    <table id="33">
+                        <property name="fontFamily">"宋体"</property>
+                        <property name="marginTop">0pt</property>
+                        <property name="textAlign">center</property>
+                        <property name="dataSet">Movement</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">PO_ID</property>
+                                <expression name="expression">dataSetRow["PO_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">MATERIAL_ID</property>
+                                <expression name="expression">dataSetRow["MATERIAL_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">NAME</property>
+                                <expression name="expression">dataSetRow["NAME"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">UOM_ID</property>
+                                <expression name="expression">dataSetRow["UOM_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">QTY_IN</property>
+                                <expression name="expression">dataSetRow["QTY_IN"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">M_COMMENTS</property>
+                                <property name="displayName">M_COMMENTS</property>
+                                <expression name="expression">dataSetRow["M_COMMENTS"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">USER_CREATED</property>
+                                <expression name="expression">dataSetRow["USER_CREATED"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">CREATED</property>
+                                <expression name="expression">dataSetRow["CREATED"]</expression>
+                                <property name="dataType">date-time</property>
+                            </structure>
+                            <structure>
+                                <property name="name">DOC_ID</property>
+                                <expression name="expression">dataSetRow["DOC_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">WAREHOUSE_ID</property>
+                                <expression name="expression">dataSetRow["WAREHOUSE_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LINE_STATUS</property>
+                                <expression name="expression">dataSetRow["LINE_STATUS"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">USER_APPROVED</property>
+                                <expression name="expression">dataSetRow["USER_APPROVED"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">M_VENDOR_ID</property>
+                                <expression name="expression">dataSetRow["M_VENDOR_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LINE_NO</property>
+                                <expression name="expression">dataSetRow["LINE_NO"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">COMPANY_NAME</property>
+                                <expression name="expression">dataSetRow["COMPANY_NAME"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="pageBreakInterval">0</property>
+                        <column id="142">
+                            <property name="width">16mm</property>
+                        </column>
+                        <column id="57">
+                            <property name="width">38mm</property>
+                        </column>
+                        <column id="58">
+                            <property name="width">9cm</property>
+                            <property name="whiteSpace">normal</property>
+                        </column>
+                        <column id="59">
+                            <property name="width">1cm</property>
+                        </column>
+                        <column id="60">
+                            <property name="width">16mm</property>
+                        </column>
+                        <header>
+                            <row id="34">
+                                <list-property name="highlightRules">
+                                    <structure>
+                                        <property name="operator">eq</property>
+                                        <property name="backgroundColor">#C6E6F4</property>
+                                        <expression name="testExpr">row[0]%2</expression>
+                                        <simple-property-list name="value1">
+                                            <value>0</value>
+                                        </simple-property-list>
+                                    </structure>
+                                </list-property>
+                                <cell id="139">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="143">
+                                        <text-property name="text">序号</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="37">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="63">
+                                        <text-property name="text">物料编号</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="38">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="64">
+                                        <text-property name="text">名称</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="39">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="65">
+                                        <text-property name="text">单位</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="40">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="66">
+                                        <text-property name="text">数量</text-property>
+                                    </label>
+                                </cell>
+                            </row>
+                        </header>
+                        <detail>
+                            <row id="41">
+                                <property name="height">5mm</property>
+                                <list-property name="highlightRules">
+                                    <structure>
+                                        <property name="operator">eq</property>
+                                        <property name="backgroundColor">#EBF1FD</property>
+                                        <expression name="testExpr">row[0]%2</expression>
+                                        <simple-property-list name="value1">
+                                            <value>0</value>
+                                        </simple-property-list>
+                                    </structure>
+                                </list-property>
+                                <cell id="140">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <text id="144">
+                                        <property name="contentType">html</property>
+                                        <text-property name="content"><![CDATA[<VALUE-OF format="###0">row.__rownum+1</VALUE-OF>]]></text-property>
+                                    </text>
+                                </cell>
+                                <cell id="44">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="73">
+                                        <property name="resultSetColumn">MATERIAL_ID</property>
+                                    </data>
+                                </cell>
+                                <cell id="45">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="textAlign">left</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <property name="whiteSpace">nowrap</property>
+                                    <data id="74">
+                                        <property name="textAlign">left</property>
+                                        <property name="whiteSpace">normal</property>
+                                        <property name="resultSetColumn">NAME</property>
+                                    </data>
+                                </cell>
+                                <cell id="46">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="75">
+                                        <property name="resultSetColumn">UOM_ID</property>
+                                    </data>
+                                </cell>
+                                <cell id="47">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="76">
+                                        <property name="resultSetColumn">QTY_IN</property>
+                                    </data>
+                                </cell>
+                            </row>
+                        </detail>
+                        <footer>
+                            <row id="208">
+                                <property name="height">1cm</property>
+                                <cell id="209">
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <label id="214">
+                                        <property name="fontWeight">bold</property>
+                                        <property name="textAlign">right</property>
+                                        <text-property name="text">备注:</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="210">
+                                    <property name="colSpan">4</property>
+                                    <property name="rowSpan">1</property>
+                                    <property name="borderBottomColor">#000000</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">1px</property>
+                                    <property name="borderLeftColor">#000000</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">1px</property>
+                                    <property name="borderRightColor">#000000</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">1px</property>
+                                    <property name="borderTopColor">#000000</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">1px</property>
+                                    <property name="verticalAlign">middle</property>
+                                    <data id="215">
+                                        <property name="textAlign">left</property>
+                                        <property name="resultSetColumn">M_COMMENTS</property>
+                                    </data>
+                                </cell>
+                            </row>
+                            <row id="115">
+                                <cell id="141">
+                                    <property name="colSpan">5</property>
+                                    <property name="rowSpan">1</property>
+                                    <grid id="145">
+                                        <property name="fontFamily">"宋体"</property>
+                                        <property name="dataSet">Movement</property>
+                                        <list-property name="boundDataColumns">
+                                            <structure>
+                                                <property name="name">USER_CREATED</property>
+                                                <expression name="expression">dataSetRow["USER_CREATED"]</expression>
+                                                <property name="dataType">string</property>
+                                            </structure>
+                                            <structure>
+                                                <property name="name">CREATED</property>
+                                                <expression name="expression">dataSetRow["CREATED"]</expression>
+                                                <property name="dataType">date-time</property>
+                                            </structure>
+                                            <structure>
+                                                <property name="name">DOC_ID</property>
+                                                <expression name="expression">dataSetRow["DOC_ID"]</expression>
+                                                <property name="dataType">string</property>
+                                            </structure>
+                                            <structure>
+                                                <property name="name">PO_ID</property>
+                                                <expression name="expression">dataSetRow["PO_ID"]</expression>
+                                                <property name="dataType">string</property>
+                                            </structure>
+                                            <structure>
+                                                <property name="name">MATERIAL_ID</property>
+                                                <expression name="expression">dataSetRow["MATERIAL_ID"]</expression>
+                                                <property name="dataType">string</property>
+                                            </structure>
+                                            <structure>
+                                                <property name="name">NAME</property>
+                                                <expression name="expression">dataSetRow["NAME"]</expression>
+                                                <property name="dataType">string</property>
+                                            </structure>
+                                            <structure>
+                                                <property name="name">UOM_ID</property>
+                                                <expression name="expression">dataSetRow["UOM_ID"]</expression>
+                                                <property name="dataType">string</property>
+                                            </structure>
+                                            <structure>
+                                                <property name="name">QTY_IN</property>
+                                                <expression name="expression">dataSetRow["QTY_IN"]</expression>
+                                                <property name="dataType">decimal</property>
+                                            </structure>
+                                            <structure>
+                                                <property name="name">WAREHOUSE_ID</property>
+                                                <expression name="expression">dataSetRow["WAREHOUSE_ID"]</expression>
+                                                <property name="dataType">string</property>
+                                            </structure>
+                                            <structure>
+                                                <property name="name">LINE_STATUS</property>
+                                                <expression name="expression">dataSetRow["LINE_STATUS"]</expression>
+                                                <property name="dataType">string</property>
+                                            </structure>
+                                            <structure>
+                                                <property name="name">USER_APPROVED</property>
+                                                <expression name="expression">dataSetRow["USER_APPROVED"]</expression>
+                                                <property name="dataType">string</property>
+                                            </structure>
+                                            <structure>
+                                                <property name="name">M_VENDOR_ID</property>
+                                                <expression name="expression">dataSetRow["M_VENDOR_ID"]</expression>
+                                                <property name="dataType">string</property>
+                                            </structure>
+                                            <structure>
+                                                <property name="name">LINE_NO</property>
+                                                <expression name="expression">dataSetRow["LINE_NO"]</expression>
+                                                <property name="dataType">decimal</property>
+                                            </structure>
+                                            <structure>
+                                                <property name="name">COMPANY_NAME</property>
+                                                <expression name="expression">dataSetRow["COMPANY_NAME"]</expression>
+                                                <property name="dataType">string</property>
+                                            </structure>
+                                        </list-property>
+                                        <column id="189"/>
+                                        <column id="191"/>
+                                        <column id="187"/>
+                                        <column id="184"/>
+                                        <column id="192"/>
+                                        <column id="123"/>
+                                        <row id="193">
+                                            <cell id="188">
+                                                <text id="194">
+                                                    <property name="textAlign">left</property>
+                                                    <property name="contentType">html</property>
+                                                    <text-property name="content"><![CDATA[<B>入库人:</B>]]></text-property>
+                                                </text>
+                                            </cell>
+                                            <cell id="190">
+                                                <text id="195">
+                                                    <property name="textAlign">left</property>
+                                                    <property name="contentType">html</property>
+                                                    <text-property name="content"><![CDATA[<B>验收人:</B>]]></text-property>
+                                                </text>
+                                            </cell>
+                                            <cell id="185">
+                                                <text id="196">
+                                                    <property name="contentType">html</property>
+                                                    <text-property name="content"><![CDATA[<B>客户分类:</B>]]></text-property>
+                                                </text>
+                                            </cell>
+                                            <cell id="182">
+                                                <text id="197">
+                                                    <property name="contentType">html</property>
+                                                    <text-property name="content"><![CDATA[<B>检验:</B>]]></text-property>
+                                                </text>
+                                            </cell>
+                                            <cell id="125">
+                                                <text id="198">
+                                                    <property name="contentType">html</property>
+                                                    <text-property name="content"><![CDATA[<B>销货单位:</B>]]></text-property>
+                                                </text>
+                                            </cell>
+                                            <cell id="126">
+                                                <text id="199">
+                                                    <property name="contentType">html</property>
+                                                    <text-property name="content"><![CDATA[<B>审核:</B>同意]]></text-property>
+                                                </text>
+                                            </cell>
+                                        </row>
+                                    </grid>
+                                </cell>
+                            </row>
+                        </footer>
+                    </table>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>

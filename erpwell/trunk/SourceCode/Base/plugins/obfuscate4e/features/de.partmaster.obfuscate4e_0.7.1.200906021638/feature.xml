@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="de.partmaster.obfuscate4e"
+      label="Obfuscation for Eclipse Feature"
+      version="0.7.1.200906021638"
+      provider-name="PartMaster GmbH"
+      plugin="de.partmaster.obfuscate4e"
+      image="eclipse_update_120.jpg">
+
+   <description url="http://obfuscate4e.partmaster.de/overview">
+      %description
+   </description>
+
+   <copyright url="http://obfuscate4e.partmaster.de/copyright">
+      %copyright
+   </copyright>
+
+   <license url="http://obfuscate4e.partmaster.de/license">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://obfuscate4e.partmaster.de/updates"/>
+   </url>
+
+   <requires>
+      <import feature="org.eclipse.pde" version="3.2.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="de.partmaster.obfuscate4e"
+         download-size="0"
+         install-size="0"
+         version="0.7.1.200906021638"
+         unpack="false"/>
+
+   <plugin
+         id="de.partmaster.obfuscate4e.help"
+         download-size="0"
+         install-size="0"
+         version="0.7.1.200906021638"/>
+
+</feature>

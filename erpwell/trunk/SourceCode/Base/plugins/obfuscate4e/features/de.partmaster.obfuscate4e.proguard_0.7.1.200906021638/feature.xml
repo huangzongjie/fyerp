@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="de.partmaster.obfuscate4e.proguard"
+      label="Proguard Integration for Obfuscate4e"
+      version="0.7.1.200906021638"
+      provider-name="PartMaster GmbH"
+      plugin="de.partmaster.obfuscate4e.proguard">
+
+   <description url="http://obfuscate4e.partmaster.de/overview">
+      %description
+   </description>
+
+   <copyright url="http://obfuscate4e.partmaster.de/copyright">
+      %copyright
+   </copyright>
+
+   <license url="http://obfuscate4e.partmaster.de/license">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://obfuscate4e.partmaster.de/updates"/>
+   </url>
+
+   <requires>
+      <import feature="de.partmaster.obfuscate4e" version="0.0.0"/>
+   </requires>
+
+   <plugin
+         id="de.partmaster.obfuscate4e.proguard"
+         download-size="0"
+         install-size="0"
+         version="0.7.1.200906021638"
+         unpack="false"/>
+
+   <plugin
+         id="proguard"
+         download-size="0"
+         install-size="0"
+         version="4.3.0.200812141444"
+         unpack="false"/>
+
+</feature>

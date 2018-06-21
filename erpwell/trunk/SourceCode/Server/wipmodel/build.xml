@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<project name="wipmodel" basedir=".">
+	
+	<import file="../build.xml" />
+	
+	<property name="classes.dir" value="bin" />
+	<property name="dist.dir" value="dist" />
+	
+	<path id="current-classpath">
+		<fileset dir="dist">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<target name="clean">
+		<delete dir="${classes.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${dist.dir}" />
+	</target>
+	
+	<target name="jar" depends="init">
+		<antcall target="jarwipmodel"></antcall>
+	</target>
+	
+	<target name="compilewipmodel" description="compile wipmodel source files">
+		<property name="src.java.dir" value="src" />
+		<property name="src.resource.dir" value="src/resources" />
+		<delete dir="${classes.dir}" />
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.java.dir}" destdir="${classes.dir}" debug="true" encoding="GBK"
+			fork="true"
+			memoryInitialSize="64m"
+			memoryMaximumSize="128m">
+			<classpath refid="master-classpath" />
+			<classpath refid="ref-classpath"/>
+			<classpath refid="current-classpath"/>
+		</javac>
+		<copy todir="${classes.dir}/META-INF" overwrite="true">
+			<fileset dir="${src.resource.dir}/META-INF">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="jarwipmodel" depends="compilewipmodel" description="make wipmodel.jar file">
+		<property name="jar.name" value="wipmodel.jar" /> 
+		<jar destfile="${dist.dir}/${jar.name}" basedir="${classes.dir}" manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+		<mkdir dir="${dist.dir}/client" />
+		<copy todir="${dist.dir}/client" overwrite="true">
+			<fileset dir="${dist.dir}">
+				<include name="${jar.name}" />
+			</fileset>
+		</copy>
+	</target>
+
+</project>

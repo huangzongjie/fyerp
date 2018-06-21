@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="lib" path="commons-io.jar"/>
+	<classpathentry exported="true" kind="lib" path="freemarker.jar"/>
+	<classpathentry exported="true" kind="lib" path="spring.jar"/>
+	<classpathentry exported="true" kind="lib" path="mail.jar"/>
+	<classpathentry exported="true" kind="lib" path="cana-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="canamodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="js-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="jsmodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="spreadmodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="ppmmodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="opencsv-2.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="sal-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="salmodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="jboss-j2ee.jar"/>
+	<classpathentry exported="true" kind="lib" path="alm-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="almmodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="bas-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="wipmodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="inv-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="wip-client.jar" sourcepath="E:/project/trunk-for-deploy/erpwell/trunk/SourceCode/Server"/>
+	<classpathentry exported="true" kind="lib" path="invmodel.jar" sourcepath="/invmodel"/>
+	<classpathentry exported="true" kind="lib" path="ppm-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="pur-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="purmodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="pdm-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="pdmmodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="basemodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="dom4j.jar"/>
+	<classpathentry exported="true" kind="lib" path="activeentity-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="activeentitymodel.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-beanutils-1.8.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-lang-2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-logging.jar"/>
+	<classpathentry exported="true" kind="lib" path="core.jar"/>
+	<classpathentry exported="true" kind="lib" path="ejb3-persistence.jar"/>
+	<classpathentry exported="true" kind="lib" path="jakarta-oro-2.0.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="log4j-1.2.15.jar"/>
+	<classpathentry exported="true" kind="lib" path="security-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="securitymodel.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/pdm/main"/>
+	<classpathentry kind="src" path="src/cana/main"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/lib/core.jar"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/activeentity.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/pdmmodel"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/activeentitymodel.jar"/>
+	<classpathentry kind="var" path="ERP-LIB/log4j-1.2.15.jar"/>
+	<classpathentry kind="var" path="ERP-LIB/dom4j.jar"/>
+	<classpathentry kind="var" path="ERP-LIB/ejb3x.jar"/>
+	<classpathentry kind="var" path="ERP-LIB/hibernate3.jar"/>
+	<classpathentry kind="var" path="ERP-LIB/jboss-j2ee.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/basemodel"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ppmmodel"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/base"/>
+	<classpathentry kind="var" path="ERP-LIB/ejb3-persistence.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

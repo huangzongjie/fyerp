@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension
+         point="com.graly.framework.base.managers">
+         <manager
+         	object="com.graly.erp.base.model.Customer"
+         	class="com.graly.erp.test.cus.CustomerProperties">
+         </manager>
+    </extension>
+    
+    <extension
+         point="com.graly.framework.base.images">
+      <image
+            id="schedule"
+            src="icons/schedule.gif">
+      </image>
+      <image
+            id="start"
+            src="icons/start.gif">
+      </image>
+    </extension>
+</plugin>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_5.xsd"
+	version="5">
+	<display-name>ERPwell</display-name>
+	<module id="activeentity-EJB">
+		<ejb>activeentity.jar</ejb>
+	</module>
+	<module id="security-EJB">
+		<ejb>security.jar</ejb>
+	</module>
+	<module id="activeentity-model">
+		<ejb>activeentitymodel.jar</ejb>
+	</module>
+	<module id="security-model">
+		<ejb>securitymodel.jar</ejb>
+	</module>
+	<module id="base-model">
+		<ejb>basemodel.jar</ejb>
+	</module>
+	<module id="base">
+		<ejb>bas.jar</ejb>
+	</module>
+	<module id="pdm-model">
+		<ejb>pdmmodel.jar</ejb>
+	</module>
+	<module id="ppm-model">
+		<ejb>ppmmodel.jar</ejb>
+	</module>
+	<module id="bas">
+		<ejb>bas.jar</ejb>
+	</module>
+	<module id="ppm">
+		<ejb>ppm.jar</ejb>
+	</module>
+	<module id="pdm">
+		<ejb>pdm.jar</ejb>
+	</module>
+	<module id="inv-model">
+		<ejb>invmodel.jar</ejb>
+	</module>
+	<module id="inv">
+		<ejb>inv.jar</ejb>
+	</module>
+	<module id="spread-model">
+		<ejb>spreadmodel.jar</ejb>
+	</module>
+	<module id="pur-model">
+		<ejb>purmodel.jar</ejb>
+	</module>
+	<module id="pur">
+		<ejb>pur.jar</ejb>
+	</module>
+	<module id="wip-model">
+		<ejb>wipmodel.jar</ejb>
+	</module>
+	<module id="wip">
+		<ejb>wip.jar</ejb>
+	</module>
+	<module id="alm-model">
+		<ejb>almmodel.jar</ejb>
+	</module>
+	<module id="alm">
+		<ejb>alm.jar</ejb>
+	</module>
+	<module id="sal-model">
+		<ejb>salmodel.jar</ejb>
+	</module>
+	<module id="sal">
+		<ejb>sal.jar</ejb>
+	</module>
+	<module id="cana-model">
+		<ejb>canamodel.jar</ejb>
+	</module>
+	<module id="cana">
+		<ejb>cana.jar</ejb>
+	</module>
+	<module id="js">
+		<ejb>js.jar</ejb>
+	</module>
+	<module id="js-model">
+		<ejb>jsmodel.jar</ejb>
+	</module>
+	<library-directory>lib</library-directory>  
+</application>

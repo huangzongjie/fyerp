@@ -1,0 +1,1 @@
+update pdm_material m set m.is_virtual = 'Y' where m.material_category3 = 'ĞéÄâ¼ş'

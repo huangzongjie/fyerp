@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="org.eclipse.birt.report.viewer" default="build.jars" basedir=".">
+
+	<property name="basews" value="${ws}"/>
+	<property name="baseos" value="${os}"/>
+	<property name="basearch" value="${arch}"/>
+	<property name="basenl" value="${nl}"/>
+	<property name="bundleId" value="org.eclipse.birt.report.viewer"/>
+	<property name="bundleVersion" value="2.3.2.r232_20090212"/>
+
+	<available property="customBuildCallbacks" file="./customBuildCallbacks.xml" value="customBuildCallbacks.xml"/>
+
+	<!-- Compiler settings. -->
+	<property name="javacFailOnError" value="false"/>
+	<property name="javacDebugInfo" value="on"/>
+	<property name="javacVerbose" value="false"/>
+	<property name="logExtension" value=".log"/>
+	<property name="compilerArg" value=""/>
+	<property name="javacSource" value="1.3"/>
+	<property name="javacTarget" value="1.2"/>
+	<condition property="dir_bootclasspath" value="${java.home}/../Classes">
+		<os family="mac"/>
+	</condition>
+	<property name="dir_bootclasspath" value="${java.home}/lib"/>
+	<path id="path_bootclasspath">
+		<fileset dir="${dir_bootclasspath}">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	<property name="bootclasspath" refid="path_bootclasspath"/>
+<condition property="bundleBootClasspath" value="${J2SE-1.5}"	>
+		<isset property="J2SE-1.5"/>
+	</condition>
+<condition property="bundleJavacSource" value="1.5"	>
+		<isset property="J2SE-1.5"/>
+	</condition>
+<condition property="bundleJavacTarget" value="1.5"	>
+		<isset property="J2SE-1.5"/>
+	</condition>
+	<property name="bundleJavacSource" value="${javacSource}"/>
+	<property name="bundleJavacTarget" value="${javacTarget}"/>
+	<property name="bundleBootClasspath" value="${bootclasspath}"/>
+
+	<target name="init" depends="properties">
+<condition property="pluginTemp" value="${buildTempFolder}/plugins"		>
+			<isset property="buildTempFolder"/>
+		</condition>
+		<property name="pluginTemp" value="${basedir}"/>
+<condition property="build.result.folder" value="${pluginTemp}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212"		>
+			<isset property="buildTempFolder"/>
+		</condition>
+		<property name="build.result.folder" value="${basedir}"/>
+		<property name="temp.folder" value="${basedir}/temp.folder"/>
+		<property name="plugin.destination" value="${basedir}"/>
+	</target>
+
+	<target name="properties" if="eclipse.running">
+		<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+
+	</target>
+
+	<target name="build.update.jar" depends="init" description="Build the plug-in: org.eclipse.birt.report.viewer for an update site.">
+		<delete dir="${temp.folder}"/>
+		<mkdir dir="${temp.folder}"/>
+		<antcall target="build.jars"/>
+		<antcall target="gather.bin.parts">
+			<param name="destination.temp.folder" value="${temp.folder}/"/>
+		</antcall>
+		<jar destfile="${plugin.destination}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212.jar" basedir="${temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212" filesetmanifest="merge"/>
+		<delete dir="${temp.folder}"/>
+	</target>
+
+	<target name="viewer.jar" depends="init" unless="viewer.jar" description="Create jar: org.eclipse.birt.report.viewer viewer.jar.">
+		<delete dir="${temp.folder}/viewer.jar.bin"/>
+		<mkdir dir="${temp.folder}/viewer.jar.bin"/>
+		<path id="viewer.jar.classpath">
+			<pathelement path="../../../baseLocation/plugins/javax.servlet_2.4.0.v200806031604.jar"/>
+			<pathelement path="../../../baseLocation/plugins/javax.servlet.jsp_2.0.0.v200806031607.jar"/>
+			<pathelement path="../org.apache.commons.codec_1.3.0.v20080530-1600.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.commons.logging_1.0.4.v20080605-1930.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.equinox.http.jetty_1.1.0.v20080425.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.equinox.http.servlet_1.0.100.v20080427-0830.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.osgi_3.4.3.R34x_v20081215-1030.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.osgi.services_3.1.200.v20071203.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.mortbay.jetty_5.1.14.v200806031611.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.runtime_3.4.0.v20080512.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.equinox.common_3.4.0.v20080421-2006.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.jobs_3.4.1.R34x_v20081128.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.runtime.compatibility.registry_3.2.200.v20080610/runtime_registry_compatibility.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.runtime.compatibility.registry_3.2.200.v20080610/@dot"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.equinox.registry_3.4.0.v20080516-0950.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.equinox.preferences_3.2.201.R34x_v20080709.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.contenttype_3.3.0.v20080604-1400.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.runtime.compatibility.auth_3.2.100.v20070502.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.equinox.app_1.1.0.v20080421-2006.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.resources_3.4.2.R34x_v20090126.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.resources.compatibility_3.4.0.v20080604-1400.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.resources.win32.x86_3.4.0.v20071204.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.ant.core_3.2.0.v20080529.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.variables_3.2.100.v20080529-1300.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.expressions_3.4.1.r342_v20081203-0800.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.filesystem_1.2.0.v20080604-1400.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.filesystem.win32.x86_1.1.0.v20080604-1400.jar"/>
+			<pathelement path="../org.apache.axis_1.4.0.v200807230600/lib/axis.jar"/>
+			<pathelement path="../org.apache.axis_1.4.0.v200807230600/lib/axis-ant.jar"/>
+			<pathelement path="../org.apache.axis_1.4.0.v200807230600/lib/"/>
+			<pathelement path="../../../baseLocation/plugins/javax.mail_1.4.0.v200804091730.jar"/>
+			<pathelement path="../../../baseLocation/plugins/javax.activation_1.1.0.v200806101325.jar"/>
+			<pathelement path="../javax.xml.rpc_1.1.0.v200806030420/lib/jaxrpc.jar"/>
+			<pathelement path="../javax.xml.soap_1.2.0.v200806030421/lib/saaj.jar"/>
+			<pathelement path="../org.apache.xerces_2.9.0.v200805270400.jar"/>
+			<pathelement path="../javax.xml_1.3.4.v200806030440.jar"/>
+			<pathelement path="../org.apache.xml.resolver_1.2.0.v200806030312.jar"/>
+			<pathelement path="../org.apache.xml.serializer_2.7.1.v200806030322.jar"/>
+			<pathelement path="../javax.wsdl_1.5.1.v200806030408.jar"/>
+			<pathelement path="../org.apache.commons.discovery_0.2.0.v200806030120/lib/commons-discovery-0.2.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.junit_3.8.2.v20080602-1318/junit.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-antlr.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-apache-bcel.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-apache-bsf.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-apache-log4j.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-apache-oro.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-apache-regexp.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-apache-resolver.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-commons-logging.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-commons-net.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-jai.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-javamail.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-jdepend.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-jmf.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-jsch.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-junit.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-launcher.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-netrexx.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-nodeps.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-starteam.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-stylebook.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-swing.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-trax.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.ant_1.7.0.v200803061910/lib/ant-weblogic.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.jasper_5.5.17.v200806031609.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.commons.el_1.0.0.v200806031608.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.equinox.jsp.jasper.registry_1.0.0.v20080427-0830.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.equinox.jsp.jasper_1.0.100.v20080427-0830.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.equinox.http.registry_1.0.100.v20080427-0830.jar"/>
+			<pathelement path="../org.eclipse.birt.core/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.core_2.3.2.r232_20090204a/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.core/@dot"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.core_2.3.2.r232_20090204a/@dot"/>
+			<pathelement path="../org.eclipse.birt.core.nl/@dot"/>
+			<pathelement path="../org.eclipse.birt.core.testhelper/bin/"/>
+			<pathelement path="../org.eclipse.birt.core.testhelper/coretesthelper.jar"/>
+			<pathelement path="../org.eclipse.birt.core.testhelper/@dot"/>
+			<pathelement path="../../../baseLocation/plugins/com.ibm.icu_3.8.1.v20080530.jar"/>
+			<pathelement path="../org.mozilla.rhino/lib/js.jar"/>
+			<pathelement path="${build.result.folder}/../org.mozilla.rhino_1.6.7.v20080214/lib/js.jar"/>
+			<pathelement path="../org.eclipse.birt.report.engine/enginetesthelper.jar"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.engine_2.3.2.r232_20090217/enginetesthelper.jar"/>
+			<pathelement path="../org.eclipse.birt.report.engine/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.engine_2.3.2.r232_20090217/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.engine/@dot"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.engine_2.3.2.r232_20090217/@dot"/>
+			<pathelement path="../org.eclipse.birt.report.engine/lib/Tidy.jar"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.engine_2.3.2.r232_20090217/lib/Tidy.jar"/>
+			<pathelement path="../org.eclipse.birt.report.engine/lib/commons-cli-1.0.jar"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.engine_2.3.2.r232_20090217/lib/commons-cli-1.0.jar"/>
+			<pathelement path="../org.eclipse.birt.report.engine.testhelper/bin/"/>
+			<pathelement path="../org.eclipse.birt.report.engine.testhelper/enginetesthelper.jar"/>
+			<pathelement path="../org.eclipse.birt.report.engine.testhelper/@dot"/>
+			<pathelement path="../org.eclipse.birt.report.engine.testhelper/lib/Tidy.jar"/>
+			<pathelement path="../org.eclipse.birt.report.engine.testhelper/lib/commons-cli-1.0.jar"/>
+			<pathelement path="../org.eclipse.birt.report.engine.nl/@dot"/>
+			<pathelement path="../org.eclipse.birt.report.engine.nl/enginetesthelper.jar"/>
+			<pathelement path="../org.eclipse.birt.report.engine.nl/lib/Tidy.jar"/>
+			<pathelement path="../org.eclipse.birt.report.engine.nl/lib/commons-cli-1.0.jar"/>
+			<pathelement path="../org.w3c.css.sac_1.3.0.v200805290154.jar"/>
+			<pathelement path="../org.eclipse.birt.report.model/tests.jar"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.model_2.3.2.r232_20090115/tests.jar"/>
+			<pathelement path="../org.eclipse.birt.report.model/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.model_2.3.2.r232_20090115/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.model/@dot"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.model_2.3.2.r232_20090115/@dot"/>
+			<pathelement path="../org.eclipse.birt.report.model.testhelper/bin/"/>
+			<pathelement path="../org.eclipse.birt.report.model.testhelper/tests.jar"/>
+			<pathelement path="../org.eclipse.birt.report.model.testhelper/@dot"/>
+			<pathelement path="../org.eclipse.birt.report.model.nl/@dot"/>
+			<pathelement path="../org.eclipse.birt.report.model.nl/tests.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.datatools.connectivity.oda_3.1.3.v200808270255.jar"/>
+			<pathelement path="../org.eclipse.datatools.connectivity.oda.nl/bin/"/>
+			<pathelement path="../org.eclipse.datatools.connectivity.oda.nl/@dot"/>
+			<pathelement path="../org.w3c.sac/lib/flute.jar"/>
+			<pathelement path="${build.result.folder}/../org.w3c.sac_1.3.0.v20070710/lib/flute.jar"/>
+			<pathelement path="../org.eclipse.birt.data/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.data_2.3.2.r232_v20090211/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.data/@dot"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.data_2.3.2.r232_v20090211/@dot"/>
+			<pathelement path="../org.eclipse.birt.data.nl/@dot"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.datatools.connectivity.oda.consumer_3.1.3.v200808270255.jar"/>
+			<pathelement path="../org.eclipse.datatools.connectivity.oda.consumer.nl/bin/"/>
+			<pathelement path="../org.eclipse.datatools.connectivity.oda.consumer.nl/@dot"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.datatools.connectivity.oda.profile_3.0.7.v200812050755.jar"/>
+			<pathelement path="../org.eclipse.datatools.connectivity.oda.profile.nl/bin/"/>
+			<pathelement path="../org.eclipse.datatools.connectivity.oda.profile.nl/@dot"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.datatools.connectivity_1.1.2.v200901090028.jar"/>
+			<pathelement path="../org.eclipse.datatools.connectivity.nl/bin/"/>
+			<pathelement path="../org.eclipse.datatools.connectivity.nl/@dot"/>
+			<pathelement path="../com.lowagie.itext/lib/itextasian-1.5.2.jar"/>
+			<pathelement path="${build.result.folder}/../com.lowagie.itext_1.5.4.v20080228/lib/itextasian-1.5.2.jar"/>
+			<pathelement path="../com.lowagie.itext/lib/itext_1.5.4.jar"/>
+			<pathelement path="${build.result.folder}/../com.lowagie.itext_1.5.4.v20080228/lib/itext_1.5.4.jar"/>
+			<pathelement path="../org.eclipse.birt.report.engine.fonts/@dot"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.engine.fonts_2.3.2.r232_20090202/@dot"/>
+			<pathelement path="../org.eclipse.birt.report.data.adapter/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.data.adapter_2.3.2.r232_v20090211/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.data.adapter/@dot"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.data.adapter_2.3.2.r232_v20090211/@dot"/>
+			<pathelement path="../org.eclipse.birt.report.data.adapter.nl/@dot"/>
+			<pathelement path="../org.eclipse.birt.data.aggregation/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.data.aggregation_2.3.2.r232_v20090211/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.data.aggregation/@dot"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.data.aggregation_2.3.2.r232_v20090211/@dot"/>
+			<pathelement path="../org.eclipse.birt.data.aggregation.nl/@dot"/>
+			<pathelement path="../org.apache.batik.transcoder_1.6.0.v200805290154.jar"/>
+			<pathelement path="../org.apache.batik.bridge_1.6.0.v200805290154.jar"/>
+			<pathelement path="../org.apache.batik.dom_1.6.0.v200805290154.jar"/>
+			<pathelement path="../org.apache.batik.dom.svg_1.6.0.v200805290154.jar"/>
+			<pathelement path="../org.apache.batik.css_1.6.0.v200805290154.jar"/>
+			<pathelement path="../org.apache.batik.parser_1.6.0.v200805290154.jar"/>
+			<pathelement path="../org.apache.batik.ext.awt_1.6.0.v200805290154.jar"/>
+			<pathelement path="../org.apache.batik.util_1.6.0.v200805290154.jar"/>
+			<pathelement path="../org.apache.batik.util.gui_1.6.0.v200805290154.jar"/>
+			<pathelement path="../org.apache.batik.xml_1.6.0.v200805290154.jar"/>
+			<pathelement path="../org.w3c.dom.svg_1.1.0.v200806040011.jar"/>
+			<pathelement path="../org.w3c.dom.smil_1.0.0.v200806040011.jar"/>
+			<pathelement path="../org.apache.batik.svggen_1.6.0.v200805290154.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.help.base_3.3.103.v20090128_34x.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.lucene_1.9.1.v20080530-1600.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.apache.lucene.analysis_1.9.1.v20080530-1600.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.help_3.3.102.v20081014_34x.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.ui_3.4.2.M20090204-0800.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.swt_3.4.2.v3452b.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.swt.win32.win32.x86_3.4.1.v3452b.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.jface_3.4.2.M20090107-0800.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.commands_3.4.0.I20080509-2000.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.ui.workbench_3.4.2.M20090127-1700.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.ui.workbench.compatibility_3.2.0.I20080509-2000/compatibility.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.ui.workbench.compatibility_3.2.0.I20080509-2000/@dot"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.jface.databinding_1.2.1.M20080827-0800a.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.core.databinding_1.1.1.M20080827-0800b.jar"/>
+			<pathelement path="../org.eclipse.birt.chart.engine/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.chart.engine_2.3.2.r232_20090211/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.chart.engine/@dot"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.chart.engine_2.3.2.r232_20090211/@dot"/>
+			<pathelement path="../org.eclipse.birt.chart.engine.nl/@dot"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.emf.ecore_2.4.2.v200902171115.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.emf.common_2.4.0.v200902171115.jar"/>
+			<pathelement path="../../../baseLocation/plugins/org.eclipse.emf.ecore.xmi_2.4.1.v200902171115.jar"/>
+			<pathelement path="../org.eclipse.birt.report.engine.dataextraction/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.engine.dataextraction_2.3.2.r232_20090122/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.engine.dataextraction/@dot"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.engine.dataextraction_2.3.2.r232_20090122/@dot"/>
+			<pathelement path="../org.eclipse.birt.report.engine.dataextraction.nl/@dot"/>
+			<pathelement path="../org.eclipse.birt.report.item.crosstab.core/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.item.crosstab.core_2.3.2.r232_20090202/bin/"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.item.crosstab.core/@dot"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.item.crosstab.core_2.3.2.r232_20090202/@dot"/>
+			<pathelement path="../org.eclipse.birt.report.item.crosstab.core.nl/@dot"/>
+			<pathelement path="@dot"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.viewer_2.3.2.r232_20090212/@dot"/>
+			<pathelement path="birt/WEB-INF/classes"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.viewer_2.3.2.r232_20090212/birt/WEB-INF/classes"/>
+			<pathelement path="birt/WEB-INF/lib/viewservlets.jar"/>
+			<pathelement path="${build.result.folder}/../org.eclipse.birt.report.viewer_2.3.2.r232_20090212/birt/WEB-INF/lib/viewservlets.jar"/>
+		</path>
+		<subant antfile="${customBuildCallbacks}" target="pre.viewer.jar" failonerror="false" buildpath=".">
+			<property name="source.folder1" value="src/"/>
+			<property name="target.folder" value="${temp.folder}/viewer.jar.bin"/>
+			<reference refid="viewer.jar.classpath"/>
+		</subant>
+		<!-- compile the source code -->
+		<javac destdir="${temp.folder}/viewer.jar.bin" failonerror="${javacFailOnError}" verbose="${javacVerbose}" debug="${javacDebugInfo}" includeAntRuntime="no" bootclasspath="${bundleBootClasspath}" source="${bundleJavacSource}" target="${bundleJavacTarget}"		>
+			<compilerarg line="${compilerArg}" compiler="${build.compiler}"/>
+			<classpath refid="viewer.jar.classpath" />
+			<src path="src/"			/>
+			<compilerarg value="@${basedir}/javaCompiler.viewer.jar.args" compiler="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+			<compilerarg line="-log '${temp.folder}/viewer.jar.bin${logExtension}'" compiler="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+		</javac>
+		<!-- Copy necessary resources -->
+		<copy todir="${temp.folder}/viewer.jar.bin" failonerror="true" overwrite="false">
+			<fileset dir="src/">
+				<exclude name="**/*.java"/>
+				<exclude name="**/package.htm*"/>
+			</fileset>
+		</copy>
+		<subant antfile="${customBuildCallbacks}" target="post.compile.viewer.jar" failonerror="false" buildpath=".">
+			<property name="source.folder1" value="src/"/>
+			<property name="target.folder" value="${temp.folder}/viewer.jar.bin"/>
+			<reference refid="viewer.jar.classpath"/>
+		</subant>
+		<mkdir dir="${build.result.folder}"/>
+		<jar destfile="${build.result.folder}/viewer.jar" basedir="${temp.folder}/viewer.jar.bin"/>
+		<delete dir="${temp.folder}/viewer.jar.bin"/>
+		<subant antfile="${customBuildCallbacks}" target="post.viewer.jar" failonerror="false" buildpath=".">
+			<property name="jar.Location" value="${build.result.folder}/viewer.jar"/>
+			<reference refid="viewer.jar.classpath"/>
+		</subant>
+	</target>
+
+	<target name="viewersrc.zip" depends="init" unless="viewersrc.zip">
+		<mkdir dir="${build.result.folder}"/>
+		<antcall target="zip.viewersrc.zip"/>
+	</target>
+	<target name="zip.viewersrc.zip">
+		<zip destfile="${build.result.folder}/viewersrc.zip" filesonly="false" whenempty="skip" update="false">
+			<fileset dir="src/">
+				<include name="**/*.java"/>
+			</fileset>
+		</zip>
+	</target>
+	<target name="copy.viewersrc.zip">
+		<copy todir="${source.destination.folder}/viewersrc" failonerror="true" overwrite="true">
+			<fileset dir="src/">
+				<include name="**/*.java"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="build.jars" depends="init" description="Compile classes and build nested jars for the plug-in: org.eclipse.birt.report.viewer.">
+		<subant antfile="${customBuildCallbacks}" target="pre.build.jars" failonerror="false" buildpath=".">
+			<property name="build.result.folder" value="${build.result.folder}"/>
+		</subant>
+		<available property="viewer.jar" file="${build.result.folder}/viewer.jar"/>
+		<antcall target="viewer.jar"/>
+		<subant antfile="${customBuildCallbacks}" target="post.build.jars" failonerror="false" buildpath=".">
+			<property name="build.result.folder" value="${build.result.folder}"/>
+		</subant>
+	</target>
+
+	<target name="build.sources" depends="init">
+		<subant antfile="${customBuildCallbacks}" target="pre.build.sources" failonerror="false" buildpath=".">
+			<property name="build.result.folder" value="${build.result.folder}"/>
+		</subant>
+		<available property="viewersrc.zip" file="${build.result.folder}/viewersrc.zip"/>
+		<antcall target="viewersrc.zip"/>
+		<subant antfile="${customBuildCallbacks}" target="post.build.sources" failonerror="false" buildpath=".">
+			<property name="build.result.folder" value="${build.result.folder}"/>
+		</subant>
+	</target>
+
+	<target name="gather.bin.parts" depends="init" if="destination.temp.folder">
+		<mkdir dir="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212"/>
+		<subant antfile="${customBuildCallbacks}" target="pre.gather.bin.parts" failonerror="false" buildpath=".">
+			<property name="build.result.folder" value="${build.result.folder}"/>
+			<property name="target.folder" value="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212"/>
+		</subant>
+		<copy todir="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212" failonerror="true" overwrite="false">
+			<fileset dir="${build.result.folder}">
+				<include name="viewer.jar"/>
+				<exclude name="birt/WEB-INF/classes/"/>
+				<exclude name="birt/test1.rptdesign"/>
+			</fileset>
+		</copy>
+		<copy todir="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212" failonerror="true" overwrite="false">
+			<fileset dir="${basedir}">
+				<include name="META-INF/"/>
+				<include name="about.html"/>
+				<include name="about_files/"/>
+				<include name="plugin.xml"/>
+				<include name="viewer.jar"/>
+				<include name="birt/"/>
+				<include name="schema/"/>
+				<include name="plugin.properties"/>
+				<exclude name="birt/WEB-INF/classes/"/>
+				<exclude name="birt/test1.rptdesign"/>
+			</fileset>
+		</copy>
+		<eclipse.versionReplacer path="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212" version="2.3.2.r232_20090212"/>
+		<subant antfile="${customBuildCallbacks}" target="post.gather.bin.parts" failonerror="false" buildpath=".">
+			<property name="build.result.folder" value="${build.result.folder}"/>
+			<property name="target.folder" value="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212"/>
+		</subant>
+	</target>
+
+	<target name="build.zips" depends="init">
+	</target>
+
+	<target name="gather.sources" depends="init" if="destination.temp.folder">
+		<subant antfile="${customBuildCallbacks}" target="pre.gather.sources" failonerror="false" buildpath=".">
+			<property name="target.folder" value="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212"/>
+		</subant>
+		<mkdir dir="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212"/>
+		<copy file="${build.result.folder}/viewersrc.zip" todir="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212" failonerror="false" overwrite="false"/>
+		<antcall target="copy.src.includes">
+			<param name="source.destination.folder" value="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212"/>
+		</antcall>
+		<subant antfile="${customBuildCallbacks}" target="post.gather.sources" failonerror="false" buildpath=".">
+			<property name="target.folder" value="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212"/>
+		</subant>
+	</target>
+
+	<target name="gather.individual.sources" depends="init">
+		<subant antfile="${customBuildCallbacks}" target="pre.gather.sources" failonerror="false" buildpath=".">
+			<property name="target.folder" value="${destination.temp.folder}"/>
+		</subant>
+		<antcall target="copy.viewersrc.zip">
+			<param name="source.destination.folder" value="${destination.temp.folder}"/>
+		</antcall>
+		<antcall target="copy.src.includes">
+			<param name="source.destination.folder" value="${destination.temp.folder}"/>
+		</antcall>
+		<subant antfile="${customBuildCallbacks}" target="post.gather.sources" failonerror="false" buildpath=".">
+			<property name="target.folder" value="${destination.temp.folder}"/>
+		</subant>
+	</target>
+
+	<target name="copy.src.includes" depends="init">
+		<copy todir="${source.destination.folder}" failonerror="false" overwrite="false">
+			<fileset dir="${basedir}">
+				<include name="about_files/"/>
+				<include name="about.html"/>
+				<include name="viewerservletssrc.zip"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="gather.logs" depends="init" if="destination.temp.folder">
+		<subant antfile="${customBuildCallbacks}" target="pre.gather.logs" failonerror="false" buildpath=".">
+			<property name="destination.temp.folder" value="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212"/>
+		</subant>
+		<mkdir dir="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212"/>
+		<copy todir="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212" failonerror="false" overwrite="false">
+			<fileset dir="${temp.folder}">
+				<include name="viewer.jar.bin${logExtension}"/>
+			</fileset>
+		</copy>
+		<subant antfile="${customBuildCallbacks}" target="post.gather.logs" failonerror="false" buildpath=".">
+			<property name="destination.temp.folder" value="${destination.temp.folder}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212"/>
+		</subant>
+	</target>
+
+	<target name="clean" depends="init" description="Clean the plug-in: org.eclipse.birt.report.viewer of all the zips, jars and logs created.">
+		<subant antfile="${customBuildCallbacks}" target="pre.clean" failonerror="false" buildpath=".">
+			<property name="plugin.destination" value="${plugin.destination}"/>
+			<property name="build.result.folder" value="${build.result.folder}"/>
+			<property name="temp.folder" value="${temp.folder}"/>
+		</subant>
+		<delete file="${build.result.folder}/viewer.jar"/>
+		<delete file="${build.result.folder}/viewersrc.zip"/>
+		<delete file="${plugin.destination}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212.jar"/>
+		<delete file="${plugin.destination}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212.zip"/>
+		<delete dir="${temp.folder}"/>
+		<subant antfile="${customBuildCallbacks}" target="post.clean" failonerror="false" buildpath=".">
+			<property name="plugin.destination" value="${plugin.destination}"/>
+			<property name="build.result.folder" value="${build.result.folder}"/>
+			<property name="temp.folder" value="${temp.folder}"/>
+		</subant>
+	</target>
+
+	<target name="refresh" depends="init" if="eclipse.running" description="Refresh this folder.">
+		<eclipse.convertPath fileSystemPath="/home/adb/releng.230/src/plugins/org.eclipse.birt.report.viewer" property="resourcePath"/>
+		<eclipse.refreshLocal resource="${resourcePath}" depth="infinite"/>
+	</target>
+
+	<target name="zip.plugin" depends="init" description="Create a zip containing all the elements for the plug-in: org.eclipse.birt.report.viewer.">
+		<delete dir="${temp.folder}"/>
+		<mkdir dir="${temp.folder}"/>
+		<antcall target="build.jars"/>
+		<antcall target="build.sources"/>
+		<antcall target="gather.bin.parts">
+			<param name="destination.temp.folder" value="${temp.folder}/"/>
+		</antcall>
+		<antcall target="gather.sources">
+			<param name="destination.temp.folder" value="${temp.folder}/"/>
+		</antcall>
+		<delete>
+			<fileset dir="${temp.folder}">
+				<include name="**/*.bin${logExtension}"/>
+			</fileset>
+		</delete>
+		<zip destfile="${plugin.destination}/org.eclipse.birt.report.viewer_2.3.2.r232_20090212.zip" basedir="${temp.folder}" filesonly="true" whenempty="skip" update="false"/>
+		<delete dir="${temp.folder}"/>
+	</target>
+
+</project>

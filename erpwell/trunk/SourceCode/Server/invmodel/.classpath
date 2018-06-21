@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/inv/main"/>
+	<classpathentry kind="src" path="src/spread/main"/>
+	<classpathentry kind="src" path="src/sal/main"/>
+	<classpathentry kind="src" path="src/js/main"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/activeentitymodel.jar"/>
+	<classpathentry kind="var" path="ERP-LIB/ejb3-persistence.jar"/>
+	<classpathentry kind="var" path="ERP-LIB/ejb3x.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/pdmmodel"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/basemodel"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/purmodel"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/wipmodel"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/securitymodel.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

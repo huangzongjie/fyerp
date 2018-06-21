@@ -1,0 +1,28 @@
+-- Create table
+create table WIP_LOT_TEMP
+(
+  OBJECT_RRN    NUMBER(19) not null,
+  ORG_RRN       NUMBER(19),
+  IS_ACTIVE     VARCHAR2(1),
+  CREATED       DATE,
+  CREATED_BY    NUMBER(19),
+  UPDATED       DATE,
+  UPDATED_BY    NUMBER(19),
+  LOCK_VERSION  NUMBER(19),
+  LOT_ID        VARCHAR2(32),
+  MATERIAL_ID   VARCHAR2(32),
+  MATERIAL_NAME VARCHAR2(128) not null,
+  MAIN_QTY      NUMBER(19,6),
+  MASTER_MO_ID  VARCHAR2(32),
+  MO_LINE_RRN   NUMBER(19)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

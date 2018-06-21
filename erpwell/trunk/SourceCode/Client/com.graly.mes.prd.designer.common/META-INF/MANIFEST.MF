@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Common Plug-in
+Bundle-SymbolicName: com.graly.mes.prd.designer.common;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.graly.mes.prd.designer.common.Activator
+Bundle-Vendor: GRALY
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.draw2d,
+ org.eclipse.gef,
+ org.eclipse.wst.sse.core,
+ org.eclipse.core.resources
+Eclipse-LazyStart: true
+Export-Package: com.graly.mes.prd.designer.common,
+ com.graly.mes.prd.designer.common.command,
+ com.graly.mes.prd.designer.common.editor,
+ com.graly.mes.prd.designer.common.figure,
+ com.graly.mes.prd.designer.common.model,
+ com.graly.mes.prd.designer.common.notation,
+ com.graly.mes.prd.designer.common.part,
+ com.graly.mes.prd.designer.common.policy,
+ com.graly.mes.prd.designer.common.registry,
+ com.graly.mes.prd.designer.common.util,
+ com.graly.mes.prd.designer.common.xml

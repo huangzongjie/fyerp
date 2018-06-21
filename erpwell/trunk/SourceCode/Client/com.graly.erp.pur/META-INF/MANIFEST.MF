@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Pur Plug-in
+Bundle-SymbolicName: com.graly.erp.pur; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.graly.erp.pur.Activator
+Bundle-Vendor: GRALY
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.graly.framework.base,
+ com.graly.framework.runtime,
+ org.eclipse.ui.forms,
+ com.graly.erp.base,
+ com.graly.framework.lib
+Eclipse-LazyStart: true
+Export-Package: com.graly.erp.pur.calendarday,
+ com.graly.erp.pur.dialog,
+ com.graly.erp.pur.po,
+ com.graly.erp.pur.request

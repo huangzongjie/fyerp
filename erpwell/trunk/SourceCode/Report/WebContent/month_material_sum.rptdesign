@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.17" id="1">
+    <property name="author">Denny Sun</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 2.3.2.r232_20090202 Build &lt;2.3.2.v20090218-0730></property>
+    <property name="units">in</property>
+    <text-property name="title">物料消耗月度统计表</text-property>
+    <property name="comments">Copyright (c) 2009 GlorySoft</property>
+    <list-property name="userProperties">
+        <structure>
+            <property name="name">Data Cube.Material_out.x</property>
+            <property name="type">integer</property>
+            <property name="isVisible">false</property>
+        </structure>
+        <structure>
+            <property name="name">Data Cube.Material_out.y</property>
+            <property name="type">integer</property>
+            <property name="isVisible">false</property>
+        </structure>
+    </list-property>
+    <property name="Data Cube.Material_out.x">135</property>
+    <property name="Data Cube.Material_out.y">80</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">birtlibrary/ERPWELL.rptlibrary</property>
+            <property name="namespace">ERPWELL</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="WHERE_CLAUSE" id="538">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <property name="defaultValue">AND 1=1</property>
+            <property name="distinct">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="ERPWELL" id="7"
+ extends="ERPWELL.ERPWELL">
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Material_out" id="8">
+            <structure name="cachedMetaData"/>
+            <property name="dataSource">ERPWELL</property>
+            <method name="beforeOpen"><![CDATA[importPackage( Packages.java.io );   
+out = new PrintWriter( new FileWriter("c:/debuginfo.txt", true ) );  
+
+var whereClause = reportContext.getParameterValue("WHERE_CLAUSE");
+
+out.println("whereClause：-->"+whereClause); 
+
+var whereClause1 = whereClause.replace("t.MATERIAL_RRN LIKE","L.MATERIAL_RRN =").replace("t.DATE_APPROVED","M.DATE_APPROVED");
+var whereClause2 = whereClause.replace("t.MATERIAL_RRN LIKE","LC.MATERIAL_RRN =").replace("t.DATE_APPROVED","LC.DATE_IN");
+var whereClause3 = whereClause.replace("t.MATERIAL_RRN LIKE","LC2.MATERIAL_RRN =").replace("t.DATE_APPROVED","LC2.DATE_IN");
+
+out.println("whereClause1：-->"+whereClause1); 
+out.println("whereClause2：-->"+whereClause2); 
+out.println("whereClause3：-->"+whereClause3); 
+
+var sql=" ";
+sql = sql + " SELECT T.ORG_RRN, T.MATERIAL_RRN, T.QTY_MOVEMENT, T.MATERIAL_ID,  " ;
+sql = sql + " T.MATERIAL_NAME, T.UOM_ID, T.WAREHOUSE_RRN,T.WAREHOUSE_ID," ;
+sql = sql + "  trunc(T.DATE_APPROVED,'mm') DATE_APPROVED " ;
+sql = sql + " FROM ( SELECT ROWNUM OBJECT_RRN, RS.*, V.COMPANY_NAME VENDOR_NAME FROM (" ;
+sql = sql + "         SELECT M.ORG_RRN ORG_RRN," ;
+sql = sql + "                M.IS_ACTIVE IS_ACTIVE," ;
+sql = sql + "                M.DOC_ID," ;
+sql = sql + "                M.OBJECT_RRN MOVMENT_RRN," ;
+sql = sql + "                M.DOC_STATUS," ;
+sql = sql + "                M.DOC_TYPE," ;
+sql = sql + "                M.DATE_CREATED," ;
+sql = sql + "                M.DATE_APPROVED," ;
+sql = sql + "                M.WAREHOUSE_RRN," ;
+sql = sql + "                '出入库数量' WAREHOUSE_ID," ;
+sql = sql + "                M.CUSTOMER_NAME," ;
+sql = sql + "                M.SELLER," ;
+sql = sql + "                M.USER_CREATED," ;
+sql = sql + "                M.USER_APPROVED," ;
+sql = sql + "                M.USER_IQC," ;
+sql = sql + "                M.DESCRIPTION," ;
+sql = sql + "                M.OUT_TYPE," ;
+sql = sql + "                TRUNC(M.DATE_APPROVED) MOVEMENT_DATE," ;
+sql = sql + "                M.KIND," ;
+sql = sql + "                M.SO_ID," ;
+sql = sql + "                M.VENDOR_RRN," ;
+sql = sql + "                M.VENDOR_ID," ;
+sql = sql + "                L.MATERIAL_RRN," ;
+sql = sql + "                L.MATERIAL_ID," ;
+sql = sql + "                L.MATERIAL_NAME," ;
+sql = sql + "                L.UOM_ID," ;
+sql = sql + "                L.QTY_MOVEMENT," ;
+sql = sql + "                L.UNIT_PRICE," ;
+sql = sql + "                L.LINE_TOTAL," ;
+sql = sql + "                L.LOCATOR_ID" ;
+sql = sql + "         FROM   INV_MOVEMENT M, INV_MOVEMENT_LINE L" ;
+sql = sql + "         WHERE  1=1" ;
+sql = sql + "                "+whereClause1;
+sql = sql + "                AND(M.MOVEMENT_TYPE IN ('O') AND M.DOC_TYPE <> 'AOU')" ;
+sql = sql + "                AND L.MOVEMENT_RRN = M.OBJECT_RRN" ;
+sql = sql + "                AND L.MOVEMENT_RRN NOT IN (5460848, 5466217)" ;
+sql = sql + "         UNION ALL" ;
+sql = sql + "         SELECT LC.ORG_RRN ORG_RRN," ;
+sql = sql + "                LC.IS_ACTIVE IS_ACTIVE," ;
+sql = sql + "                LC.MO_ID AS DOC_ID," ;
+sql = sql + "                NULL AS MOVMENT_RRN," ;
+sql = sql + "                ' ' AS DOC_STATUS," ;
+sql = sql + "                'NOU' AS DOC_TYPE," ;
+sql = sql + "                LC.CREATED AS DATE_CREATED," ;
+sql = sql + "                LC.DATE_IN AS DATE_APPROVED," ;
+sql = sql + "                LC.WAREHOUSE_RRN WAREHOUSE_RRN," ;
+sql = sql + "                '商品入库消耗' WAREHOUSE_ID," ;
+sql = sql + "                ' ' AS CUSTOMER_NAME," ;
+sql = sql + "                ' ' AS SELLER," ;
+sql = sql + "                U1.USER_NAME USER_CREATED," ;
+sql = sql + "                U2.USER_NAME USER_APPROVED," ;
+sql = sql + "                ' ' AS USER_IQC," ;
+sql = sql + "                ' ' AS DESCRIPTION," ;
+sql = sql + "                'WRITEOFF' OUT_TYPE," ;
+sql = sql + "                TRUNC(LC.CREATED) MOVEMENT_DATE," ;
+sql = sql + "                ' ' AS KIND," ;
+sql = sql + "                ' ' AS SO_ID," ;
+sql = sql + "                NULL AS VENDOR_RRN," ;
+sql = sql + "                ' ' AS VENDOR_ID," ;
+sql = sql + "                LC.MATERIAL_RRN MATERIAL_RRN," ;
+sql = sql + "                LC.MATERIAL_ID MATERIAL_ID," ;
+sql = sql + "                LC.MATERIAL_NAME MATERIAL_NAME," ;
+sql = sql + "                M.Inventory_Uom AS UOM_ID," ;
+sql = sql + "                LC.QTY_CONSUME," ;
+sql = sql + "                NULL AS UNIT_PRICE," ;
+sql = sql + "                NULL AS LINE_TOTAL," ;
+sql = sql + "                ' ' AS LOCATOR_ID" ;
+sql = sql + "         FROM   (SELECT IS_ACTIVE," ;
+sql = sql + "                        ORG_RRN," ;
+sql = sql + "                        MO_ID," ;
+sql = sql + "                        CREATED CREATED," ;
+sql = sql + "                        updated DATE_IN," ;
+sql = sql + "                        CREATED_BY," ;
+sql = sql + "                        UPDATED_BY," ;
+sql = sql + "                        MATERIAL_RRN," ;
+sql = sql + "                        MATERIAL_ID," ;
+sql = sql + "                        MATERIAL_NAME," ;
+sql = sql + "                        T.MO_RRN," ;
+sql = sql + "                        QTY_CONSUME QTY_CONSUME," ;
+sql = sql + "                        WAREHOUSE_RRN," ;
+sql = sql + "                        WAREHOUSE_ID" ;
+sql = sql + "                 FROM   WIP_LOT_CONSUME T) LC," ;
+sql = sql + "                AD_USER U1," ;
+sql = sql + "                AD_USER U2," ;
+sql = sql + "                Pdm_Material M" ;
+sql = sql + "         WHERE  1=1" ;
+sql = sql + "                "+whereClause2;
+sql = sql + "                AND U1.OBJECT_RRN = LC.CREATED_BY" ;
+sql = sql + "                AND U2.OBJECT_RRN = LC.UPDATED_BY" ;
+sql = sql + "                AND LC.Material_Rrn = M.Object_Rrn" ;          
+sql = sql + "         UNION ALL" ;
+sql = sql + "         SELECT LC2.ORG_RRN ORG_RRN," ;
+sql = sql + "                LC2.IS_ACTIVE IS_ACTIVE," ;
+sql = sql + "                LC2.MO_ID AS DOC_ID," ;
+sql = sql + "                NULL AS MOVMENT_RRN," ;
+sql = sql + "                ' ' AS DOC_STATUS," ;
+sql = sql + "                'NOU' AS DOC_TYPE, " ;
+sql = sql + "                LC2.CREATED AS DATE_CREATED," ;
+sql = sql + "                LC2.DATE_IN AS DATE_APPROVED," ;
+sql = sql + "                LC2.WAREHOUSE_RRN WAREHOUSE_RRN," ;
+sql = sql + "                LC2.WAREHOUSE_ID WAREHOUSE_ID," ;
+sql = sql + "                ' ' AS CUSTOMER_NAME," ;
+sql = sql + "                ' ' AS SELLER," ;
+sql = sql + "                U1.USER_NAME USER_CREATED," ;
+sql = sql + "                U2.USER_NAME USER_APPROVED," ;
+sql = sql + "                ' ' AS USER_IQC," ;
+sql = sql + "                ' ' AS DESCRIPTION," ;
+sql = sql + "                'RECEIVEOFF' OUT_TYPE," ;
+sql = sql + "                TRUNC(LC2.CREATED) MOVEMENT_DATE," ;
+sql = sql + "                ' ' AS KIND," ;
+sql = sql + "                ' ' AS SO_ID," ;
+sql = sql + "                NULL AS VENDOR_RRN," ;
+sql = sql + "                ' ' AS VENDOR_ID," ;
+sql = sql + "                LC2.MATERIAL_RRN MATERIAL_RRN," ;
+sql = sql + "                LC2.MATERIAL_ID MATERIAL_ID," ;
+sql = sql + "                LC2.MATERIAL_NAME MATERIAL_NAME," ;
+sql = sql + "                M.Inventory_Uom AS UOM_ID," ;
+sql = sql + "                LC2.QTY_CONSUME," ;
+sql = sql + "                NULL AS UNIT_PRICE," ;
+sql = sql + "                NULL AS LINE_TOTAL," ;
+sql = sql + "                ' ' AS LOCATOR_ID" ;
+sql = sql + "         FROM   (SELECT IS_ACTIVE," ;
+sql = sql + "                        ORG_RRN," ;
+sql = sql + "                        MO_ID," ;
+sql = sql + "                        CREATED CREATED," ;
+sql = sql + "                        updated DATE_IN," ;
+sql = sql + "                        CREATED_BY," ;
+sql = sql + "                        UPDATED_BY," ;
+sql = sql + "                        material_child_rrn MATERIAL_RRN," ;
+sql = sql + "                        material_child_id MATERIAL_ID," ;
+sql = sql + "                        material_child_name MATERIAL_NAME," ;
+sql = sql + "                        T.MO_RRN," ;
+sql = sql + "                        QTY_CONSUME QTY_CONSUME," ;
+sql = sql + "                        null WAREHOUSE_RRN," ;
+sql = sql + "                       '生产接收消耗' WAREHOUSE_ID" ;
+sql = sql + "                 FROM   WIP_LOT_COMPONENT T) LC2," ;
+sql = sql + "                AD_USER U1," ;
+sql = sql + "                AD_USER U2," ;
+sql = sql + "                Pdm_Material M" ;
+sql = sql + "         WHERE  1=1" ;
+sql = sql + "                "+whereClause3;
+sql = sql + "                AND U1.OBJECT_RRN = LC2.CREATED_BY" ;
+sql = sql + "                AND U2.OBJECT_RRN = LC2.UPDATED_BY" ;
+sql = sql + "                AND LC2.MATERIAL_RRN = M.Object_Rrn" ;
+sql = sql + " ) RS " ;
+sql = sql + " LEFT   JOIN VDM_VENDOR V" ;
+sql = sql + " ON     V.OBJECT_RRN = RS.VENDOR_RRN" ;
+sql = sql + " )  T " ; 
+
+this.queryText = sql + " ORDER BY T.MATERIAL_ID ";
+out.println("whereClause4：-->"+queryText); 
+out.close();
+
+]]></method>
+            <property name="queryText">select 
+from </property>
+        </oda-data-set>
+    </data-sets>
+    <cubes>
+        <tabular-cube name="material_out_cube" id="380">
+            <property name="dimensions">
+                <tabular-dimension name="Group" id="381">
+                    <property name="defaultHierarchy">NewTabularHierarchy</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy" id="382">
+                            <property name="levels">
+                                <tabular-level name="MATERIAL_ID" id="383">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">MATERIAL_ID</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="Group1" id="386">
+                    <property name="defaultHierarchy">NewTabularHierarchy1</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy1" id="387">
+                            <property name="levels">
+                                <tabular-level name="MATERIAL_NAME" id="388">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">MATERIAL_NAME</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="Group2" id="389">
+                    <property name="isTimeType">false</property>
+                    <property name="defaultHierarchy">NewTabularHierarchy2</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy2" id="390">
+                            <property name="levels">
+                                <tabular-level name="WAREHOUSE_ID" id="392">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">WAREHOUSE_ID</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="Group3" id="393">
+                    <property name="defaultHierarchy">NewTabularHierarchy3</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy3" id="394">
+                            <property name="levels">
+                                <tabular-level name="UOM_ID" id="395">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">UOM_ID</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="Group4" id="396">
+                    <property name="isTimeType">false</property>
+                    <property name="defaultHierarchy">NewTabularHierarchy4</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy4" id="397">
+                            <property name="levels">
+                                <tabular-level name="DATE_APPROVED" id="497">
+                                    <property name="dataType">date-time</property>
+                                    <property name="columnName">DATE_APPROVED</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+            </property>
+            <property name="measureGroups">
+                <tabular-measure-group name="Summary Field" id="399">
+                    <property name="measures">
+                        <tabular-measure name="QTY_MOVEMENT" id="400">
+                            <expression name="measureExpression">dataSetRow["QTY_MOVEMENT"]</expression>
+                            <property name="dataType">decimal</property>
+                        </tabular-measure>
+                    </property>
+                </tabular-measure-group>
+            </property>
+            <property name="dataSet">Material_out</property>
+        </tabular-cube>
+    </cubes>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">"Verdana"</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab-detail" id="537">
+            <list-property name="highlightRules">
+                <structure>
+                    <property name="operator">eq</property>
+                    <property name="backgroundColor">#8080FF</property>
+                    <expression name="testExpr">row.__rownum % 2</expression>
+                    <simple-property-list name="value1">
+                        <value>0</value>
+                    </simple-property-list>
+                </structure>
+            </list-property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="type">a4</property>
+            <property name="topMargin">0.25in</property>
+            <property name="leftMargin">0.25in</property>
+            <property name="bottomMargin">0.25in</property>
+            <property name="rightMargin">0.25in</property>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="401">
+            <property name="height">1.03125in</property>
+            <property name="width">7.989583333333333in</property>
+            <column id="402"/>
+            <row id="520">
+                <cell id="521">
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingLeft">0pt</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="paddingRight">0pt</property>
+                    <label id="536">
+                        <property name="fontSize">14pt</property>
+                        <property name="fontWeight">bold</property>
+                        <property name="marginBottom">5pt</property>
+                        <property name="paddingTop">0pt</property>
+                        <property name="paddingLeft">0pt</property>
+                        <property name="paddingBottom">0pt</property>
+                        <property name="paddingRight">0pt</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text">物料消耗月度统计表</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="403">
+                <cell id="404">
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingLeft">0pt</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="paddingRight">0pt</property>
+                    <extended-item extensionName="Crosstab" extensionVersion="2.3.0" name="crosstab1"
+ id="405">
+                        <property name="measures">
+                            <extended-item extensionName="MeasureView" id="429">
+                                <property name="measure">QTY_MOVEMENT</property>
+                                <property name="detail">
+                                    <extended-item extensionName="AggregationCell" id="430">
+                                        <property name="aggregationOnRow">Group3/UOM_ID</property>
+                                        <property name="aggregationOnColumn">Group4/DATE_APPROVED</property>
+                                        <property name="verticalAlign">middle</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">1px</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">1px</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">1px</property>
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">1px</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="content">
+                                            <data id="431">
+                                                <property name="resultSetColumn">QTY_MOVEMENT_Group3/UOM_ID_Group4/DATE_APPROVED</property>
+                                            </data>
+                                        </property>
+                                    </extended-item>
+                                </property>
+                                <property name="aggregations">
+                                    <extended-item extensionName="AggregationCell" id="517">
+                                        <property name="aggregationOnRow">Group3/UOM_ID</property>
+                                        <property name="verticalAlign">middle</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">1px</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">1px</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">1px</property>
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">1px</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="paddingTop">0pt</property>
+                                        <property name="paddingLeft">0pt</property>
+                                        <property name="paddingBottom">0pt</property>
+                                        <property name="paddingRight">0pt</property>
+                                        <property name="content">
+                                            <data id="518">
+                                                <structure name="numberFormat">
+                                                    <property name="category">Custom</property>
+                                                    <property name="pattern">#0.0</property>
+                                                </structure>
+                                                <property name="resultSetColumn">QTY_MOVEMENT_Group3/UOM_ID_1</property>
+                                            </data>
+                                        </property>
+                                    </extended-item>
+                                </property>
+                                <property name="header">
+                                    <extended-item extensionName="CrosstabCell" id="432">
+                                        <property name="paddingTop">0pt</property>
+                                        <property name="paddingLeft">0pt</property>
+                                        <property name="paddingBottom">0pt</property>
+                                        <property name="paddingRight">0pt</property>
+                                        <property name="height">0px</property>
+                                    </extended-item>
+                                </property>
+                            </extended-item>
+                        </property>
+                        <property name="rows">
+                            <extended-item extensionName="CrosstabView" id="407">
+                                <property name="views">
+                                    <extended-item extensionName="DimensionView" id="408">
+                                        <property name="dimension">Group</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View" id="409">
+                                                <property name="level">Group/MATERIAL_ID</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="410">
+                                                        <property name="content">
+                                                            <data name="MATERIAL_ID" id="411">
+                                                                <property name="resultSetColumn">MATERIAL_ID</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="verticalAlign">middle</property>
+                                                        <property name="borderTopStyle">solid</property>
+                                                        <property name="borderTopWidth">1px</property>
+                                                        <property name="borderTopColor">#000000</property>
+                                                        <property name="borderLeftStyle">solid</property>
+                                                        <property name="borderLeftWidth">1px</property>
+                                                        <property name="borderLeftColor">#000000</property>
+                                                        <property name="borderBottomStyle">solid</property>
+                                                        <property name="borderBottomWidth">1px</property>
+                                                        <property name="borderBottomColor">#000000</property>
+                                                        <property name="borderRightStyle">solid</property>
+                                                        <property name="borderRightWidth">1px</property>
+                                                        <property name="borderRightColor">#000000</property>
+                                                        <property name="width">87px</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                    <extended-item extensionName="DimensionView" id="412">
+                                        <property name="dimension">Group1</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View1" id="413">
+                                                <property name="level">Group1/MATERIAL_NAME</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="414">
+                                                        <property name="content">
+                                                            <data name="MATERIAL_NAME" id="415">
+                                                                <property name="resultSetColumn">MATERIAL_NAME</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="verticalAlign">middle</property>
+                                                        <property name="borderTopStyle">solid</property>
+                                                        <property name="borderTopWidth">1px</property>
+                                                        <property name="borderTopColor">#000000</property>
+                                                        <property name="borderLeftStyle">solid</property>
+                                                        <property name="borderLeftWidth">1px</property>
+                                                        <property name="borderLeftColor">#000000</property>
+                                                        <property name="borderBottomStyle">solid</property>
+                                                        <property name="borderBottomWidth">1px</property>
+                                                        <property name="borderBottomColor">#000000</property>
+                                                        <property name="borderRightStyle">solid</property>
+                                                        <property name="borderRightWidth">1px</property>
+                                                        <property name="borderRightColor">#000000</property>
+                                                        <property name="width">169px</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                    <extended-item extensionName="DimensionView" id="416">
+                                        <property name="dimension">Group2</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View2" id="417">
+                                                <property name="level">Group2/WAREHOUSE_ID</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="418">
+                                                        <property name="content">
+                                                            <data name="WAREHOUSE_ID" id="419">
+                                                                <property name="resultSetColumn">WAREHOUSE_ID</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="verticalAlign">middle</property>
+                                                        <property name="borderTopStyle">solid</property>
+                                                        <property name="borderTopWidth">1px</property>
+                                                        <property name="borderTopColor">#000000</property>
+                                                        <property name="borderLeftStyle">solid</property>
+                                                        <property name="borderLeftWidth">1px</property>
+                                                        <property name="borderLeftColor">#000000</property>
+                                                        <property name="borderBottomStyle">solid</property>
+                                                        <property name="borderBottomWidth">1px</property>
+                                                        <property name="borderBottomColor">#000000</property>
+                                                        <property name="borderRightStyle">solid</property>
+                                                        <property name="borderRightWidth">1px</property>
+                                                        <property name="borderRightColor">#000000</property>
+                                                        <property name="width">100px</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                    <extended-item extensionName="DimensionView" id="420">
+                                        <property name="dimension">Group3</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View3" id="421">
+                                                <property name="level">Group3/UOM_ID</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="422">
+                                                        <property name="content">
+                                                            <data name="UOM_ID" id="423">
+                                                                <property name="resultSetColumn">UOM_ID</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="verticalAlign">middle</property>
+                                                        <property name="borderTopStyle">solid</property>
+                                                        <property name="borderTopWidth">1px</property>
+                                                        <property name="borderTopColor">#000000</property>
+                                                        <property name="borderLeftStyle">solid</property>
+                                                        <property name="borderLeftWidth">1px</property>
+                                                        <property name="borderLeftColor">#000000</property>
+                                                        <property name="borderBottomStyle">solid</property>
+                                                        <property name="borderBottomWidth">1px</property>
+                                                        <property name="borderBottomColor">#000000</property>
+                                                        <property name="borderRightStyle">solid</property>
+                                                        <property name="borderRightWidth">1px</property>
+                                                        <property name="borderRightColor">#000000</property>
+                                                        <property name="width">40px</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                </property>
+                            </extended-item>
+                        </property>
+                        <property name="columns">
+                            <extended-item extensionName="CrosstabView" id="424">
+                                <property name="grandTotal">
+                                    <extended-item extensionName="CrosstabCell" id="516">
+                                        <property name="content">
+                                            <label id="519">
+                                                <text-property name="text">月平均用量</text-property>
+                                            </label>
+                                        </property>
+                                        <property name="fontWeight">bold</property>
+                                        <property name="textAlign">center</property>
+                                        <property name="verticalAlign">middle</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <property name="borderTopWidth">1px</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderLeftWidth">1px</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderBottomWidth">1px</property>
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderRightWidth">1px</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="paddingTop">0pt</property>
+                                        <property name="paddingLeft">0pt</property>
+                                        <property name="paddingBottom">0pt</property>
+                                        <property name="paddingRight">0pt</property>
+                                    </extended-item>
+                                </property>
+                                <property name="views">
+                                    <extended-item extensionName="DimensionView" id="498">
+                                        <property name="dimension">Group4</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View4" id="499">
+                                                <property name="level">Group4/DATE_APPROVED</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="500">
+                                                        <property name="content">
+                                                            <data name="DATE_APPROVED" id="501">
+                                                                <structure name="dateTimeFormat">
+                                                                    <property name="category">Custom</property>
+                                                                    <property name="pattern">yyyy.MMMM出库数量</property>
+                                                                </structure>
+                                                                <property name="resultSetColumn">DATE_APPROVED</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="verticalAlign">middle</property>
+                                                        <property name="borderTopStyle">solid</property>
+                                                        <property name="borderTopWidth">1px</property>
+                                                        <property name="borderTopColor">#000000</property>
+                                                        <property name="borderLeftStyle">solid</property>
+                                                        <property name="borderLeftWidth">1px</property>
+                                                        <property name="borderLeftColor">#000000</property>
+                                                        <property name="borderBottomStyle">solid</property>
+                                                        <property name="borderBottomWidth">1px</property>
+                                                        <property name="borderBottomColor">#000000</property>
+                                                        <property name="borderRightStyle">solid</property>
+                                                        <property name="borderRightWidth">1px</property>
+                                                        <property name="borderRightColor">#000000</property>
+                                                        <property name="height">40px</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                </property>
+                            </extended-item>
+                        </property>
+                        <property name="repeatRowHeader">true</property>
+                        <property name="hideMeasureHeader">true</property>
+                        <property name="header">
+                            <extended-item extensionName="CrosstabCell" id="406">
+                                <property name="content">
+                                    <grid name="rowheader" id="502">
+                                        <property name="canShrink">true</property>
+                                        <property name="height">100%</property>
+                                        <property name="width">100%</property>
+                                        <column id="503">
+                                            <property name="width">87px</property>
+                                        </column>
+                                        <column id="504">
+                                            <property name="width">169px</property>
+                                        </column>
+                                        <column id="505">
+                                            <property name="width">100px</property>
+                                        </column>
+                                        <column id="506">
+                                            <property name="width">40px</property>
+                                        </column>
+                                        <row id="507">
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                            <cell id="508">
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">1px</property>
+                                                <property name="paddingTop">0pt</property>
+                                                <property name="paddingLeft">0pt</property>
+                                                <property name="paddingBottom">0pt</property>
+                                                <property name="paddingRight">0pt</property>
+                                                <label id="512">
+                                                    <text-property name="text">物料编号</text-property>
+                                                </label>
+                                            </cell>
+                                            <cell id="509">
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">1px</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">1px</property>
+                                                <property name="paddingTop">0pt</property>
+                                                <property name="paddingLeft">0pt</property>
+                                                <property name="paddingBottom">0pt</property>
+                                                <property name="paddingRight">0pt</property>
+                                                <label id="513">
+                                                    <text-property name="text">物料名称</text-property>
+                                                </label>
+                                            </cell>
+                                            <cell id="510">
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">1px</property>
+                                                <property name="borderRightColor">#000000</property>
+                                                <property name="borderRightStyle">solid</property>
+                                                <property name="borderRightWidth">1px</property>
+                                                <property name="paddingTop">0pt</property>
+                                                <property name="paddingLeft">0pt</property>
+                                                <property name="paddingBottom">0pt</property>
+                                                <property name="paddingRight">0pt</property>
+                                                <label id="514">
+                                                    <text-property name="text">仓库</text-property>
+                                                </label>
+                                            </cell>
+                                            <cell id="511">
+                                                <property name="borderLeftColor">#000000</property>
+                                                <property name="borderLeftStyle">solid</property>
+                                                <property name="borderLeftWidth">1px</property>
+                                                <property name="paddingTop">0pt</property>
+                                                <property name="paddingLeft">0pt</property>
+                                                <property name="paddingBottom">0pt</property>
+                                                <property name="paddingRight">0pt</property>
+                                                <label id="515">
+                                                    <text-property name="text">单位</text-property>
+                                                </label>
+                                            </cell>
+                                        </row>
+                                    </grid>
+                                </property>
+                                <property name="widows">2</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="drop">none</property>
+                            </extended-item>
+                        </property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderRightColor">#000000</property>
+                        <property name="marginTop">0pt</property>
+                        <list-property name="highlightRules">
+                            <structure>
+                                <property name="operator">eq</property>
+                                <expression name="testExpr">row.__rownum % 2</expression>
+                                <simple-property-list name="value1">
+                                    <value>0</value>
+                                </simple-property-list>
+                                <property name="backgroundColor">#8080FF</property>
+                            </structure>
+                        </list-property>
+                        <property name="cube">material_out_cube</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">MATERIAL_ID</property>
+                                <property name="displayName">id</property>
+                                <expression name="expression">dimension["Group"]["MATERIAL_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">MATERIAL_NAME</property>
+                                <property name="displayName">name</property>
+                                <expression name="expression">dimension["Group1"]["MATERIAL_NAME"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">WAREHOUSE_ID</property>
+                                <property name="displayName">WareHouse</property>
+                                <expression name="expression">dimension["Group2"]["WAREHOUSE_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">UOM_ID</property>
+                                <property name="displayName">UOM</property>
+                                <expression name="expression">dimension["Group3"]["UOM_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">QTY_MOVEMENT_Group3/UOM_ID</property>
+                                <property name="dataType">decimal</property>
+                                <simple-property-list name="aggregateOn">
+                                    <value>Group/MATERIAL_ID</value>
+                                </simple-property-list>
+                                <property name="aggregateFunction">AVE</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value">measure["QTY_MOVEMENT"]</expression>
+                                    </structure>
+                                </list-property>
+                            </structure>
+                            <structure>
+                                <property name="name">QTY_MOVEMENT_Group3/UOM_ID_1</property>
+                                <property name="dataType">decimal</property>
+                                <simple-property-list name="aggregateOn">
+                                    <value>Group3/UOM_ID</value>
+                                </simple-property-list>
+                                <property name="aggregateFunction">AVE</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value">measure["QTY_MOVEMENT"]</expression>
+                                    </structure>
+                                </list-property>
+                            </structure>
+                            <structure>
+                                <property name="name">DATE_APPROVED</property>
+                                <expression name="expression">dimension["Group4"]["DATE_APPROVED"]</expression>
+                                <property name="dataType">date-time</property>
+                            </structure>
+                            <structure>
+                                <property name="name">QTY_MOVEMENT_Group3/UOM_ID_Group4/DATE_APPROVED</property>
+                                <expression name="expression">measure["QTY_MOVEMENT"]</expression>
+                                <property name="dataType">decimal</property>
+                                <simple-property-list name="aggregateOn">
+                                    <value>Group3/UOM_ID</value>
+                                    <value>Group4/DATE_APPROVED</value>
+                                </simple-property-list>
+                                <property name="aggregateFunction">sum</property>
+                            </structure>
+                        </list-property>
+                    </extended-item>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>

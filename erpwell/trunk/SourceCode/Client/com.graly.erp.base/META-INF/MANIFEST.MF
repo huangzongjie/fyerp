@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Base Plug-in
+Bundle-SymbolicName: com.graly.erp.base
+Bundle-Version: 1.0.0
+Bundle-Activator: com.graly.erp.base.Activator
+Bundle-Vendor: GRALY
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.graly.framework.base,
+ com.graly.framework.lib,
+ com.graly.framework.runtime,
+ org.eclipse.ui.forms
+Eclipse-LazyStart: true
+Export-Package: com.graly.erp.base,
+ com.graly.erp.base.materiallocate,
+ com.graly.erp.base.print,
+ com.graly.erp.base.report,
+ com.graly.erp.base.util,
+ org.apache.poi.hssf.usermodel,
+ org.apache.poi.hssf.util,
+ org.apache.poi.poifs.filesystem
+Bundle-ClassPath: lib/poi-3.2-FINAL-20081019.jar,
+ .

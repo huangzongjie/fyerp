@@ -1,0 +1,222 @@
+-- Add/modify columns 
+alter table WIP_WCT_STORAGE modify OBJECT_RRN not null;
+-- Add comments to the columns 
+comment on column WIP_WCT_STORAGE.OBJECT_RRN
+  is '主键';
+comment on column WIP_WCT_STORAGE.ORG_RRN
+  is '工作区域';
+comment on column WIP_WCT_STORAGE.IS_ACTIVE
+  is '是否活动';
+comment on column WIP_WCT_STORAGE.CREATED
+  is '创建时间';
+comment on column WIP_WCT_STORAGE.CREATED_BY
+  is '创建人';
+comment on column WIP_WCT_STORAGE.UPDATED
+  is '更新时间';
+comment on column WIP_WCT_STORAGE.UPDATED_BY
+  is '更新人';
+comment on column WIP_WCT_STORAGE.LOCK_VERSION
+  is '版本';
+comment on column WIP_WCT_STORAGE.WAREHOUSE_RRN
+  is '关联仓库rrn';
+comment on column WIP_WCT_STORAGE.WORKCENTER_RRN
+  is '工作中心rrn(工作中心就是一个仓库)';
+comment on column WIP_WCT_STORAGE.WORKCENTER_NAME
+  is '工作中心名称';
+comment on column WIP_WCT_STORAGE.MATERIAL_RRN
+  is '物料rrn';
+comment on column WIP_WCT_STORAGE.MATERIAL_ID
+  is '物料编号';
+comment on column WIP_WCT_STORAGE.MATERIAL_NAME
+  is '物料名称';
+comment on column WIP_WCT_STORAGE.LOT_RRN
+  is '批次rrn';
+comment on column WIP_WCT_STORAGE.LOT_ID
+  is '批号';
+comment on column WIP_WCT_STORAGE.QTY
+  is '数量(现有数量)';
+
+---------------------------------------
+-- Create table
+create table WIP_WCT_MOVMT
+(
+  OBJECT_RRN      NUMBER(19) not null,
+  ORG_RRN         NUMBER(19),
+  IS_ACTIVE       VARCHAR2(1),
+  CREATED         DATE,
+  CREATED_BY      NUMBER(19),
+  UPDATED         DATE,
+  UPDATED_BY      NUMBER(19),
+  LOCK_VERSION    NUMBER(19),
+  WORKCENTER_RRN  NUMBER(19),
+  WORKCENTER_NAME VARCHAR2(64),
+  RECIPIENT       NUMBER(19),
+  GIVER           NUMBER(19),
+  DATE_MOVEMENT   DATE
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column WIP_WCT_MOVMT.OBJECT_RRN
+  is '主键';
+comment on column WIP_WCT_MOVMT.ORG_RRN
+  is '工作区域';
+comment on column WIP_WCT_MOVMT.IS_ACTIVE
+  is '是否活动';
+comment on column WIP_WCT_MOVMT.CREATED
+  is '创建时间';
+comment on column WIP_WCT_MOVMT.CREATED_BY
+  is '创建人';
+comment on column WIP_WCT_MOVMT.UPDATED
+  is '更新时间';
+comment on column WIP_WCT_MOVMT.UPDATED_BY
+  is '更新人';
+comment on column WIP_WCT_MOVMT.LOCK_VERSION
+  is '版本';
+comment on column WIP_WCT_MOVMT.WORKCENTER_RRN
+  is '工作中心rrn(工作中心就是一个仓库)';
+comment on column WIP_WCT_MOVMT.WORKCENTER_NAME
+  is '工作中心名称';
+comment on column WIP_WCT_MOVMT.RECIPIENT
+  is '领料人';
+comment on column WIP_WCT_MOVMT.GIVER
+  is '发料人';
+comment on column WIP_WCT_MOVMT.DATE_MOVEMENT
+  is '领料日期';
+
+------------------------------------------
+-- Create table
+create table WIP_WCT_MOVMT_LINE
+(
+  OBJECT_RRN    NUMBER(19) not null,
+  ORG_RRN       NUMBER(19),
+  IS_ACTIVE     VARCHAR2(1),
+  CREATED       DATE,
+  CREATED_BY    NUMBER(19),
+  UPDATED       DATE,
+  UPDATED_BY    NUMBER(19),
+  LOCK_VERSION  NUMBER(19),
+  LINE_NO       NUMBER(19),
+  MATERIAL_RRN  NUMBER(19),
+  MATERIAL_ID   VARCHAR2(32),
+  MATERIAL_NAME VARCHAR2(128),
+  QTY_MOVEMENT  NUMBER(19,4)
+)
+tablespace USERS
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column WIP_WCT_MOVMT_LINE.OBJECT_RRN
+  is '主键';
+comment on column WIP_WCT_MOVMT_LINE.ORG_RRN
+  is '工作区域';
+comment on column WIP_WCT_MOVMT_LINE.IS_ACTIVE
+  is '是否活动';
+comment on column WIP_WCT_MOVMT_LINE.CREATED
+  is '创建时间';
+comment on column WIP_WCT_MOVMT_LINE.CREATED_BY
+  is '创建人';
+comment on column WIP_WCT_MOVMT_LINE.UPDATED
+  is '更新时间';
+comment on column WIP_WCT_MOVMT_LINE.UPDATED_BY
+  is '更新人';
+comment on column WIP_WCT_MOVMT_LINE.LOCK_VERSION
+  is '版本';
+comment on column WIP_WCT_MOVMT_LINE.LINE_NO
+  is '行号';
+comment on column WIP_WCT_MOVMT_LINE.MATERIAL_RRN
+  is '物料rrn';
+comment on column WIP_WCT_MOVMT_LINE.MATERIAL_ID
+  is '物料编号';
+comment on column WIP_WCT_MOVMT_LINE.MATERIAL_NAME
+  is '物料名称';
+comment on column WIP_WCT_MOVMT_LINE.QTY_MOVEMENT
+  is '数量';
+
+--------------------------------------------------
+-- Create table
+create table WIP_WCT_MOVMT_LINE_LOT
+(
+  OBJECT_RRN        NUMBER(19) not null,
+  ORG_RRN           NUMBER(19),
+  IS_ACTIVE         VARCHAR2(1),
+  CREATED           DATE,
+  CREATED_BY        NUMBER(19),
+  UPDATED           DATE,
+  UPDATED_BY        NUMBER(19),
+  LOCK_VERSION      NUMBER(19),
+  MOVEMENT_RRN      NUMBER(19),
+  MOVEMENT_ID       VARCHAR2(32),
+  MOVEMENT_LINE_RRN NUMBER(19),
+  LOT_RRN           NUMBER(19),
+  LOT_ID            VARCHAR2(32),
+  MATERIAL_RRN      NUMBER(19),
+  MATERIAL_ID       VARCHAR2(32),
+  MATERIAL_NAME     VARCHAR2(256),
+  QTY_MOVEMENT      NUMBER(19,4)
+)
+tablespace USERS
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column WIP_WCT_MOVMT_LINE_LOT.OBJECT_RRN
+  is '主键';
+comment on column WIP_WCT_MOVMT_LINE_LOT.ORG_RRN
+  is '工作区域';
+comment on column WIP_WCT_MOVMT_LINE_LOT.IS_ACTIVE
+  is '是否活动';
+comment on column WIP_WCT_MOVMT_LINE_LOT.CREATED
+  is '创建时间';
+comment on column WIP_WCT_MOVMT_LINE_LOT.CREATED_BY
+  is '创建人';
+comment on column WIP_WCT_MOVMT_LINE_LOT.UPDATED
+  is '更新时间';
+comment on column WIP_WCT_MOVMT_LINE_LOT.UPDATED_BY
+  is '更新人';
+comment on column WIP_WCT_MOVMT_LINE_LOT.LOCK_VERSION
+  is '版本';
+comment on column WIP_WCT_MOVMT_LINE_LOT.MOVEMENT_RRN
+  is '对应的流转单rrn';
+comment on column WIP_WCT_MOVMT_LINE_LOT.MOVEMENT_LINE_RRN
+  is '对应的流转单行rrn';
+comment on column WIP_WCT_MOVMT_LINE_LOT.LOT_RRN
+  is '批次rrn';
+comment on column WIP_WCT_MOVMT_LINE_LOT.LOT_ID
+  is '批号';
+comment on column WIP_WCT_MOVMT_LINE_LOT.MATERIAL_RRN
+  is '物料rrn';
+comment on column WIP_WCT_MOVMT_LINE_LOT.MATERIAL_ID
+  is '物料号';
+comment on column WIP_WCT_MOVMT_LINE_LOT.MATERIAL_NAME
+  is '物料名称';
+comment on column WIP_WCT_MOVMT_LINE_LOT.QTY_MOVEMENT
+  is '批次数量';
+
+---------------------------------------
+-- Add/modify columns 
+alter table WIP_WCT_MOVMT_LINE add MOVEMENT_RRN NUMBER(19) not null;
+-- Add comments to the columns 
+comment on column WIP_WCT_MOVMT_LINE.MOVEMENT_RRN
+  is '关联的movement_rrn';
+-- Add/modify columns 
+alter table WIP_WCT_MOVMT add total_lines NUMBER(19);
+-- Add comments to the columns 
+comment on column WIP_WCT_MOVMT.total_lines
+  is '流转单行数';
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/wip"/>
+	<classpathentry kind="src" path="src/chart"/>
+	<classpathentry kind="src" path="src/ganttchart"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.nebula.widgets.calendarcombo-1.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

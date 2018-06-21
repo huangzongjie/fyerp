@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Wip Plug-in
+Bundle-SymbolicName: com.graly.erp.wip; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.graly.erp.wip.Activator
+Bundle-Vendor: GRALY
+Require-Bundle: com.graly.framework.base,
+ com.graly.framework.lib,
+ com.graly.framework.runtime,
+ com.graly.erp.base,
+ com.graly.erp.pur,
+ com.graly.erp.inv,
+ org.eclipse.ui.forms,
+ org.apache.log4j,
+ org.eclipse.core.runtime.compatibility,
+ org.eclipse.birt.chart.engine,
+ org.eclipse.birt.chart.engine.extension,
+ org.eclipse.birt.chart.runtime,
+ org.eclipse.birt.chart.ui,
+ org.eclipse.birt.chart.device.swt
+Eclipse-LazyStart: true
+Bundle-ClassPath: lib/org.eclipse.nebula.widgets.calendarcombo-1.0.jar,
+ .
+Export-Package: com.graly.erp.chart,
+ com.graly.erp.chart.builder,
+ com.graly.erp.chart.model,
+ com.graly.erp.chart.model.data.util

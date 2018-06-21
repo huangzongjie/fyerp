@@ -1,0 +1,113 @@
+package com.graly.erp.wip.mo.create;
+
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.jface.wizard.Wizard;
+
+import com.graly.erp.base.model.DocumentationLine;
+import com.graly.erp.pur.model.Requisition;
+import com.graly.erp.wip.model.ManufactureOrder;
+import com.graly.erp.wip.model.ManufactureOrderBom;
+import com.graly.framework.activeentity.client.ADManager;
+import com.graly.framework.base.ui.WizardPageExtensionPoint;
+import com.graly.framework.base.ui.util.Env;
+import com.graly.framework.base.ui.util.Message;
+import com.graly.framework.base.ui.util.UI;
+import com.graly.framework.base.ui.wizard.FlowWizard;
+import com.graly.framework.base.ui.wizard.FlowWizardPage;
+import com.graly.framework.runtime.Framework;
+import com.graly.framework.runtime.exceptionhandler.ExceptionHandlerManager;
+import com.graly.mes.wip.client.WipManager;
+
+public class MOGenerateWizard extends FlowWizard {
+	private static final Logger logger = Logger.getLogger(MOGenerateWizard.class);
+	protected MOGenerateContext context;
+	/*
+	 * 是否可以对MO进行编辑,默认为true,当MO状态不是Draft时,不能进行编辑,只能查看
+	 */
+	private boolean canEdit = true;
+	
+	public MOGenerateWizard(MOGenerateContext context) {
+		super(context.getCategory());
+		this.context = context;
+	}
+	
+	public void addPages() {
+		Map<String, IConfigurationElement> pageMap = WizardPageExtensionPoint.getPageCategoryRegistry().get(category);
+		if (pageMap != null) {
+			for (Map.Entry<String, IConfigurationElement> entry : pageMap.entrySet()) {
+				try{
+					String name = entry.getKey();
+					IConfigurationElement configElement = entry.getValue();
+					String className = configElement.getAttribute(WizardPageExtensionPoint.A_CLASS);
+					String defaultDirect = configElement.getAttribute(WizardPageExtensionPoint.A_DIRECT);
+					Class clazz = Class.forName(className);
+					Class[] parameterTypes = {String.class, Wizard.class, String.class}; 
+					Constructor constructor= clazz.getConstructor(parameterTypes);
+					Object[] parameters = {name, this, defaultDirect};
+					FlowWizardPage page = (FlowWizardPage)constructor.newInstance(parameters);
+					if ("true".equalsIgnoreCase(configElement.getAttribute(WizardPageExtensionPoint.A_ISSTART))) {
+						startPage = page;
+					}
+					addPage(page);
+				} catch (Exception e) {
+					logger.error("TrackOutWizard : addPages ", e);
+				}
+			}
+		}
+	}
+	
+	@Override
+	public boolean performFinish() {
+		try {
+			ManufactureOrder mo = context.getManufactureOrder();
+			List<ManufactureOrderBom> moBoms = context.getMoBoms();
+			List<DocumentationLine> moLines = context.getDoLines();
+			
+			if(mo.getIsPrepareMo()){
+				if(moLines ==null){
+					moLines = new ArrayList<DocumentationLine>();
+				}
+				WipManager wipManager = Framework.getService(WipManager.class);
+				if(mo.getObjectRrn() ==null){
+					mo = wipManager.addMoPrepare(mo, moBoms, Env.getUserRrn());
+				}else{
+					mo =  wipManager.saveMo(mo, moLines, moBoms, Env.getUserRrn());
+				}
+			}else{
+				WipManager wipManager = Framework.getService(WipManager.class);
+				mo = wipManager.saveMo(mo, moLines, moBoms, Env.getUserRrn());
+			}
+			
+			UI.showInfo(Message.getString("common.save_successed"));
+			return true;
+		} catch(Exception e) {
+			logger.error("SubMOLinePage : updateLocalPageContent() ");
+			ExceptionHandlerManager.asyncHandleException(e);
+        	return false;
+		}
+	}
+	
+	public void setContext(MOGenerateContext context) {
+		this.context = context;
+	}
+
+	public MOGenerateContext getContext() {
+		return context;
+	}
+	
+	
+	public boolean isCanEdit() {
+		return canEdit;
+	}
+
+	public void setCanEdit(boolean canEdit) {
+		this.canEdit = canEdit;
+	}
+
+}

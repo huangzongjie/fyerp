@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test Plug-in
+Bundle-SymbolicName: com.graly.erp.test; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.graly.erp.test.Activator
+Bundle-Vendor: GRALY
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.graly.framework.base,
+ com.graly.framework.lib,
+ com.graly.framework.runtime,
+ org.eclipse.ui.forms
+Eclipse-LazyStart: true

@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Pdm Plug-in
+Bundle-SymbolicName: com.graly.erp.pdm;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.graly.erp.pdm.Activator
+Bundle-Vendor: GRALY
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.graly.framework.base,
+ com.graly.framework.runtime,
+ org.eclipse.ui.forms,
+ com.graly.erp.base,
+ com.graly.framework.lib
+Eclipse-LazyStart: true
+Export-Package: com.graly.erp.pdm.material

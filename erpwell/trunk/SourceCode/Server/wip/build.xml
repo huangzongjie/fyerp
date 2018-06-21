@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<project name="wip" basedir=".">
+	
+	<import file="../build.xml" />
+	
+	<property name="classes.dir" value="bin" />
+	<property name="dist.dir" value="dist" />
+	
+	<path id="current-classpath">
+		<fileset dir="dist">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<target name="clean">
+		<delete dir="${classes.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${dist.dir}" />
+	</target>
+	
+	<target name="jar" depends="init">
+		<antcall target="jarwip"></antcall>
+	</target>
+	
+	<target name="compilewip" description="compile wip source files">
+		<property name="src.java.dir" value="src/wip/main" />
+		<property name="src.resource.dir" value="src/wip/resources" />
+		<delete dir="${classes.dir}" />
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.java.dir}" destdir="${classes.dir}" debug="true" encoding="GBK"
+			fork="true"
+			memoryInitialSize="64m"
+			memoryMaximumSize="128m">
+			<classpath refid="master-classpath" />
+			<classpath refid="ref-classpath"/>
+			<classpath refid="current-classpath"/>
+		</javac>
+		<copy todir="${classes.dir}/META-INF" overwrite="true">
+			<fileset dir="${src.resource.dir}/META-INF">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${classes.dir}" overwrite="true">
+			<fileset dir="${src.java.dir}">
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
+				<include name="**/*.xsd" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="jarwip" depends="compilewip" description="make wip.jar file">
+		<property name="jar.name" value="wip.jar" /> 
+		<property name="jarclient.name" value="wip-client.jar" /> 
+		<jar destfile="${dist.dir}/${jar.name}" basedir="${classes.dir}" manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+		<mkdir dir="${dist.dir}/client" />
+		<jar destfile="${dist.dir}/client/${jarclient.name}" basedir="${classes.dir}" 
+				excludes="**/ejb/**"
+				manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+	</target>
+</project>

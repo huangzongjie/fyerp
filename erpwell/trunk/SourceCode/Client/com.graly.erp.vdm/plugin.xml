@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+    <extension
+         point="com.graly.framework.runtime.service">
+       <service 
+  	 	 	hostname="framework"
+         	class="com.graly.erp.vdm.client.VDMManager"
+  		 	locator="%VDMManagerBean">
+  	 	 </service>
+  	 	<service 
+  	 	 	hostname="framework"
+         	class="com.graly.framework.activeentity.client.ADManager"
+  		 	locator="%ADManagerBean">
+  	 	 </service>
+   </extension>
+   
+   	<extension
+         point="com.graly.framework.base.managers">
+         <manager
+         	object="com.graly.erp.vdm.model.VendorMaterial"
+         	class="com.graly.erp.vdm.vendormaterial.VendorMaterialProperties">
+         </manager>
+         
+         <manager
+         	object="com.graly.erp.vdm.model.VendorYearTarget"
+         	class="com.graly.erp.vdm.vendoryeartarget.VendorYearTargetProperties">
+         </manager>
+         
+         <manager
+         	object="com.graly.erp.vdm.model.Vendor"
+         	class="com.graly.erp.vdm.vendor.VendorProperties">
+         </manager>
+    </extension>
+    
+  <extension
+         point="org.eclipse.ui.editors">
+    <editor
+            class="com.graly.erp.vdm.materialassessment.MaterialAssEditor"
+            id="com.graly.erp.vdm.materialassessment.MaterialAssEditor"
+            icon="icons/entity.gif"
+            name="MaterialAssEditor">
+    </editor>
+    <editor
+            class="com.graly.erp.vdm.vendorassess.VendorAssessEditor"
+            id="com.graly.erp.vdm.vendorassess.VendorAssessEditor"
+            icon="icons/entity.gif"
+            name="MaterialAssEditor">
+    </editor>
+    <editor
+            class="com.graly.erp.vdm.vendormaterial.VendorMaterialEditor"
+            id="com.graly.erp.vdm.vendormaterial.VendorMaterialEditor"
+            icon="icons/entity.gif"
+            name="VendorMaterialEditor">
+    </editor>
+    <editor
+          class="com.graly.erp.vdm.vendor.VendorEditor"
+          icon="icons/entity.gif"
+          id="com.graly.erp.vdm.vendor.VendorEditor"
+          name="VendorEditor">
+    </editor>
+  </extension>
+  <extension
+        point="com.graly.framework.base.dialogs">
+        <manager
+         	object="com.graly.erp.vdm.materialprice.MaterialPriceQueryDialog"
+         	class="com.graly.erp.vdm.materialprice.MaterialPriceQueryDialog">
+         </manager>
+         <manager
+         	object="com.graly.erp.vdm.vendorassess.VendorAssessDialog"
+         	class="com.graly.erp.vdm.vendorassess.VendorAssessDialog">
+         </manager>
+  </extension>
+  <extension
+        point="com.graly.framework.base.images">
+     <image
+           id="viewcontract"
+           src="icons/contractIcon.png">
+     </image>
+  </extension>
+
+</plugin>

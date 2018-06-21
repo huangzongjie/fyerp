@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="http://172.168.1.132:8818/erpwell" href="start.jnlp">
+	<information>
+		<title>MESwell</title>
+		<vendor>GlorySoft Corporation</vendor>
+		<description>The ERPwell for MES factory.</description>
+		<offline-allowed/>
+	</information>
+	<security>
+		<all-permissions/>
+	</security>
+	<application-desc main-class="org.eclipse.equinox.launcher.WebStartMain"> 
+		<argument>-nosplash</argument>
+	</application-desc>
+	<resources>
+		<j2se version="1.5+" />
+	</resources>
+	<resources>
+		<extension href="features/com.graly.erp.jnlp_1.0.0.jnlp" />
+		<jar href="plugins/org.eclipse.equinox.launcher_1.0.1.R33x_v20080118.jar"/>
+		<property name="osgi.instance.area.default" value="@user.home/workspace"/>
+		<property name="osgi.splashPath" value="platform:/base/plugins/com.graly.framework.base"/>
+		<property name="eclipse.product" value="com.graly.framework.base.product"/>
+		<property name="osgi.bundles" value="org.eclipse.equinox.common@2:start,org.eclipse.update.configurator@3:start,org.eclipse.core.runtime@start"/>
+		<property name="osgi.bundles.defaultStartLevel" value="4"/>
+	</resources>
+	<resources>
+		<property name="hostname" value="Local"/>
+		<property name="java.naming.provider.url" value="jnp://172.168.1.132:1099"/>
+	</resources>
+</jnlp>

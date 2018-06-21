@@ -1,0 +1,342 @@
+<?xml version="1.0"?>
+<project basedir=".">
+	<tstamp />
+	
+	<property name="jboss.home" value="D:\CANAERP_SourceCode\jboss-4.2.3" />
+	<property name="jboss.server" value="${jboss.home}\server\cana" />
+	
+	<property name="ERPwell.server.dir" value=".." />
+	<property name="ERPwell.base.dir" value="../../base" />
+	<property name="build.dir" value="${ERPwell.server.dir}/build" />
+	<property name="lib.dir" value="${ERPwell.base.dir}/lib" />
+	<property name="serverlib.dir" value="../base/lib" />
+	<property name="dist.dir" value="dist" />
+	
+	<path id="master-classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<path id="ref-classpath">
+		<fileset dir="../${dist.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<target name="install">
+		<copy todir="${jboss.server}/lib" overwrite="true">
+			<fileset dir="${lib.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${jboss.server}/deploy" overwrite="true">
+			<fileset dir="${build.dir}">
+				<include name="**/oracle-ds.xml" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="clean" description="clear dist dir">
+		<delete dir="${dist.dir}" />
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${dist.dir}" />
+		<antcall target="copyframework"></antcall>
+	</target>
+	
+	<target name="ear" depends="init,jarall">
+		<ear destfile="${dist.dir}/ERPwell.ear" appxml="resources/META-INF/application.xml">
+    	<metainf dir="resources/META-INF" includes="persistence.xml,MANIFEST.MF" />
+    	<fileset dir="${dist.dir}">
+    	  <include name="*.jar" />
+    	  <include name="*.war" />
+				<include name="lib/*.jar" />
+			</fileset>	
+  	</ear>
+	</target>
+	
+	<target name="earobf" depends="init,jarallobf">
+		<ear destfile="${dist.dir}/ERPwell.ear" appxml="resources/META-INF/application.xml">
+    	<metainf dir="resources/META-INF" includes="persistence.xml,MANIFEST.MF" />
+    	<fileset dir="${dist.dir}">
+    	  <include name="*.jar" />
+    	  <include name="*.war" />
+				<include name="lib/*.jar" />
+			</fileset>	
+  	</ear>
+	</target>
+	
+	<target name="jarall">
+			<antcall target="jarbasemodel"></antcall>
+			<antcall target="jarpdmmodel"></antcall>
+			<antcall target="jarppmmodel"></antcall>
+			<antcall target="jarpurmodel"></antcall>
+			<antcall target="jarwipmodel"></antcall>
+			<antcall target="jarinvmodel"></antcall>
+			<antcall target="jarbase"></antcall>
+			<antcall target="jarpdm"></antcall>
+			<antcall target="jarinv"></antcall>
+			<antcall target="jarpur"></antcall>		
+			<antcall target="jarwip"></antcall>
+			<antcall target="jarppm"></antcall>
+	</target>
+	
+	<target name="jarallobf">
+			<antcall target="jarbasemodelobf"></antcall>
+			<antcall target="jarpdmmodel"></antcall>
+			<antcall target="jarppmmodel"></antcall>
+			<antcall target="jarpurmodel"></antcall>
+			<antcall target="jarwipmodel"></antcall>
+			<antcall target="jarinvmodel"></antcall>
+			<antcall target="jaralmmodel"></antcall>
+			<antcall target="jarbaseobf"></antcall>
+			<antcall target="jarpdm"></antcall>
+			<antcall target="jarpur"></antcall>		
+			<antcall target="jarinv"></antcall>
+			<antcall target="jarwip"></antcall>
+			<antcall target="jarppm"></antcall>
+			<antcall target="jaralm"></antcall>
+	</target>
+	
+	<target name="jarbasemodel">
+			<ant dir="basemodel" target="jar" inheritall="false" />
+			<antcall target="copybasemodel"></antcall>
+	</target>
+	
+	<target name="jarbasemodelobf">
+			<ant dir="basemodel" target="jar" inheritall="false" />
+			<ant dir="basemodel" target="obfbasemodel" inheritall="false" />
+			<antcall target="copybasemodel"></antcall>
+	</target>
+	
+	<target name="jarppm">
+			<ant dir="ppm" target="jar" inheritall="false" />
+			<antcall target="copyppm"></antcall>
+	</target>
+	
+	<target name="jarinvmodel">
+			<ant dir="invmodel" target="jar" inheritall="false" />
+			<antcall target="copyinvmodel"></antcall>
+	</target>
+	
+	<target name="jarppmmodel">
+			<ant dir="ppmmodel" target="jar" inheritall="false" />
+			<antcall target="copyppmmodel"></antcall>
+	</target>
+	
+	<target name="jarpdmmodel">
+			<ant dir="pdmmodel" target="jar" inheritall="false" />
+			<antcall target="copypdmmodel"></antcall>
+	</target>
+	
+	<target name="jarpurmodel">
+			<ant dir="purmodel" target="jar" inheritall="false" />
+			<antcall target="copypurmodel"></antcall>
+	</target>
+	
+	<target name="jarwipmodel">
+			<ant dir="wipmodel" target="jar" inheritall="false" />
+			<antcall target="copywipmodel"></antcall>
+	</target>
+	
+	<target name="jaralmmodel">
+			<ant dir="almmodel" target="jar" inheritall="false" />
+			<antcall target="copyalmmodel"></antcall>
+	</target>
+
+	<target name="jarbase">
+			<ant dir="base" target="jar" inheritall="false" />
+			<antcall target="copybase"></antcall>
+	</target>
+	
+	<target name="jarbaseobf">
+			<ant dir="base" target="jar" inheritall="false" />
+			<ant dir="base" target="obfbas" inheritall="false" />
+			<antcall target="copybase"></antcall>
+	</target>
+
+	<target name="jarpdm">
+			<ant dir="pdm" target="jar" inheritall="false" />
+			<antcall target="copypdm"></antcall>
+	</target>
+	
+	<target name="jaralm">
+			<ant dir="alm" target="jar" inheritall="false" />
+			<antcall target="copyalm"></antcall>
+	</target>
+	
+	<target name="jarpur">
+			<ant dir="pur" target="jar" inheritall="false" />
+			<antcall target="copypur"></antcall>
+	</target>
+	
+	<target name="jarinv">
+			<ant dir="inv" target="jar" inheritall="false" />
+			<antcall target="copyinv"></antcall>
+	</target>
+
+	<target name="jarwip">
+			<ant dir="wip" target="jar" inheritall="false" />
+			<antcall target="copywip"></antcall>
+	</target>
+	
+
+	
+	<target name="obfuscateall">
+		  <antcall target="obfuscateinv"></antcall>
+  </target>
+
+	<target name="obfuscatealm">
+			<ant dir="alm" target="obfuscatealm" inheritall="false" />
+			
+	</target>
+	
+	<target name="obfuscateinv">
+			<ant dir="inv" target="obfuscateinv" inheritall="false" />
+			
+	</target>
+	
+	<target name="copyframework">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="framework">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copybasemodel">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="basemodel/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="copyinvmodel">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="invmodel/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copyppm">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="ppm/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copyppmmodel">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="ppmmodel/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copypdmmodel">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="pdmmodel/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copypurmodel">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="purmodel/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copyalmmodel">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="almmodel/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copywipmodel">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="wipmodel/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="copybase">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="base/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copypdm">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="pdm/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copyalm">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="alm/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copypur">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="pur/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copyinv">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="inv/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copywip">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="wip/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copyall">
+			<antcall target="copybase"></antcall>
+			<antcall target="copyprd"></antcall>
+			<antcall target="copyras"></antcall>
+			<antcall target="copywip"></antcall>
+			<antcall target="copybom"></antcall>
+			<antcall target="copytcard"></antcall>
+	</target>
+	
+	<target name="deploy" depends="ear">
+		<copy todir="..\Client\com.graly.framework.lib" overwrite="true">
+			<fileset dir="${dist.dir}\client">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+		<copy todir="${jboss.server}\deploy" overwrite="true">
+			<fileset dir="${dist.dir}">
+				<include name="*.ear" />
+			</fileset>
+		</copy>
+	</target>
+</project>

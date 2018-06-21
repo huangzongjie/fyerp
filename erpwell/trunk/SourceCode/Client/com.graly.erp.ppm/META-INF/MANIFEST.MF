@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ppm Plug-in
+Bundle-SymbolicName: com.graly.erp.ppm;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.graly.erp.ppm.Activator
+Bundle-Vendor: GRALY
+Require-Bundle: com.graly.framework.base,
+ org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.graly.framework.runtime,
+ org.eclipse.ui.forms,
+ com.graly.framework.lib,
+ com.graly.erp.base
+Eclipse-LazyStart: true

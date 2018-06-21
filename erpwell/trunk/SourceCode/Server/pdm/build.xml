@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<project name="pdm" default="deploy" basedir=".">
+	
+	<import file="../build.xml" />
+	
+	<property name="classes.dir" value="bin" />
+	<property name="dist.dir" value="dist" />
+	
+	<path id="base-classpath">
+		<fileset dir="../base/dist">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<path id="current-classpath">
+		<fileset dir="dist">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<target name="clean">
+		<delete dir="${classes.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${dist.dir}" />
+	</target>
+	
+	<target name="jar" depends="init">
+		<antcall target="jarcana"></antcall>
+		<antcall target="jarpdm"></antcall>
+	</target>
+	
+	<target name="compilepdm" description="compile pdm source files">
+		<property name="src.java.dir" value="src/pdm/main" />
+		<property name="src.resource.dir" value="src/pdm/resources" />
+		<delete dir="${classes.dir}" />
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.java.dir}" destdir="${classes.dir}" debug="true" encoding="GBK"
+			fork="true"
+			memoryInitialSize="64m"
+			memoryMaximumSize="128m">
+			<classpath refid="master-classpath" />
+			<classpath refid="ref-classpath"/>
+			<classpath refid="current-classpath"/>
+		</javac>
+		<copy todir="${classes.dir}/META-INF" overwrite="true">
+			<fileset dir="${src.resource.dir}/META-INF">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="compilecana" description="compile cana source files">
+			<property name="src.java.dir" value="src/cana/main" />
+			<property name="src.resource.dir" value="src/cana/resources" />
+			<delete dir="${classes.dir}" />
+			<mkdir dir="${classes.dir}" />
+			<javac srcdir="${src.java.dir}" destdir="${classes.dir}" debug="true" encoding="gbk"
+				fork="true"
+				memoryInitialSize="64m"
+				memoryMaximumSize="128m">
+				<classpath refid="master-classpath" />
+				<classpath refid="ref-classpath"/>
+				<classpath refid="current-classpath"/>
+			</javac>
+			<copy todir="${classes.dir}/META-INF" overwrite="true">
+				<fileset dir="${src.resource.dir}/META-INF">
+					<include name="**/*.*" />
+				</fileset>
+			</copy>
+		</target>
+	
+	<target name="jarpdm" depends="compilepdm" description="make pdm.jar file">
+		<property name="jar.name" value="pdm.jar" /> 
+		<property name="jarclient.name" value="pdm-client.jar" /> 
+		<jar destfile="${dist.dir}/${jar.name}" basedir="${classes.dir}" manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+		<mkdir dir="${dist.dir}/client" />
+		<jar destfile="${dist.dir}/client/${jarclient.name}" basedir="${classes.dir}" 
+				excludes="**/ejb/**"
+				manifest="${classes.dir}/META-INF/MANIFEST.MF">
+		</jar>
+	</target>
+	<target name="jarcana" depends="compilecana" description="make cana.jar file">
+			<property name="jar.name" value="cana.jar" /> 
+			<property name="jarclient.name" value="cana-client.jar" /> 
+			<jar destfile="${dist.dir}/${jar.name}" basedir="${classes.dir}" manifest="${classes.dir}/META-INF/MANIFEST.MF">
+			</jar>
+			<mkdir dir="${dist.dir}/client" />
+			<jar destfile="${dist.dir}/client/${jarclient.name}" basedir="${classes.dir}" 
+					excludes="**/ejb/**"
+					manifest="${classes.dir}/META-INF/MANIFEST.MF">
+			</jar>
+		</target>
+	
+</project>

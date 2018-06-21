@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Desinger Plug-in
+Bundle-SymbolicName: com.graly.mes.prd.designer;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.graly.mes.prd.designer.Plugin
+Bundle-Vendor: Graly
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.wst.sse.core,
+ org.eclipse.core.resources,
+ org.eclipse.wst.xml.core,
+ org.eclipse.gef,
+ com.graly.mes.prd.designer.common,
+ com.graly.framework.base,
+ com.graly.framework.lib,
+ com.graly.framework.runtime,
+ org.eclipse.ui.forms
+Eclipse-LazyStart: true
+Export-Package: 
+ com.graly.mes.prd.designer.command,
+ com.graly.mes.prd.designer.editor,
+ com.graly.mes.prd.designer.model,
+ com.graly.mes.prd.designer.notation,
+ com.graly.mes.prd.designer.part,
+ com.graly.mes.prd.designer.policy,
+ com.graly.mes.prd.designer.xml

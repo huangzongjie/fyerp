@@ -1,0 +1,44 @@
+一，从文件导入数据
+1,将合并后.xls存入LOADER_PDM_MATERIAL表中
+2,删除重复物料
+DELETE FROM LOADER_PDM_MATERIAL M 
+WHERE M.MATERIAL_ID IN (SELECT MATERIAL_ID FROM LOADER_PDM_MATERIAL M GROUP BY M.MATERIAL_ID HAVING COUNT(*) >= 2)
+3,将重复物料.xls存入LOADER_PDM_MATERIAL表中
+4,删除回收物料
+DELETE FROM LOADER_PDM_MATERIAL M 
+WHERE M.MATERIAL_ID IN (SELECT MATERIAL_ID FROM LOADER_PDM_MATERIAL M WHERE M.NAME LIKE '%回收%')
+5,将新定义的回收物料回收物料.csv存入LOADER_PDM_MATERIAL表中
+6,检查数据工10405条
+
+二，整理loader数据
+1,更新物料类型
+update loader_pdm_material t set t.lot_type = 'SERIAL' where t.lot_type = 'S';
+update loader_pdm_material t set t.lot_type = 'BATCH' where t.lot_type = 'B';
+update loader_pdm_material t set t.lot_type = 'MATERIAL' where t.lot_type = 'M';
+
+没有定义批次类型？？
+select * from loader_pdm_material t 
+where (t.lot_type not in ('SERIAL', 'BATCH', 'MATERIAL') or t.lot_type is null ) 
+
+
+2,更新流程定义
+update loader_pdm_material t set t.process_name = '净水机装配' where t.process_name like '%净水机%';
+update loader_pdm_material t set t.process_name = '软水机装配' where t.process_name like '%软水机%';
+update loader_pdm_material t set t.process_name = '饮水机装配' where t.process_name like '%饮水%';
+update loader_pdm_material t set t.process_name = '控制阀装配' where t.process_name like '%控制阀%' or t.process_name like '%阀%';
+update loader_pdm_material t set t.process_name = '缠绕' where t.process_name like '%缠绕%';
+update loader_pdm_material t set t.process_name = '翻新' where t.process_name like '%翻新%';
+update loader_pdm_material t set t.process_name = '虚拟' where t.process_name like '%虚拟%';
+
+生产物料没有Process??
+select * from loader_pdm_material t 
+where (t.process_name not in ('净水机装配', '软水机装配', '饮水机装配', '控制阀装配', '翻新', '虚拟', '缠绕', '注塑', '吹塑', '研发部') 
+
+三，导入后
+1, update pdm_material m set m.is_virtual = 'Y' where m.material_category3 = '虚拟件'
+2,检查LotType为空或者LotType不为空但非系统管理
+SELECT * FROM PDM_MATERIAL M WHERE 
+(M.IS_LOT_CONTROL IS NULL) OR (M.IS_LOT_CONTROL = 'N' AND M.LOT_TYPE IS NOT NULl)
+3,采购物料没有主供应商
+4,生产物料没有BOM
+

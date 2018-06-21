@@ -1,0 +1,9 @@
+<node-types>
+  <node-type element="start-state" class="com.graly.mes.prd.workflow.graph.node.StartState" />
+  <node-type element="end-state" class="com.graly.mes.prd.workflow.graph.node.EndState" />
+  <node-type element="state" class="com.graly.mes.prd.workflow.graph.node.State" />
+  <node-type element="queue-state" class="com.graly.mes.prd.workflow.graph.node.QueueState" />
+  <node-type element="run-state" class="com.graly.mes.prd.workflow.graph.node.RunState" />
+  <node-type element="procedure-state" class="com.graly.mes.prd.workflow.graph.node.ProcedureState" />
+  <node-type element="step-state" class="com.graly.mes.prd.workflow.graph.node.StepState" />
+</node-types>

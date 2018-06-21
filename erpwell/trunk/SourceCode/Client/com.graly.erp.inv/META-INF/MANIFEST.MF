@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Inv Plug-in
+Bundle-SymbolicName: com.graly.erp.inv;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.graly.erp.inv.Activator
+Bundle-Vendor: GRALY
+Require-Bundle: org.eclipse.ui,
+ com.graly.erp.base,
+ org.eclipse.core.runtime,
+ com.graly.framework.base,
+ com.graly.framework.runtime,
+ com.graly.erp.base,
+ org.eclipse.ui.forms,
+ com.graly.erp.pur,
+ com.graly.erp.pdm,
+ com.graly.framework.lib
+Eclipse-LazyStart: true
+Export-Package: com.graly.erp.inv.barcode,
+ com.graly.erp.inv.in,
+ com.graly.erp.inv.lotprint

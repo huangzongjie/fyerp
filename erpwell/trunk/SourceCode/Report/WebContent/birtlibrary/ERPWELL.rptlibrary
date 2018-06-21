@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.17" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 2.3.2.r232_20090202 Build &lt;2.3.2.v20090218-0730></property>
+    <property name="units">in</property>
+    <property name="theme">defaultTheme</property>
+    <parameters>
+        <scalar-parameter name="MO_RRN" id="8">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <property name="distinct">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="ERPWELL" id="5">
+            <property name="odaDriverClass">oracle.jdbc.driver.OracleDriver</property>
+            <property name="odaURL">jdbc:oracle:thin:@192.168.0.229:1521:ERPDB</property>
+            <property name="odaUser">system</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">ZXJwMTIz</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="WIP_MO" id="6">
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">M_DOC_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">MO_QTY_PRODUCT</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">MO_WORKCENTER_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">M_MATERIAL_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">M_NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">MB_PATH_LEVEL</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">ERPWELL</property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">MO_RRN</property>
+                    <property name="paramName">MO_RRN</property>
+                    <property name="dataType">string</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">M_DOC_ID</property>
+                    <property name="nativeName">M_DOC_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">MO_QTY_PRODUCT</property>
+                    <property name="nativeName">MO_QTY_PRODUCT</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">MO_WORKCENTER_ID</property>
+                    <property name="nativeName">MO_WORKCENTER_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">M_MATERIAL_ID</property>
+                    <property name="nativeName">M_MATERIAL_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">M_NAME</property>
+                    <property name="nativeName">M_NAME</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">MB_PATH_LEVEL</property>
+                    <property name="nativeName">MB_PATH_LEVEL</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+            </list-property>
+            <property name="queryText">SELECT
+		MO.DOC_ID									M_DOC_ID,--工作令
+		MO.QTY_PRODUCT								MO_QTY_PRODUCT,--生产数量
+		MO.workcenter_id							MO_workcenter_id,--工作中心
+		M.MATERIAL_ID								M_MATERIAL_ID,--产品编号
+		M.NAME										M_NAME,--产品名称
+		MB.PATH_LEVEL								MB_PATH_LEVEL
+	FROM	
+		WIP_MO			MO,
+		WIP_MO_BOM		MB,
+		PDM_MATERIAL	M
+	WHERE	MO.OBJECT_RRN = ?
+		and MB.MO_RRN = MO.OBJECT_RRN
+		and MB.PATH_LEVEL = 0
+		and	M.OBJECT_RRN = MB.MATERIAL_RRN</property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="BOM_MATERIAL" id="7">
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">M_MATERIAL_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">MO_USER_CREATED</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">MB_QTY</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">M_NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">M_COMMENTS</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">M_LOT_TYPE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">MB_PATH_LEVEL</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">MB_MATERIAL_RRN</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">MB_MATERIAL_PARENT_RRN</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">MB_UOM_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">MB_QTY_UNIT</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">MB_DESCRIPTION</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">ERPWELL</property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">MO_RRN</property>
+                    <property name="paramName">MO_RRN</property>
+                    <property name="dataType">string</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">M_MATERIAL_ID</property>
+                    <property name="nativeName">M_MATERIAL_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">MO_USER_CREATED</property>
+                    <property name="nativeName">MO_USER_CREATED</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">MB_QTY</property>
+                    <property name="nativeName">MB_QTY</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">M_NAME</property>
+                    <property name="nativeName">M_NAME</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">M_COMMENTS</property>
+                    <property name="nativeName">M_COMMENTS</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">M_LOT_TYPE</property>
+                    <property name="nativeName">M_LOT_TYPE</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">MB_PATH_LEVEL</property>
+                    <property name="nativeName">MB_PATH_LEVEL</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">MB_MATERIAL_RRN</property>
+                    <property name="nativeName">MB_MATERIAL_RRN</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">MB_MATERIAL_PARENT_RRN</property>
+                    <property name="nativeName">MB_MATERIAL_PARENT_RRN</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">MB_UOM_ID</property>
+                    <property name="nativeName">MB_UOM_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">MB_QTY_UNIT</property>
+                    <property name="nativeName">MB_QTY_UNIT</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">MB_DESCRIPTION</property>
+                    <property name="nativeName">MB_DESCRIPTION</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="queryText">--1、所有物料打印第1、2级：
+--2、该物料下级不打印：
+-----22050100,22050100B,22050101,22050106,22050111,07010004,07010006,07010013,07010014,07010042,07010044,07010045,07010053,07010058,07010062
+--3、以这些开始的物料下级不打印：
+-----1709\0750\22018\22050\0215
+SELECT
+	rs.*
+FROM
+	(
+	SELECT
+		--LPAD('&amp;nbsp;',(MB.PATH_LEVEL-1)*24,'&amp;nbsp;')||
+		M.MATERIAL_ID								M_MATERIAL_ID,
+		MO.USER_CREATED								MO_USER_CREATED,
+		MB.QTY_UNIT*MO.QTY_PRODUCT					MB_QTY,
+		M.NAME										M_NAME,
+		M.COMMENTS									M_COMMENTS,
+		M.LOT_TYPE									M_LOT_TYPE,
+		MB.PATH_LEVEL								MB_PATH_LEVEL,
+		MB.MATERIAL_RRN								MB_MATERIAL_RRN,
+		MB.MATERIAL_PARENT_RRN						MB_MATERIAL_PARENT_RRN,
+		MB.UOM_ID									MB_UOM_ID,
+		MB.QTY_UNIT									MB_QTY_UNIT,
+		MB.DESCRIPTION								MB_DESCRIPTION
+	FROM	
+		WIP_MO			MO,
+		WIP_MO_BOM		MB,
+		PDM_MATERIAL	M
+	WHERE	MO.OBJECT_RRN = ?
+		and MB.MO_RRN = MO.OBJECT_RRN
+		and	M.OBJECT_RRN = MB.MATERIAL_RRN
+	ORDER BY M.MATERIAL_ID
+	) rs
+where rs.MB_PATH_LEVEL = 1
+	and rs.M_MATERIAL_ID not like '1709%'
+		and rs.M_MATERIAL_ID not like '0750%'
+			and rs.M_MATERIAL_ID not like '22018%'
+				and rs.M_MATERIAL_ID not like '22050%'
+					and rs.M_MATERIAL_ID not like '0215%'
+						and rs.M_MATERIAL_ID not in ('22050100','22050100B','22050101','22050106',
+					'22050111','07010004','07010006','07010013','07010014','07010042','07010044',
+					'07010045','07010053','07010058','07010062')
+START WITH rs.MB_path_level = 0
+CONNECT BY PRIOR rs.MB_material_rrn = rs.MB_material_parent_rrn</property>
+        </oda-data-set>
+    </data-sets>
+    <themes>
+        <theme name="defaultTheme" id="4"/>
+    </themes>
+    <page-setup>
+        <simple-master-page name="NewSimpleMasterPage" id="3"/>
+    </page-setup>
+</library>
