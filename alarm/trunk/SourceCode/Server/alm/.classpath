@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/alm/main"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/almmodel"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/activeentitymodel.jar"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/securitymodel.jar"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/lib/core.jar" sourcepath="/FRAMEWORK_SRC"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/activeentity.jar"/>
+	<classpathentry kind="var" path="ALARM_LIB/activemq-core-5.2.0.jar"/>
+	<classpathentry kind="var" path="ALARM_LIB/mail.jar"/>
+	<classpathentry kind="var" path="ALARM_LIB/jboss-annotations-ejb3.jar"/>
+	<classpathentry kind="var" path="ERP-LIB/ejb3-persistence.jar"/>
+	<classpathentry kind="var" path="ERP-LIB/ejb3x.jar"/>
+	<classpathentry kind="var" path="ERP-LIB/jboss-j2ee.jar"/>
+	<classpathentry kind="var" path="ERP-LIB/log4j-1.2.15.jar"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/security.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

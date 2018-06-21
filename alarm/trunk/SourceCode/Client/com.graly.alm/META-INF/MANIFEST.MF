@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Alarm Plug-in
+Bundle-SymbolicName: com.graly.alm;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.graly.alm.Activator
+Bundle-Vendor: GRALY
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.graly.framework.base,
+ com.graly.framework.lib,
+ com.graly.framework.runtime,
+ org.eclipse.ui.forms,
+ org.eclipse.ui.ide
+Eclipse-LazyStart: true
+Bundle-ClassPath: lib/activemq-core-5.2.0.jar,
+ .

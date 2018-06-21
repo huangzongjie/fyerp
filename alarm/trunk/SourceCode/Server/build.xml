@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<project basedir=".">
+	<tstamp />
+	
+	<property name="jboss.home" value="..\..\..\jboss-4.2.2.GA" />
+	<property name="jboss.server" value="..\..\..\jboss-4.2.2.GA\server\default" />
+	
+	<property name="ALARMwell.server.dir" value=".." />
+	<property name="ALARMwell.base.dir" value="../../base" />
+	<property name="build.dir" value="${ALARMwell.server.dir}/build" />
+	<property name="lib.dir" value="${ALARMwell.base.dir}/lib" />
+	<property name="dist.dir" value="dist" />
+	
+	<path id="master-classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<path id="ref-classpath">
+		<fileset dir="../${dist.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<target name="install">
+		<copy todir="${jboss.server}/lib" overwrite="true">
+			<fileset dir="${lib.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${jboss.server}/deploy" overwrite="true">
+			<fileset dir="${build.dir}">
+				<include name="**/oracle-ds.xml" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="clean" description="clear dist dir">
+		<delete dir="${dist.dir}" />
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${dist.dir}" />
+		<antcall target="copyframework"></antcall>
+	</target>
+	
+	<target name="ear" depends="init,jarall">
+		<ear destfile="${dist.dir}/ALARMwell.ear" appxml="resources/META-INF/application.xml">
+    	<metainf dir="resources/META-INF" includes="persistence.xml,MANIFEST.MF" />
+    	<fileset dir="${dist.dir}">
+    	  <include name="*.jar" />
+    	  <include name="*.war" />
+				<include name="lib/*.jar" />
+			</fileset>	
+  	</ear>
+	</target>
+	
+	<target name="jaralmmodel">
+			<ant dir="almmodel" target="jar" inheritall="false" />
+			<antcall target="copyalmmodel"></antcall>
+	</target>
+	
+	<target name="jaralm">
+			<ant dir="alm" target="jar" inheritall="false" />
+			<antcall target="copyalm"></antcall>
+	</target>
+	
+	<target name="jarall">
+			<antcall target="jaralmmodel"></antcall>
+			<antcall target="jaralm"></antcall>
+	</target>
+	
+	<target name="copyframework">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="framework">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copyalmmodel">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="almmodel/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copyalm">
+		<copy todir="${dist.dir}" overwrite="true">
+			<fileset dir="alm/${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+
+</project>

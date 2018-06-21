@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/alm/main"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="FRAMEWORK-LIB/activeentitymodel.jar"/>
+	<classpathentry kind="var" path="ERP-LIB/ejb3-persistence.jar"/>
+	<classpathentry kind="var" path="ERP-LIB/ejb3x.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
